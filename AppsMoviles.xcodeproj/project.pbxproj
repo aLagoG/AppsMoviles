@@ -7,23 +7,100 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF7645081F6AF75500A9E201 /* MyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7645071F6AF75500A9E201 /* MyDayViewController.swift */; };
+		AF76450A1F6AF85800A9E201 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7645091F6AF85800A9E201 /* CalendarViewController.swift */; };
+		AF76450C1F6AF9BE00A9E201 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76450B1F6AF9BE00A9E201 /* GoalsViewController.swift */; };
+		AF76450E1F6AF9DC00A9E201 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76450D1F6AF9DC00A9E201 /* SettingsViewController.swift */; };
+		AF7645311F6AFB9200A9E201 /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7645101F6AFB9200A9E201 /* FSCalendar+Deprecated.m */; };
+		AF7645321F6AFB9200A9E201 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7645121F6AFB9200A9E201 /* FSCalendar.m */; };
+		AF7645331F6AFB9200A9E201 /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7645141F6AFB9200A9E201 /* FSCalendarAppearance.m */; };
+		AF7645341F6AFB9200A9E201 /* FSCalendarCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7645161F6AFB9200A9E201 /* FSCalendarCalculator.m */; };
+		AF7645351F6AFB9200A9E201 /* FSCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7645181F6AFB9200A9E201 /* FSCalendarCell.m */; };
+		AF7645361F6AFB9200A9E201 /* FSCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF76451A1F6AFB9200A9E201 /* FSCalendarCollectionView.m */; };
+		AF7645371F6AFB9200A9E201 /* FSCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AF76451C1F6AFB9200A9E201 /* FSCalendarCollectionViewLayout.m */; };
+		AF7645381F6AFB9200A9E201 /* FSCalendarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = AF76451E1F6AFB9200A9E201 /* FSCalendarConstants.m */; };
+		AF7645391F6AFB9200A9E201 /* FSCalendarDelegationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7645201F6AFB9200A9E201 /* FSCalendarDelegationFactory.m */; };
+		AF76453A1F6AFB9200A9E201 /* FSCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7645221F6AFB9200A9E201 /* FSCalendarDelegationProxy.m */; };
+		AF76453B1F6AFB9200A9E201 /* FSCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7645251F6AFB9200A9E201 /* FSCalendarExtensions.m */; };
+		AF76453C1F6AFB9200A9E201 /* FSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7645271F6AFB9200A9E201 /* FSCalendarHeaderView.m */; };
+		AF76453D1F6AFB9200A9E201 /* FSCalendarScopeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7645291F6AFB9200A9E201 /* FSCalendarScopeHandle.m */; };
+		AF76453E1F6AFB9200A9E201 /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = AF76452B1F6AFB9200A9E201 /* FSCalendarStickyHeader.m */; };
+		AF76453F1F6AFB9200A9E201 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = AF76452D1F6AFB9200A9E201 /* FSCalendarTransitionCoordinator.m */; };
+		AF7645401F6AFB9200A9E201 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF76452F1F6AFB9200A9E201 /* FSCalendarWeekdayView.m */; };
+		AF7645411F6AFB9200A9E201 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF7645301F6AFB9200A9E201 /* Info.plist */; };
 		AFB62A6E1F61E4180031CFC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB62A6D1F61E4180031CFC8 /* AppDelegate.swift */; };
-		AFB62A701F61E4180031CFC8 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB62A6F1F61E4180031CFC8 /* FirstViewController.swift */; };
-		AFB62A721F61E4180031CFC8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB62A711F61E4180031CFC8 /* SecondViewController.swift */; };
 		AFB62A751F61E4180031CFC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB62A731F61E4180031CFC8 /* Main.storyboard */; };
 		AFB62A771F61E4180031CFC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB62A761F61E4180031CFC8 /* Assets.xcassets */; };
 		AFB62A7A1F61E4180031CFC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB62A781F61E4180031CFC8 /* LaunchScreen.storyboard */; };
+		AFF4C1CC1F6AF09900BA76DB /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AFF4C1CB1F6AF09900BA76DB /* FontAwesome.otf */; };
+		AFF4C1D71F6AF0BA00BA76DB /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1CD1F6AF0BA00BA76DB /* Enum.swift */; };
+		AFF4C1D81F6AF0BA00BA76DB /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1CE1F6AF0BA00BA76DB /* FontAwesome.swift */; };
+		AFF4C1D91F6AF0BA00BA76DB /* FontAwesomeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1CF1F6AF0BA00BA76DB /* FontAwesomeBarButtonItem.swift */; };
+		AFF4C1DA1F6AF0BA00BA76DB /* FontAwesomeImageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1D01F6AF0BA00BA76DB /* FontAwesomeImageRepresentable.swift */; };
+		AFF4C1DB1F6AF0BA00BA76DB /* FontAwesomeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1D11F6AF0BA00BA76DB /* FontAwesomeImageView.swift */; };
+		AFF4C1DC1F6AF0BA00BA76DB /* FontAwesomeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1D21F6AF0BA00BA76DB /* FontAwesomeSegmentedControl.swift */; };
+		AFF4C1DD1F6AF0BA00BA76DB /* FontAwesomeStateRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1D31F6AF0BA00BA76DB /* FontAwesomeStateRequirement.swift */; };
+		AFF4C1DE1F6AF0BA00BA76DB /* FontAwesomeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1D41F6AF0BA00BA76DB /* FontAwesomeTabBarItem.swift */; };
+		AFF4C1DF1F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1D51F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift */; };
+		AFF4C1E01F6AF0BA00BA76DB /* FontAwesomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1D61F6AF0BA00BA76DB /* FontAwesomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF7645071F6AF75500A9E201 /* MyDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDayViewController.swift; sourceTree = "<group>"; };
+		AF7645091F6AF85800A9E201 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		AF76450B1F6AF9BE00A9E201 /* GoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
+		AF76450D1F6AF9DC00A9E201 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AF7645101F6AFB9200A9E201 /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
+		AF7645111F6AFB9200A9E201 /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
+		AF7645121F6AFB9200A9E201 /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendar.m; sourceTree = "<group>"; };
+		AF7645131F6AFB9200A9E201 /* FSCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarAppearance.h; sourceTree = "<group>"; };
+		AF7645141F6AFB9200A9E201 /* FSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAppearance.m; sourceTree = "<group>"; };
+		AF7645151F6AFB9200A9E201 /* FSCalendarCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCalculator.h; sourceTree = "<group>"; };
+		AF7645161F6AFB9200A9E201 /* FSCalendarCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCalculator.m; sourceTree = "<group>"; };
+		AF7645171F6AFB9200A9E201 /* FSCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCell.h; sourceTree = "<group>"; };
+		AF7645181F6AFB9200A9E201 /* FSCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCell.m; sourceTree = "<group>"; };
+		AF7645191F6AFB9200A9E201 /* FSCalendarCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionView.h; sourceTree = "<group>"; };
+		AF76451A1F6AFB9200A9E201 /* FSCalendarCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionView.m; sourceTree = "<group>"; };
+		AF76451B1F6AFB9200A9E201 /* FSCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
+		AF76451C1F6AFB9200A9E201 /* FSCalendarCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionViewLayout.m; sourceTree = "<group>"; };
+		AF76451D1F6AFB9200A9E201 /* FSCalendarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarConstants.h; sourceTree = "<group>"; };
+		AF76451E1F6AFB9200A9E201 /* FSCalendarConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarConstants.m; sourceTree = "<group>"; };
+		AF76451F1F6AFB9200A9E201 /* FSCalendarDelegationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationFactory.h; sourceTree = "<group>"; };
+		AF7645201F6AFB9200A9E201 /* FSCalendarDelegationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationFactory.m; sourceTree = "<group>"; };
+		AF7645211F6AFB9200A9E201 /* FSCalendarDelegationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegationProxy.h; sourceTree = "<group>"; };
+		AF7645221F6AFB9200A9E201 /* FSCalendarDelegationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegationProxy.m; sourceTree = "<group>"; };
+		AF7645231F6AFB9200A9E201 /* FSCalendarDynamicHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDynamicHeader.h; sourceTree = "<group>"; };
+		AF7645241F6AFB9200A9E201 /* FSCalendarExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarExtensions.h; sourceTree = "<group>"; };
+		AF7645251F6AFB9200A9E201 /* FSCalendarExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarExtensions.m; sourceTree = "<group>"; };
+		AF7645261F6AFB9200A9E201 /* FSCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeaderView.h; sourceTree = "<group>"; };
+		AF7645271F6AFB9200A9E201 /* FSCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeaderView.m; sourceTree = "<group>"; };
+		AF7645281F6AFB9200A9E201 /* FSCalendarScopeHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarScopeHandle.h; sourceTree = "<group>"; };
+		AF7645291F6AFB9200A9E201 /* FSCalendarScopeHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarScopeHandle.m; sourceTree = "<group>"; };
+		AF76452A1F6AFB9200A9E201 /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarStickyHeader.h; sourceTree = "<group>"; };
+		AF76452B1F6AFB9200A9E201 /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarStickyHeader.m; sourceTree = "<group>"; };
+		AF76452C1F6AFB9200A9E201 /* FSCalendarTransitionCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarTransitionCoordinator.h; sourceTree = "<group>"; };
+		AF76452D1F6AFB9200A9E201 /* FSCalendarTransitionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarTransitionCoordinator.m; sourceTree = "<group>"; };
+		AF76452E1F6AFB9200A9E201 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
+		AF76452F1F6AFB9200A9E201 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
+		AF7645301F6AFB9200A9E201 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF7645641F6B013800A9E201 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		AFB62A6A1F61E4180031CFC8 /* AppsMoviles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppsMoviles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFB62A6D1F61E4180031CFC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AFB62A6F1F61E4180031CFC8 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		AFB62A711F61E4180031CFC8 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AFB62A741F61E4180031CFC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AFB62A761F61E4180031CFC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFB62A791F61E4180031CFC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFB62A7B1F61E4180031CFC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFF4C1CB1F6AF09900BA76DB /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		AFF4C1CD1F6AF0BA00BA76DB /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		AFF4C1CE1F6AF0BA00BA76DB /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
+		AFF4C1CF1F6AF0BA00BA76DB /* FontAwesomeBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeBarButtonItem.swift; sourceTree = "<group>"; };
+		AFF4C1D01F6AF0BA00BA76DB /* FontAwesomeImageRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeImageRepresentable.swift; sourceTree = "<group>"; };
+		AFF4C1D11F6AF0BA00BA76DB /* FontAwesomeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeImageView.swift; sourceTree = "<group>"; };
+		AFF4C1D21F6AF0BA00BA76DB /* FontAwesomeSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeSegmentedControl.swift; sourceTree = "<group>"; };
+		AFF4C1D31F6AF0BA00BA76DB /* FontAwesomeStateRequirement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeStateRequirement.swift; sourceTree = "<group>"; };
+		AFF4C1D41F6AF0BA00BA76DB /* FontAwesomeTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeTabBarItem.swift; sourceTree = "<group>"; };
+		AFF4C1D51F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeTextRepresentable.swift; sourceTree = "<group>"; };
+		AFF4C1D61F6AF0BA00BA76DB /* FontAwesomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +114,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF76450F1F6AFB9200A9E201 /* FSCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				AF7645101F6AFB9200A9E201 /* FSCalendar+Deprecated.m */,
+				AF7645111F6AFB9200A9E201 /* FSCalendar.h */,
+				AF7645121F6AFB9200A9E201 /* FSCalendar.m */,
+				AF7645131F6AFB9200A9E201 /* FSCalendarAppearance.h */,
+				AF7645141F6AFB9200A9E201 /* FSCalendarAppearance.m */,
+				AF7645151F6AFB9200A9E201 /* FSCalendarCalculator.h */,
+				AF7645161F6AFB9200A9E201 /* FSCalendarCalculator.m */,
+				AF7645171F6AFB9200A9E201 /* FSCalendarCell.h */,
+				AF7645181F6AFB9200A9E201 /* FSCalendarCell.m */,
+				AF7645191F6AFB9200A9E201 /* FSCalendarCollectionView.h */,
+				AF76451A1F6AFB9200A9E201 /* FSCalendarCollectionView.m */,
+				AF76451B1F6AFB9200A9E201 /* FSCalendarCollectionViewLayout.h */,
+				AF76451C1F6AFB9200A9E201 /* FSCalendarCollectionViewLayout.m */,
+				AF76451D1F6AFB9200A9E201 /* FSCalendarConstants.h */,
+				AF76451E1F6AFB9200A9E201 /* FSCalendarConstants.m */,
+				AF76451F1F6AFB9200A9E201 /* FSCalendarDelegationFactory.h */,
+				AF7645201F6AFB9200A9E201 /* FSCalendarDelegationFactory.m */,
+				AF7645211F6AFB9200A9E201 /* FSCalendarDelegationProxy.h */,
+				AF7645221F6AFB9200A9E201 /* FSCalendarDelegationProxy.m */,
+				AF7645231F6AFB9200A9E201 /* FSCalendarDynamicHeader.h */,
+				AF7645241F6AFB9200A9E201 /* FSCalendarExtensions.h */,
+				AF7645251F6AFB9200A9E201 /* FSCalendarExtensions.m */,
+				AF7645261F6AFB9200A9E201 /* FSCalendarHeaderView.h */,
+				AF7645271F6AFB9200A9E201 /* FSCalendarHeaderView.m */,
+				AF7645281F6AFB9200A9E201 /* FSCalendarScopeHandle.h */,
+				AF7645291F6AFB9200A9E201 /* FSCalendarScopeHandle.m */,
+				AF76452A1F6AFB9200A9E201 /* FSCalendarStickyHeader.h */,
+				AF76452B1F6AFB9200A9E201 /* FSCalendarStickyHeader.m */,
+				AF76452C1F6AFB9200A9E201 /* FSCalendarTransitionCoordinator.h */,
+				AF76452D1F6AFB9200A9E201 /* FSCalendarTransitionCoordinator.m */,
+				AF76452E1F6AFB9200A9E201 /* FSCalendarWeekdayView.h */,
+				AF76452F1F6AFB9200A9E201 /* FSCalendarWeekdayView.m */,
+				AF7645301F6AFB9200A9E201 /* Info.plist */,
+			);
+			path = FSCalendar;
+			sourceTree = "<group>";
+		};
 		AFB62A611F61E4180031CFC8 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +173,38 @@
 		AFB62A6C1F61E4180031CFC8 /* AppsMoviles */ = {
 			isa = PBXGroup;
 			children = (
+				AF76450F1F6AFB9200A9E201 /* FSCalendar */,
+				AFF4C1E11F6AF58700BA76DB /* FontAwesome */,
 				AFB62A6D1F61E4180031CFC8 /* AppDelegate.swift */,
-				AFB62A6F1F61E4180031CFC8 /* FirstViewController.swift */,
-				AFB62A711F61E4180031CFC8 /* SecondViewController.swift */,
 				AFB62A731F61E4180031CFC8 /* Main.storyboard */,
 				AFB62A761F61E4180031CFC8 /* Assets.xcassets */,
 				AFB62A781F61E4180031CFC8 /* LaunchScreen.storyboard */,
 				AFB62A7B1F61E4180031CFC8 /* Info.plist */,
+				AF7645071F6AF75500A9E201 /* MyDayViewController.swift */,
+				AF7645091F6AF85800A9E201 /* CalendarViewController.swift */,
+				AF76450B1F6AF9BE00A9E201 /* GoalsViewController.swift */,
+				AF76450D1F6AF9DC00A9E201 /* SettingsViewController.swift */,
+				AF7645641F6B013800A9E201 /* Bridge-Header.h */,
 			);
 			path = AppsMoviles;
+			sourceTree = "<group>";
+		};
+		AFF4C1E11F6AF58700BA76DB /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				AFF4C1CB1F6AF09900BA76DB /* FontAwesome.otf */,
+				AFF4C1CD1F6AF0BA00BA76DB /* Enum.swift */,
+				AFF4C1CE1F6AF0BA00BA76DB /* FontAwesome.swift */,
+				AFF4C1CF1F6AF0BA00BA76DB /* FontAwesomeBarButtonItem.swift */,
+				AFF4C1D01F6AF0BA00BA76DB /* FontAwesomeImageRepresentable.swift */,
+				AFF4C1D11F6AF0BA00BA76DB /* FontAwesomeImageView.swift */,
+				AFF4C1D21F6AF0BA00BA76DB /* FontAwesomeSegmentedControl.swift */,
+				AFF4C1D31F6AF0BA00BA76DB /* FontAwesomeStateRequirement.swift */,
+				AFF4C1D41F6AF0BA00BA76DB /* FontAwesomeTabBarItem.swift */,
+				AFF4C1D51F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift */,
+				AFF4C1D61F6AF0BA00BA76DB /* FontAwesomeView.swift */,
+			);
+			name = FontAwesome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +267,8 @@
 			files = (
 				AFB62A7A1F61E4180031CFC8 /* LaunchScreen.storyboard in Resources */,
 				AFB62A771F61E4180031CFC8 /* Assets.xcassets in Resources */,
+				AFF4C1CC1F6AF09900BA76DB /* FontAwesome.otf in Resources */,
+				AF7645411F6AFB9200A9E201 /* Info.plist in Resources */,
 				AFB62A751F61E4180031CFC8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +280,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFB62A721F61E4180031CFC8 /* SecondViewController.swift in Sources */,
+				AFF4C1D81F6AF0BA00BA76DB /* FontAwesome.swift in Sources */,
+				AF7645361F6AFB9200A9E201 /* FSCalendarCollectionView.m in Sources */,
+				AF7645311F6AFB9200A9E201 /* FSCalendar+Deprecated.m in Sources */,
+				AFF4C1D91F6AF0BA00BA76DB /* FontAwesomeBarButtonItem.swift in Sources */,
+				AFF4C1E01F6AF0BA00BA76DB /* FontAwesomeView.swift in Sources */,
+				AFF4C1DD1F6AF0BA00BA76DB /* FontAwesomeStateRequirement.swift in Sources */,
+				AF7645081F6AF75500A9E201 /* MyDayViewController.swift in Sources */,
+				AF7645391F6AFB9200A9E201 /* FSCalendarDelegationFactory.m in Sources */,
+				AF76453E1F6AFB9200A9E201 /* FSCalendarStickyHeader.m in Sources */,
+				AFF4C1DB1F6AF0BA00BA76DB /* FontAwesomeImageView.swift in Sources */,
+				AFF4C1DE1F6AF0BA00BA76DB /* FontAwesomeTabBarItem.swift in Sources */,
+				AF76450C1F6AF9BE00A9E201 /* GoalsViewController.swift in Sources */,
+				AF76450E1F6AF9DC00A9E201 /* SettingsViewController.swift in Sources */,
+				AF76453B1F6AFB9200A9E201 /* FSCalendarExtensions.m in Sources */,
 				AFB62A6E1F61E4180031CFC8 /* AppDelegate.swift in Sources */,
-				AFB62A701F61E4180031CFC8 /* FirstViewController.swift in Sources */,
+				AF76450A1F6AF85800A9E201 /* CalendarViewController.swift in Sources */,
+				AF76453F1F6AFB9200A9E201 /* FSCalendarTransitionCoordinator.m in Sources */,
+				AF7645331F6AFB9200A9E201 /* FSCalendarAppearance.m in Sources */,
+				AF7645371F6AFB9200A9E201 /* FSCalendarCollectionViewLayout.m in Sources */,
+				AF76453A1F6AFB9200A9E201 /* FSCalendarDelegationProxy.m in Sources */,
+				AF7645341F6AFB9200A9E201 /* FSCalendarCalculator.m in Sources */,
+				AF7645351F6AFB9200A9E201 /* FSCalendarCell.m in Sources */,
+				AFF4C1DA1F6AF0BA00BA76DB /* FontAwesomeImageRepresentable.swift in Sources */,
+				AF7645381F6AFB9200A9E201 /* FSCalendarConstants.m in Sources */,
+				AF7645321F6AFB9200A9E201 /* FSCalendar.m in Sources */,
+				AF76453D1F6AFB9200A9E201 /* FSCalendarScopeHandle.m in Sources */,
+				AFF4C1D71F6AF0BA00BA76DB /* Enum.swift in Sources */,
+				AFF4C1DF1F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift in Sources */,
+				AF76453C1F6AFB9200A9E201 /* FSCalendarHeaderView.m in Sources */,
+				AF7645401F6AFB9200A9E201 /* FSCalendarWeekdayView.m in Sources */,
+				AFF4C1DC1F6AF0BA00BA76DB /* FontAwesomeSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +439,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mx.rmr.AppsMoviles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppsMoviles/Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -281,6 +452,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mx.rmr.AppsMoviles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppsMoviles/Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -304,6 +476,7 @@
 				AFB62A801F61E4180031CFC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
