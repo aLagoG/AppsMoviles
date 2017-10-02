@@ -32,6 +32,8 @@
 		AFB62A751F61E4180031CFC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB62A731F61E4180031CFC8 /* Main.storyboard */; };
 		AFB62A771F61E4180031CFC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB62A761F61E4180031CFC8 /* Assets.xcassets */; };
 		AFB62A7A1F61E4180031CFC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB62A781F61E4180031CFC8 /* LaunchScreen.storyboard */; };
+		AFD73B431F82DC26005DE94D /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD73B421F82DC26005DE94D /* Goal.swift */; };
+		AFD73B451F82DE1C005DE94D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD73B441F82DE1C005DE94D /* Task.swift */; };
 		AFF4C1CC1F6AF09900BA76DB /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = AFF4C1CB1F6AF09900BA76DB /* FontAwesome.otf */; };
 		AFF4C1D71F6AF0BA00BA76DB /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1CD1F6AF0BA00BA76DB /* Enum.swift */; };
 		AFF4C1D81F6AF0BA00BA76DB /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1CE1F6AF0BA00BA76DB /* FontAwesome.swift */; };
@@ -90,6 +92,8 @@
 		AFB62A761F61E4180031CFC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFB62A791F61E4180031CFC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFB62A7B1F61E4180031CFC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFD73B421F82DC26005DE94D /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		AFD73B441F82DE1C005DE94D /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		AFF4C1CB1F6AF09900BA76DB /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		AFF4C1CD1F6AF0BA00BA76DB /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		AFF4C1CE1F6AF0BA00BA76DB /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 		AFB62A6C1F61E4180031CFC8 /* AppsMoviles */ = {
 			isa = PBXGroup;
 			children = (
+				AFD73B411F82DC02005DE94D /* Models */,
 				AF76450F1F6AFB9200A9E201 /* FSCalendar */,
 				AFF4C1E11F6AF58700BA76DB /* FontAwesome */,
 				AFB62A6D1F61E4180031CFC8 /* AppDelegate.swift */,
@@ -187,6 +192,15 @@
 				AF7645641F6B013800A9E201 /* Bridge-Header.h */,
 			);
 			path = AppsMoviles;
+			sourceTree = "<group>";
+		};
+		AFD73B411F82DC02005DE94D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AFD73B421F82DC26005DE94D /* Goal.swift */,
+				AFD73B441F82DE1C005DE94D /* Task.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		AFF4C1E11F6AF58700BA76DB /* FontAwesome */ = {
@@ -285,10 +299,12 @@
 				AF7645361F6AFB9200A9E201 /* FSCalendarCollectionView.m in Sources */,
 				AF7645311F6AFB9200A9E201 /* FSCalendar+Deprecated.m in Sources */,
 				AFF4C1D91F6AF0BA00BA76DB /* FontAwesomeBarButtonItem.swift in Sources */,
+				AFD73B451F82DE1C005DE94D /* Task.swift in Sources */,
 				AFF4C1E01F6AF0BA00BA76DB /* FontAwesomeView.swift in Sources */,
 				AFF4C1DD1F6AF0BA00BA76DB /* FontAwesomeStateRequirement.swift in Sources */,
 				AF7645081F6AF75500A9E201 /* MyDayViewController.swift in Sources */,
 				AF7645391F6AFB9200A9E201 /* FSCalendarDelegationFactory.m in Sources */,
+				AFD73B431F82DC26005DE94D /* Goal.swift in Sources */,
 				AF76453E1F6AFB9200A9E201 /* FSCalendarStickyHeader.m in Sources */,
 				AFF4C1DB1F6AF0BA00BA76DB /* FontAwesomeImageView.swift in Sources */,
 				AFF4C1DE1F6AF0BA00BA76DB /* FontAwesomeTabBarItem.swift in Sources */,
