@@ -10,11 +10,11 @@ import Foundation
 
 class Goal{
     
-    var deadline: Date
-    var startDate: Date
-    var name: String
-    var priority: Int
-    var description: String
-    var color: UIColor
+    var deadline: Date = Date.init()
+    var startDate: Date = Date.init()
+    var name: String = ""
+    var priority: Int = 0
+    var description: String = ""
+    var color: UIColor = UIColor.clear
     
 }

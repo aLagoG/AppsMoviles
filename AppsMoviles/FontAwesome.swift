@@ -147,7 +147,7 @@ private class FontLoader {
         let provider = CGDataProvider(data: data as CFData)
         var font: CGFont
         #if swift(>=3.2)
-            font = CGFont(provider!)!
+            font = CGFont(provider!)
         #else
             font = CGFont(provider!)
         #endif
