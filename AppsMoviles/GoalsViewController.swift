@@ -85,11 +85,17 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             guard let treeView = treeView else {
                 return;
             }
-            let item = treeView.item(for: cell) as! Goal
-            let newItem = Task(deadline: Date.init(), name: "T1", priority: 1, description: "T1 des", prerequisites:[], place: "T1 P")
+            let popUpVC = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "newTaskPopUp") as! NewTaskVC
+            self.addChildViewController(popUpVC)
+            popUpVC.view.frame = self.view.frame
+            self.view.addSubview(popUpVC.view)
+            popUpVC.didMove(toParentViewController: self)
+            
+            //let item = treeView.item(for: cell) as! Goal
+            /*let newItem = Task(deadline: Date.init(), name: "T1", priority: 1, description: "T1 des", place: "T1 P")
             item.addTask(newItem)
             treeView.insertItems(at: IndexSet(integer: item.tasks.count-1), inParent: item, with: RATreeViewRowAnimation.init(0))
-            treeView.reloadRows(forItems: [item], with: RATreeViewRowAnimation.init(0))
+            treeView.reloadRows(forItems: [item], with: RATreeViewRowAnimation.init(0))*/
         }
         
         return cell
@@ -128,12 +134,12 @@ private extension GoalsViewController {
     
     static func commonInit() -> [Goal] {
         
-        let T1 = Task(deadline: Date.init(), name: "T1", priority: 1, description: "T1 des", prerequisites:[], place: "T1 P")
-        let T2 = Task(deadline: Date.init(), name: "T2", priority: 1, description: "T2 des", prerequisites:[], place: "T2 P")
-        let T3 = Task(deadline: Date.init(), name: "T3", priority: 1, description: "T3 des", prerequisites:[], place: "T3 P")
-        let T4 = Task(deadline: Date.init(), name: "T4", priority: 1, description: "T4 des", prerequisites:[], place: "T4 P")
-        let T5 = Task(deadline: Date.init(), name: "T5", priority: 1, description: "T5 des", prerequisites:[], place: "T5 P")
-        let T6 = Task(deadline: Date.init(), name: "T6", priority: 1, description: "T6 des", prerequisites:[], place: "T6 P")
+        let T1 = Task(deadline: Date.init(), name: "T1", priority: 1, description: "T1 des",place: "T1 P", recurrent: false)
+        let T2 = Task(deadline: Date.init(), name: "T2", priority: 1, description: "T2 des", place: "T2 P", recurrent: false)
+        let T3 = Task(deadline: Date.init(), name: "T3", priority: 1, description: "T3 des", place: "T3 P", recurrent: false)
+        let T4 = Task(deadline: Date.init(), name: "T4", priority: 1, description: "T4 des", place: "T4 P", recurrent: false)
+        let T5 = Task(deadline: Date.init(), name: "T5", priority: 1, description: "T5 des", place: "T5 P", recurrent: false)
+        let T6 = Task(deadline: Date.init(), name: "T6", priority: 1, description: "T6 des", place: "T6 P", recurrent: false)
         
         let g1 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G1", priority: 1, description: "G1 as", color: UIColor.blue, tasks:[T1, T2])
         let g2 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G2", priority: 2, description: "G2 as", color: UIColor.black,tasks:[T3])
