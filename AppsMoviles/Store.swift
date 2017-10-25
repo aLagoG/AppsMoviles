@@ -88,7 +88,6 @@ class Store{
             //dont know what to do
         }
     }
-    
     static func saveGoal(_ goal: Goal){
         if(goal.id == 0){
             do {
@@ -106,6 +105,7 @@ class Store{
         }
     }
     
+    // should probably run all these on a db.transaction
     static func saveTask(_ task: Task, _ goal: Goal) -> Bool{
         if(task.id == 0){
             do {
@@ -147,6 +147,30 @@ class Store{
                 return false
             }
         }
+    }
+    
+    static func getGoals()-> [Goal]{
+        var result: [Goal] = []
+        do {
+            for row in (try db?.prepare(goals))!{
+                let goal: Goal = Goal()
+                goal.id  = row[id]
+                goal.deadline  = row[deadline]
+                goal.startDate  = row[startDate]
+                goal.name  = row[name]
+                goal.priority  = row[priority]
+                goal.description  = row[description]
+                goal.color  = colorFromRGB(row[color])
+                result.append(goal)
+            }
+        } catch {
+            
+        }
+        return result
+    }
+    
+    static func colorFromRGB(_ rgb: Int64) -> UIColor{
+        return UIColor(red: CGFloat(((rgb & 0xFF000000)>>24)/255), green: CGFloat(((rgb & 0x00FF0000)>>16)/255), blue: CGFloat(((rgb & 0x0000FF00)>>8)/255), alpha: CGFloat((rgb & 0x000000FF)/255))
     }
     
     static func colorToRGB(_ color: UIColor) -> Int64{
