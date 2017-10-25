@@ -11,31 +11,42 @@ import SQLite
 class Store{
     static var db:Connection? = nil
     
+    static let goals = Table("goals")
+    static let id = Expression<Int64>("id")
+    static let deadline = Expression<Date>("deadline")
+    static let startDate = Expression<Date>("startDate")
+    static let name = Expression<String>("name")
+    static let priority = Expression<Int64>("priority")
+    static let description = Expression<String>("description")
+    static let color = Expression<Int64>("color")
+    
+    static let tasks = Table("tasks")
+    static let goal_id = Expression<Int64>("goal_id")
+    static let place = Expression<String>("place")
+    static let recurrent = Expression<Bool>("recurrent")
+    static let recurrentStart = Expression<Date>("recurrentStart")
+    static let recurrentEnd = Expression<Date>("recurrentEnd")
+    
+    static let recurrentDays = Table("recurrent_days")
+    static let task_id = Expression<Int64>("task_id")
+    static let day = Expression<String>("day")
+    
     static func initConnection(){
         do {
             let path = NSSearchPathForDirectoriesInDomains(
                 .documentDirectory, .userDomainMask, true
                 ).first!
-            Store.db = try Connection("\(path)/db.sqlite3")
+            db = try Connection("\(path)/db.sqlite3")
         } catch _ {
             //dont know what to do
         }
     }
     
     static func initDB(){
-        Store.initConnection()
-        
-        let goals = Table("goals")
-        let id = Expression<Int>("id")
-        let deadline = Expression<Date>("deadline")
-        let startDate = Expression<Date>("startDate")
-        let name = Expression<String>("name")
-        let priority = Expression<Int>("priority")
-        let description = Expression<String>("description")
-        let color = Expression<Int64>("color")
-        
+        initConnection()
+    
         do {
-            try Store.db?.run(goals.create { t in
+            try db?.run(goals.create { t in
                 t.column(id, primaryKey: .autoincrement) //either that or true
                 t.column(deadline)
                 t.column(startDate)
@@ -48,15 +59,8 @@ class Store{
             //dont know what to do
         }
         
-        let tasks = Table("tasks")
-        let goal_id = Expression<Int>("goal_id")
-        let place = Expression<String>("place")
-        let recurrent = Expression<Bool>("recurrent")
-        let recurrentStart = Expression<Date>("recurrentStart")
-        let recurrentEnd = Expression<Date>("recurrentEnd")
-        
         do {
-            try Store.db?.run(tasks.create { t in
+            try db?.run(tasks.create { t in
                 t.column(id, primaryKey: .autoincrement) //either that or true
                 t.column(deadline)
                 t.column(name)
@@ -73,12 +77,8 @@ class Store{
             //dont know what to do
         }
         
-        let recurrentDays = Table("recurrent_days")
-        let task_id = Expression<Int>("task_id")
-        let day = Expression<String>("day")
-        
         do {
-            try Store.db?.run(recurrentDays.create { t in
+            try db?.run(recurrentDays.create { t in
                 t.column(task_id)
                 t.column(day)
                 t.foreignKey(task_id, references: tasks, id)
@@ -87,19 +87,65 @@ class Store{
         } catch _ {
             //dont know what to do
         }
-        
-        let prerequisites = Table("prerequisites")
-        let req_id = Expression<Int>("req_id")
-        do {
-            try Store.db?.run(prerequisites.create { t in
-                t.column(task_id)
-                t.column(req_id)
-                t.foreignKey(task_id, references: tasks, id)
-                t.foreignKey(req_id, references: tasks, id)
-                t.primaryKey(task_id, req_id)
-            })
-        } catch _ {
-            //dont know what to do
+    }
+    
+    static func saveGoal(_ goal: Goal){
+        if(goal.id == 0){
+            do {
+                let gid = try db?.run(goals.insert(deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, color <- colorToRGB(goal.color)))
+                goal.id = gid!
+            }catch _ {
+                
+            }
+        }else{
+            do {
+                try db?.run(goals.update(id <- goal.id, deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, color <- colorToRGB(goal.color)))
+            } catch _{
+                
+            }
+        }
+    }
+    
+    static func saveTask(_ task: Task, _ goal: Goal) -> Bool{
+        if(task.id == 0){
+            do {
+                let tid = try db?.run(tasks.insert(deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd, goal_id <- goal.id))
+                task.id = tid!
+                if(task.recurrentDays.count > 0){
+                    for d in task.recurrentDays{
+                        do{
+                            try db?.run(recurrentDays.insert( task_id <- task.id, day <- d))
+                        } catch _ {
+                            
+                        }
+                    }
+                }
+                return true
+            } catch _{
+                return false
+            }
+        } else {
+            do {
+                try db?.run(tasks.update(id <- task.id, deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd, goal_id <- goal.id))
+                let currentDays = recurrentDays.filter(task_id == task.id)
+                do {
+                    try db?.run(currentDays.delete())
+                } catch _{
+                    
+                }
+                if(task.recurrentDays.count > 0){
+                    for d in task.recurrentDays{
+                        do{
+                            try db?.run(recurrentDays.insert( task_id <- task.id, day <- d))
+                        } catch _ {
+                            
+                        }
+                    }
+                }
+                return true
+            } catch _{
+                return false
+            }
         }
     }
     

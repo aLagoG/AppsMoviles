@@ -10,12 +10,11 @@ import Foundation
 
 class Task{
     
-    var id: Int = 0
+    var id: Int64 = 0
     var deadline: Date = Date.init()
     var name: String = ""
-    var priority: Int = 0
+    var priority: Int64 = 0
     var description: String = ""
-    var prerequisites: [Task] = []
     var place: String = ""
     
     var recurrent: Bool = false
