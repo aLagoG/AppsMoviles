@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF3A971B1F9E895E00E346EE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3A971A1F9E895E00E346EE /* Store.swift */; };
 		AF7645081F6AF75500A9E201 /* MyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7645071F6AF75500A9E201 /* MyDayViewController.swift */; };
 		AF76450A1F6AF85800A9E201 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7645091F6AF85800A9E201 /* CalendarViewController.swift */; };
 		AF76450C1F6AF9BE00A9E201 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76450B1F6AF9BE00A9E201 /* GoalsViewController.swift */; };
@@ -52,6 +53,7 @@
 		57656259FDC15ABFB0755360 /* Pods_AppsMoviles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppsMoviles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B2C8D56E95E9B5D20B298B /* Pods-AppsMoviles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppsMoviles.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppsMoviles/Pods-AppsMoviles.debug.xcconfig"; sourceTree = "<group>"; };
 		8C431FB870AA19BC52C9E91B /* Pods-AppsMoviles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppsMoviles.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppsMoviles/Pods-AppsMoviles.release.xcconfig"; sourceTree = "<group>"; };
+		AF3A971A1F9E895E00E346EE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		AF7645071F6AF75500A9E201 /* MyDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDayViewController.swift; sourceTree = "<group>"; };
 		AF7645091F6AF85800A9E201 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		AF76450B1F6AF9BE00A9E201 /* GoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				AF76450F1F6AFB9200A9E201 /* FSCalendar */,
 				AFF4C1E11F6AF58700BA76DB /* FontAwesome */,
 				AFB62A6D1F61E4180031CFC8 /* AppDelegate.swift */,
+				AF3A971A1F9E895E00E346EE /* Store.swift */,
 				AFB62A731F61E4180031CFC8 /* Main.storyboard */,
 				AFB62A761F61E4180031CFC8 /* Assets.xcassets */,
 				AFB62A781F61E4180031CFC8 /* LaunchScreen.storyboard */,
@@ -403,6 +406,7 @@
 				AFF4C1DA1F6AF0BA00BA76DB /* FontAwesomeImageRepresentable.swift in Sources */,
 				AF7645381F6AFB9200A9E201 /* FSCalendarConstants.m in Sources */,
 				AF7645321F6AFB9200A9E201 /* FSCalendar.m in Sources */,
+				AF3A971B1F9E895E00E346EE /* Store.swift in Sources */,
 				AF76453D1F6AFB9200A9E201 /* FSCalendarScopeHandle.m in Sources */,
 				AFF4C1D71F6AF0BA00BA76DB /* Enum.swift in Sources */,
 				AFF4C1DF1F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift in Sources */,

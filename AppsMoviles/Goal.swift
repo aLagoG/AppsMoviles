@@ -10,6 +10,7 @@ import Foundation
 
 class Goal{
     
+    var id: Int = 0
     var deadline: Date = Date.init()
     var startDate: Date = Date.init()
     var name: String = ""
