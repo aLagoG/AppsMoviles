@@ -16,9 +16,19 @@ class Task{
     var description: String = ""
     var prerequisites: [Task] = []
     var place: String = ""
+    var finished : Bool = false
     
     var recurrent: Bool = false
     var recurrentStart: Date = Date.init()
     var recurrentEnd: Date = Date.init()
     var recurrentDays: [String] = []
+    
+    init(deadline: Date, name: String, priority: Int, description: String, prerequisites:[Task], place: String){
+        self.deadline = deadline
+        self.name = name
+        self.priority = priority
+        self.description = description
+        self.prerequisites = prerequisites
+        self.place = place
+    }
 }

@@ -10,5 +10,6 @@
 #define Bridge_Header_h
 
 #import "FSCalendar.h"
+#import "RATreeView.h"
 
 #endif /* Bridge_Header_h */

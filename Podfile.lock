@@ -1,14 +1,17 @@
 PODS:
+  - RATreeView (2.1.2)
   - SQLite.swift (0.11.4):
     - SQLite.swift/standard (= 0.11.4)
   - SQLite.swift/standard (0.11.4)
 
 DEPENDENCIES:
+  - RATreeView (~> 2.1.2)
   - SQLite.swift (~> 0.11.4)
 
 SPEC CHECKSUMS:
+  RATreeView: 380cde0090cfde21dc6ac29137f49d3b768fdd28
   SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
 
-PODFILE CHECKSUM: 00a6c85880784659aac91b2cee32d11fce4131ef
+PODFILE CHECKSUM: 740d71e083d7d38ca79e85807a18b7b1fb3bd58a
 
 COCOAPODS: 1.3.1

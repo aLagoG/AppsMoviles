@@ -6,5 +6,6 @@ target ‘AppsMoviles’ do
   use_frameworks!
 
   pod 'SQLite.swift', '~> 0.11.4'
+  pod 'RATreeView', '~> 2.1.2'
 
 end
