@@ -10,9 +10,10 @@ import Foundation
 
 class Task{
     
+    var id: Int64 = 0
     var deadline: Date = Date.init()
     var name: String = ""
-    var priority: Int = 0
+    var priority: Int64 = 0
     var description: String = ""
     var place: String = ""
     var finished : Bool = false

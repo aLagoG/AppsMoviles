@@ -10,10 +10,11 @@ import Foundation
 
 class Goal{
     
+    var id: Int64 = 0
     var deadline: Date = Date.init()
     var startDate: Date = Date.init()
     var name: String = ""
-    var priority: Int = 0
+    var priority: Int64 = 0
     var description: String = ""
     var color: UIColor = UIColor.clear
     var tasks: [Task] = []
