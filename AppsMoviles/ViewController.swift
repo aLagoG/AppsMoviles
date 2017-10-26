@@ -21,6 +21,12 @@ class ViewController: UIViewController{
 
     let formatter = DateFormatter()
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        tabBarItem.image = UIImage.fontAwesomeIcon(name: .calendar, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
+        tabBarItem.selectedImage = tabBarItem.image
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

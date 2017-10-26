@@ -23,13 +23,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         // Dispose of any resources that can be recreated.
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        tabBarItem.image = UIImage.fontAwesomeIcon(name: .calendar, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
-        tabBarItem.selectedImage = tabBarItem.image
-    }
-    
     fileprivate let gregorian: NSCalendar! = NSCalendar(calendarIdentifier:NSCalendar.Identifier.gregorian)
     
     fileprivate let formatter: DateFormatter = {
