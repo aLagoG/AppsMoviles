@@ -10,6 +10,8 @@
         539D5B411F9F990A006A6C5B /* TreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539D5B401F9F98FA006A6C5B /* TreeTableViewCell.swift */; };
         539D5B431F9FAC68006A6C5B /* TreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539D5B3F1F9F98FA006A6C5B /* TreeTableViewCell.xib */; };
         53D409271FA0EB5B00318D58 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D409261FA0EB5B00318D58 /* NewTaskVC.swift */; };
+        A9399C4D1FA2491300F5EE60 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9399C4C1FA2491300F5EE60 /* CellController.swift */; };
+        A9399C4F1FA2491B00F5EE60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9399C4E1FA2491B00F5EE60 /* ViewController.swift */; };
         AF7645081F6AF75500A9E201 /* MyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7645071F6AF75500A9E201 /* MyDayViewController.swift */; };
         AF76450A1F6AF85800A9E201 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7645091F6AF85800A9E201 /* CalendarViewController.swift */; };
         AF76450C1F6AF9BE00A9E201 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76450B1F6AF9BE00A9E201 /* GoalsViewController.swift */; };
@@ -59,6 +61,8 @@
         57656259FDC15ABFB0755360 /* Pods_AppsMoviles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppsMoviles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
         57B2C8D56E95E9B5D20B298B /* Pods-AppsMoviles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppsMoviles.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppsMoviles/Pods-AppsMoviles.debug.xcconfig"; sourceTree = "<group>"; };
         8C431FB870AA19BC52C9E91B /* Pods-AppsMoviles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppsMoviles.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppsMoviles/Pods-AppsMoviles.release.xcconfig"; sourceTree = "<group>"; };
+        A9399C4C1FA2491300F5EE60 /* CellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
+        A9399C4E1FA2491B00F5EE60 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
         AF3A971A1F9E895E00E346EE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
         AF7645071F6AF75500A9E201 /* MyDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDayViewController.swift; sourceTree = "<group>"; };
         AF7645091F6AF85800A9E201 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -213,7 +217,9 @@
                 AF76450F1F6AFB9200A9E201 /* FSCalendar */,
                 AFF4C1E11F6AF58700BA76DB /* FontAwesome */,
                 AFB62A6D1F61E4180031CFC8 /* AppDelegate.swift */,
+                A9399C4E1FA2491B00F5EE60 /* ViewController.swift */,
                 AFB62A731F61E4180031CFC8 /* Main.storyboard */,
+                A9399C4C1FA2491300F5EE60 /* CellController.swift */,
                 53D409261FA0EB5B00318D58 /* NewTaskVC.swift */,
                 AFB62A761F61E4180031CFC8 /* Assets.xcassets */,
                 AFB62A781F61E4180031CFC8 /* LaunchScreen.storyboard */,
@@ -291,7 +297,7 @@
                 TargetAttributes = {
                     AFB62A691F61E4180031CFC8 = {
                         CreatedOnToolsVersion = 8.3.3;
-                        DevelopmentTeam = 5H3LC3329V;
+                        DevelopmentTeam = 5M939F8VPM;
                         ProvisioningStyle = Automatic;
                     };
                 };
@@ -356,11 +362,13 @@
             );
             inputPaths = (
                 "${SRCROOT}/Pods/Target Support Files/Pods-AppsMoviles/Pods-AppsMoviles-frameworks.sh",
+                "${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
                 "${BUILT_PRODUCTS_DIR}/RATreeView/RATreeView.framework",
                 "${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
             );
             name = "[CP] Embed Pods Frameworks";
             outputPaths = (
+                "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
                 "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RATreeView.framework",
                 "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
             );
@@ -411,6 +419,7 @@
                 AF76450E1F6AF9DC00A9E201 /* SettingsViewController.swift in Sources */,
                 AF76453B1F6AFB9200A9E201 /* FSCalendarExtensions.m in Sources */,
                 AFB62A6E1F61E4180031CFC8 /* AppDelegate.swift in Sources */,
+                A9399C4F1FA2491B00F5EE60 /* ViewController.swift in Sources */,
                 AF76450A1F6AF85800A9E201 /* CalendarViewController.swift in Sources */,
                 AF76453F1F6AFB9200A9E201 /* FSCalendarTransitionCoordinator.m in Sources */,
                 AF7645331F6AFB9200A9E201 /* FSCalendarAppearance.m in Sources */,
@@ -424,6 +433,7 @@
                 AF76453D1F6AFB9200A9E201 /* FSCalendarScopeHandle.m in Sources */,
                 AFF4C1D71F6AF0BA00BA76DB /* Enum.swift in Sources */,
                 AFF4C1DF1F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift in Sources */,
+                A9399C4D1FA2491300F5EE60 /* CellController.swift in Sources */,
                 AF76453C1F6AFB9200A9E201 /* FSCalendarHeaderView.m in Sources */,
                 AF7645401F6AFB9200A9E201 /* FSCalendarWeekdayView.m in Sources */,
                 AFF4C1DC1F6AF0BA00BA76DB /* FontAwesomeSegmentedControl.swift in Sources */,
@@ -553,11 +563,12 @@
             buildSettings = {
                 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
                 "CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-                DEVELOPMENT_TEAM = 5H3LC3329V;
+                DEVELOPMENT_TEAM = 5M939F8VPM;
                 HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/\"/**";
                 INFOPLIST_FILE = AppsMoviles/Info.plist;
                 LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-                PRODUCT_BUNDLE_IDENTIFIER = mx.rmr.AppsMoviles;
+                "OTHER_SWIFT_FLAGS[arch=*]" = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"DEBUG\"";
+                PRODUCT_BUNDLE_IDENTIFIER = heiv.rmr.AppsMoviles;
                 PRODUCT_NAME = "$(TARGET_NAME)";
                 PROVISIONING_PROFILE_SPECIFIER = "";
                 SWIFT_OBJC_BRIDGING_HEADER = "AppsMoviles/Bridge-Header.h";
@@ -571,11 +582,11 @@
             buildSettings = {
                 ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
                 "CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-                DEVELOPMENT_TEAM = 5H3LC3329V;
+                DEVELOPMENT_TEAM = 5M939F8VPM;
                 HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/\"/**";
                 INFOPLIST_FILE = AppsMoviles/Info.plist;
                 LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-                PRODUCT_BUNDLE_IDENTIFIER = mx.rmr.AppsMoviles;
+                PRODUCT_BUNDLE_IDENTIFIER = heiv.rmr.AppsMoviles;
                 PRODUCT_NAME = "$(TARGET_NAME)";
                 PROVISIONING_PROFILE_SPECIFIER = "";
                 SWIFT_OBJC_BRIDGING_HEADER = "AppsMoviles/Bridge-Header.h";

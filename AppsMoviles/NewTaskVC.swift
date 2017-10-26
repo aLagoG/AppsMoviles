@@ -57,6 +57,7 @@ class NewTaskVC: UIViewController {
         changeRecurrent()
         dayButtons = [mondayButton, tuesdayButton,wednesdayButton,thursdayButton,fridayButton,saturdayButton,sundayButton]
         priorityButtons = [lowPriority,mediumPriority,highPriority]
+        
     }
 
     override func didReceiveMemoryWarning() {

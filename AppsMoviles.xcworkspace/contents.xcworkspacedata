@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../calendarView/calendarView.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:AppsMoviles.xcodeproj">
    </FileRef>
    <FileRef
