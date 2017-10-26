@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CalendarViewController.swift
 //  calendarView
 //
 //  Created by Héctor Iván Aguirre Arteaga on 19/10/17.
@@ -9,14 +9,14 @@
 import UIKit
 import JTAppleCalendar
 
-class ViewController: UIViewController{
+class CalendarViewController: UIViewController{
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
     @IBOutlet weak var day: UILabel!
     @IBOutlet weak var myDayTableView: UITableView!
     
-    let tasks = Store.getTasks()
+    var tasks: [Task] = []
     var tasksNames:[String] = []
 
     let formatter = DateFormatter()
@@ -37,7 +37,8 @@ class ViewController: UIViewController{
         let doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapCollectionView(gesture:)))
         doubleTapGesture.numberOfTapsRequired = 2  // add double tap
         calendarView.addGestureRecognizer(doubleTapGesture)
-        
+        tasks = Store.getTasks()
+        print(tasks)
         if (!tasks.isEmpty){
             for item in tasks {
                 tasksNames.append(item.name)
@@ -109,7 +110,7 @@ class ViewController: UIViewController{
 
 }
 
-extension ViewController: JTAppleCalendarViewDataSource{
+extension CalendarViewController: JTAppleCalendarViewDataSource{
     
     
     
@@ -129,7 +130,7 @@ extension ViewController: JTAppleCalendarViewDataSource{
     
 }
 
-extension ViewController: JTAppleCalendarViewDelegate{
+extension CalendarViewController: JTAppleCalendarViewDelegate{
     
     
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
@@ -163,7 +164,7 @@ extension ViewController: JTAppleCalendarViewDelegate{
     
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource{
+extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
