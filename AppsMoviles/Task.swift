@@ -24,20 +24,18 @@ class Task{
     var recurrentDays: [String] = []
     
     init(){
-        deadline = Date.init()
-        name = ""
-        priority = 0
-        description = ""
-        place = ""
-        finished = false
-        
-        recurrent = false
-        recurrentStart = Date.init()
-        recurrentEnd = Date.init()
-        recurrentDays = []
+
     }
     
     init(deadline: Date, name: String, priority: Int64, description: String, place: String, recurrent: Bool){
+        self.deadline = deadline
+        self.name = name
+        self.priority = priority
+        self.description = description
+        self.place = place
+    }
+    
+    init(deadline: Date, name: String, priority: Int64, description: String, place: String, recurrent: Bool, recurrentStart: Date, recurrentEnd: Date, recurrentDays:[String]){
         self.deadline = deadline
         self.name = name
         self.priority = priority

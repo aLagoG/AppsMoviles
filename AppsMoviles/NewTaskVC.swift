@@ -27,12 +27,19 @@ class NewTaskVC: UIViewController {
     @IBOutlet weak var initLbl: UILabel!
     @IBOutlet weak var endLbl: UILabel!
     
+    @IBOutlet weak var lowPriority: UIButton!
+    @IBOutlet weak var mediumPriority: UIButton!
+    @IBOutlet weak var highPriority: UIButton!
     
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    var dayButtons:[UIButton] = []
+    var priorityButtons: [UIButton] = []
+    
     var task = Task()
     var name: String = ""
+    var priority :Int64 = 1
     var descr: String = ""
     var deadline: Date = Date.init()
     var place : String = ""
@@ -40,14 +47,16 @@ class NewTaskVC: UIViewController {
     var recurrentStart: Date = Date.init()
     var recurrentEnd: Date = Date.init()
     var recurrentDays : [String] = []
+    var goal : Goal = Goal()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         doneButton.setImage(UIImage.fontAwesomeIcon(name: .check, textColor: UIColor.black, size: CGSize(width: 40, height:40)), for: .normal)
         cancelButton.setImage(UIImage.fontAwesomeIcon(name: .times, textColor: UIColor.black, size: CGSize(width:40, height:40)), for: .normal)
         changeRecurrent()
+        dayButtons = [mondayButton, tuesdayButton,wednesdayButton,thursdayButton,fridayButton,saturdayButton,sundayButton]
+        priorityButtons = [lowPriority,mediumPriority,highPriority]
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +64,53 @@ class NewTaskVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func createTask(_ sender: Any) {
+    
+    @IBAction func selected(_ sender: Any) {
+        if let button = sender as? UIButton{
+            if button.isSelected == false{
+                button.isSelected = true
+                button.isHighlighted = true
+            }else{
+                button.isSelected = false
+                button.isHighlighted = false
+            }
+        }
+    }
+    
+    
+    @IBAction func clickPriority(_ sender: Any) {
+        if let button = sender as? UIButton{
+            button.isSelected = true
+            button.isHighlighted = true
+            switch button.restorationIdentifier!{
+                case "1":
+                    mediumPriority.isSelected = false
+                    mediumPriority.isHighlighted = false
+                    highPriority.isSelected = false
+                    highPriority.isHighlighted = false
+                case "2":
+                    lowPriority.isSelected = false
+                    lowPriority.isHighlighted = false
+                    highPriority.isSelected = false
+                    highPriority.isHighlighted = false
+                case "3":
+                    lowPriority.isSelected = false
+                    lowPriority.isHighlighted = false
+                    mediumPriority.isSelected = false
+                    mediumPriority.isHighlighted = false
+                default:
+                    lowPriority.isSelected = false
+                    lowPriority.isHighlighted = false
+                    mediumPriority.isSelected = false
+                    mediumPriority.isHighlighted = false
+                    highPriority.isSelected = false
+                    highPriority.isHighlighted = false
+            }
+        }
+    }
+    
+    
+    @IBAction func createTask(_ sender: Any){
         name = nameTF.text!
         descr = descriptionTF.text!
         deadline = deadlineDPV.date
@@ -63,19 +118,26 @@ class NewTaskVC: UIViewController {
         recurrent = recurrentSw.isOn
         recurrentStart = initDPV.date
         recurrentEnd = endDPV.date
-        //recurrentDays = getRecurrentDays()
+        priority = getPriority()
+        getRecurrentDays()
         
+        let newItem = Task(deadline: deadline, name: name, priority: priority, description: descr, place: place, recurrent: recurrent, recurrentStart: recurrentStart, recurrentEnd: recurrentEnd, recurrentDays: recurrentDays)
+        Store.saveTask(newItem, goal)
         self.view.removeFromSuperview()
         
         //Crear Tarea
         }
     
     
+    
+    @IBAction func cancelTask(_ sender: Any) {
+        self.view.removeFromSuperview()
+    }
+    
     @IBAction func recurrentChange(_ sender: Any) {
         changeRecurrent()
     }
-    
-    
+ 
     func changeRecurrent(){
         if recurrentSw.isOn == false {
             mondayButton.isEnabled = false
@@ -116,6 +178,24 @@ class NewTaskVC: UIViewController {
             initLbl.textColor = UIColor.black
             endLbl.textColor = UIColor.black
         }
+    }
+    
+    func getRecurrentDays(){
+        for days in dayButtons{
+            if days.isSelected == true{
+                recurrentDays.append((days.titleLabel?.text!)!)
+            }
+        }
+    }
+    
+    func getPriority()->Int64{
+        var priorityButtonSelected : UIButton = priorityButtons[0]
+        for pbutton in priorityButtons{
+            if pbutton.isSelected == true{
+                priorityButtonSelected = pbutton
+            }
+        }
+        return Int64(priorityButtonSelected.restorationIdentifier!)!
     }
     
     

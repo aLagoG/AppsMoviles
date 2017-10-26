@@ -84,18 +84,20 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             guard let treeView = treeView else {
                 return;
             }
+            let item = treeView.item(for: cell) as! Goal
+            
             let popUpVC = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "newTaskPopUp") as! NewTaskVC
             self.addChildViewController(popUpVC)
             popUpVC.view.frame = self.view.frame
             self.view.addSubview(popUpVC.view)
             popUpVC.didMove(toParentViewController: self)
+            popUpVC.goal = item
             
-            /*
-            let item = treeView.item(for: cell) as! Goal
-            let newItem = Task(deadline: Date.init(), name: "T1", priority: 1, description: "T1 des", place: "T1 P")
-            item.addTask(newItem)
-            treeView.insertItems(at: IndexSet(integer: item.tasks.count-1), inParent: item, with: RATreeViewRowAnimation.init(0))
-            treeView.reloadRows(forItems: [item], with: RATreeViewRowAnimation.init(0))*/
+            /*item.addTask(newItem)
+            treeView.insertItems(at: IndexSet(integer: item.tasks.count-1), inParent: item, with: RATreeViewRowAnimation.init(0))*/
+            treeView.reloadRows(forItems: [item], with: RATreeViewRowAnimation.init(0))
+        
+            
         }
         
         return cell

@@ -7,7 +7,6 @@
     objects = {
 
 /* Begin PBXBuildFile section */
-        AF3A971B1F9E895E00E346EE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3A971A1F9E895E00E346EE /* Store.swift */; };
         539D5B411F9F990A006A6C5B /* TreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539D5B401F9F98FA006A6C5B /* TreeTableViewCell.swift */; };
         539D5B431F9FAC68006A6C5B /* TreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539D5B3F1F9F98FA006A6C5B /* TreeTableViewCell.xib */; };
         53D409271FA0EB5B00318D58 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D409261FA0EB5B00318D58 /* NewTaskVC.swift */; };
@@ -32,6 +31,7 @@
         AF76453F1F6AFB9200A9E201 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = AF76452D1F6AFB9200A9E201 /* FSCalendarTransitionCoordinator.m */; };
         AF7645401F6AFB9200A9E201 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF76452F1F6AFB9200A9E201 /* FSCalendarWeekdayView.m */; };
         AF7645411F6AFB9200A9E201 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF7645301F6AFB9200A9E201 /* Info.plist */; };
+        AFB138FC1FA130550000185F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3A971A1F9E895E00E346EE /* Store.swift */; };
         AFB62A6E1F61E4180031CFC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB62A6D1F61E4180031CFC8 /* AppDelegate.swift */; };
         AFB62A751F61E4180031CFC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB62A731F61E4180031CFC8 /* Main.storyboard */; };
         AFB62A771F61E4180031CFC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB62A761F61E4180031CFC8 /* Assets.xcassets */; };
@@ -213,7 +213,6 @@
                 AF76450F1F6AFB9200A9E201 /* FSCalendar */,
                 AFF4C1E11F6AF58700BA76DB /* FontAwesome */,
                 AFB62A6D1F61E4180031CFC8 /* AppDelegate.swift */,
-                AF3A971A1F9E895E00E346EE /* Store.swift */,
                 AFB62A731F61E4180031CFC8 /* Main.storyboard */,
                 53D409261FA0EB5B00318D58 /* NewTaskVC.swift */,
                 AFB62A761F61E4180031CFC8 /* Assets.xcassets */,
@@ -233,6 +232,7 @@
         AFD73B411F82DC02005DE94D /* Models */ = {
             isa = PBXGroup;
             children = (
+                AF3A971A1F9E895E00E346EE /* Store.swift */,
                 AFD73B421F82DC26005DE94D /* Goal.swift */,
                 AFD73B441F82DE1C005DE94D /* Task.swift */,
             );
@@ -394,6 +394,7 @@
                 AFF4C1D81F6AF0BA00BA76DB /* FontAwesome.swift in Sources */,
                 AF7645361F6AFB9200A9E201 /* FSCalendarCollectionView.m in Sources */,
                 53D409271FA0EB5B00318D58 /* NewTaskVC.swift in Sources */,
+                AFB138FC1FA130550000185F /* Store.swift in Sources */,
                 AF7645311F6AFB9200A9E201 /* FSCalendar+Deprecated.m in Sources */,
                 AFF4C1D91F6AF0BA00BA76DB /* FontAwesomeBarButtonItem.swift in Sources */,
                 AFD73B451F82DE1C005DE94D /* Task.swift in Sources */,
@@ -420,7 +421,6 @@
                 AFF4C1DA1F6AF0BA00BA76DB /* FontAwesomeImageRepresentable.swift in Sources */,
                 AF7645381F6AFB9200A9E201 /* FSCalendarConstants.m in Sources */,
                 AF7645321F6AFB9200A9E201 /* FSCalendar.m in Sources */,
-                AF3A971B1F9E895E00E346EE /* Store.swift in Sources */,
                 AF76453D1F6AFB9200A9E201 /* FSCalendarScopeHandle.m in Sources */,
                 AFF4C1D71F6AF0BA00BA76DB /* Enum.swift in Sources */,
                 AFF4C1DF1F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift in Sources */,

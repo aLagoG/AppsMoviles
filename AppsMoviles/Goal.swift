@@ -19,7 +19,7 @@ class Goal{
     var color: UIColor = UIColor.clear
     var tasks: [Task] = []
     var tasksDone: Int = 0
-
+    
     init(){
         
     }
