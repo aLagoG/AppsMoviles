@@ -37,7 +37,7 @@ class Task{
         recurrentDays = []
     }
     
-    init(deadline: Date, name: String, priority: Int, description: String, place: String, recurrent: Bool){
+    init(deadline: Date, name: String, priority: Int64, description: String, place: String, recurrent: Bool){
         self.deadline = deadline
         self.name = name
         self.priority = priority

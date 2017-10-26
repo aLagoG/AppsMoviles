@@ -19,8 +19,12 @@ class Goal{
     var color: UIColor = UIColor.clear
     var tasks: [Task] = []
     var tasksDone: Int = 0
+
+    init(){
+        
+    }
     
-    init(deadline: Date, startDate: Date,name: String, priority: Int, description: String, color: UIColor, tasks: [Task]){
+    init(deadline: Date, startDate: Date,name: String, priority: Int64, description: String, color: UIColor, tasks: [Task]){
         self.deadline = deadline
         self.startDate = startDate
         self.name = name

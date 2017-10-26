@@ -47,7 +47,6 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     required init?(coder aDecoder: NSCoder) {
         goalLst = GoalsViewController.commonInit()
         super.init(coder: aDecoder)
-        
         tabBarItem.image = UIImage.fontAwesomeIcon(name: .flagCheckered, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
         tabBarItem.selectedImage = tabBarItem.image
 
@@ -91,8 +90,9 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             self.view.addSubview(popUpVC.view)
             popUpVC.didMove(toParentViewController: self)
             
-            //let item = treeView.item(for: cell) as! Goal
-            /*let newItem = Task(deadline: Date.init(), name: "T1", priority: 1, description: "T1 des", place: "T1 P")
+            /*
+            let item = treeView.item(for: cell) as! Goal
+            let newItem = Task(deadline: Date.init(), name: "T1", priority: 1, description: "T1 des", place: "T1 P")
             item.addTask(newItem)
             treeView.insertItems(at: IndexSet(integer: item.tasks.count-1), inParent: item, with: RATreeViewRowAnimation.init(0))
             treeView.reloadRows(forItems: [item], with: RATreeViewRowAnimation.init(0))*/
