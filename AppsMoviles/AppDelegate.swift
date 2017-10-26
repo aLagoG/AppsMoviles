@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Store.initConnection()
         } else {
             Store.initDB()
+            #if DEBUG
+                Store.createTestRecords()
+            #endif
             UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
         return true
