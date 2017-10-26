@@ -15,19 +15,12 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
 
     var goalLst=[Goal]()
     var goals : RATreeView!
-    
-    convenience init() {
-        self.init(nibName : nil, bundle: nil)
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        goalLst = GoalsViewController.commonInit()
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        goalLst = Store.getGoals()
+        print("required init: \(goalLst)")
         // Do any additional setup after loading the view.
         goals = RATreeView(frame: CGRect(x: 0 , y: 80, width: self.view.frame.width, height: self.view.frame.height * 0.7))
         goals.register(UINib(nibName: String(describing: TreeTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TreeTableViewCell.self))
@@ -45,7 +38,6 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     }
     
     required init?(coder aDecoder: NSCoder) {
-        goalLst = GoalsViewController.commonInit()
         super.init(coder: aDecoder)
         
         tabBarItem.image = UIImage.fontAwesomeIcon(name: .flagCheckered, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
@@ -129,25 +121,4 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     }
     */
 
-}
-private extension GoalsViewController {
-    
-    static func commonInit() -> [Goal] {
-        
-        let T1 = Task(deadline: Date.init(), name: "T1", priority: 1, description: "T1 des",place: "T1 P", recurrent: false)
-        let T2 = Task(deadline: Date.init(), name: "T2", priority: 1, description: "T2 des", place: "T2 P", recurrent: false)
-        let T3 = Task(deadline: Date.init(), name: "T3", priority: 1, description: "T3 des", place: "T3 P", recurrent: false)
-        let T4 = Task(deadline: Date.init(), name: "T4", priority: 1, description: "T4 des", place: "T4 P", recurrent: false)
-        let T5 = Task(deadline: Date.init(), name: "T5", priority: 1, description: "T5 des", place: "T5 P", recurrent: false)
-        let T6 = Task(deadline: Date.init(), name: "T6", priority: 1, description: "T6 des", place: "T6 P", recurrent: false)
-        
-        let g1 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G1", priority: 1, description: "G1 as", color: UIColor.blue, tasks:[T1, T2])
-        let g2 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G2", priority: 2, description: "G2 as", color: UIColor.black,tasks:[T3])
-        let g3 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G3", priority: 3, description: "G3 as", color: UIColor.brown,tasks:[T4, T5])
-        let g4 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G4", priority: 4, description: "G4 as", color: UIColor.blue,tasks:[])
-        let g5 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G5", priority: 5, description: "G5 as", color: UIColor.blue,tasks:[T6])
-        
-        return [g1, g2, g3, g4, g5]
-    }
-    
 }
