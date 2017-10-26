@@ -20,7 +20,6 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         super.viewDidLoad()
         
         goalLst = Store.getGoals()
-        print("required init: \(goalLst)")
         // Do any additional setup after loading the view.
         goals = RATreeView(frame: CGRect(x: 0 , y: 80, width: self.view.frame.width, height: self.view.frame.height * 0.7))
         goals.register(UINib(nibName: String(describing: TreeTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TreeTableViewCell.self))
