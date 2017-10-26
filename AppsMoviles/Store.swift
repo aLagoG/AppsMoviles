@@ -161,9 +161,60 @@ class Store{
                 goal.priority  = row[priority]
                 goal.description  = row[description]
                 goal.color  = colorFromRGB(row[color])
+                goal.tasks = getTasks(goal)
                 result.append(goal)
             }
         } catch {
+            
+        }
+        return result
+    }
+    
+    static func getTasks( _ goal: Goal) -> [Task]{
+        var result : [Task] = []
+        do {
+            for row in (try db?.prepare(tasks.filter(goal_id == goal.id)))!{
+                let task: Task = Task()
+                task.id = row[id]
+                task.deadline = row[deadline]
+                task.name = row[name]
+                task.priority = row[priority]
+                task.description = row[description]
+                task.place = row[place]
+                task.recurrent = row[recurrent]
+                task.recurrentStart = row[recurrentStart]
+                task.recurrentEnd = row[recurrentEnd]
+                result.append(task)
+                for dy in (try db?.prepare(recurrentDays.filter(task_id == task.id)))!{
+                    task.recurrentDays.append(dy[day])
+                }
+            }
+        } catch _ {
+            
+        }
+        return result
+    }
+    
+    static func getTasks() -> [Task]{
+        var result : [Task] = []
+        do {
+            for row in (try db?.prepare(tasks))!{
+                let task: Task = Task()
+                task.id = row[id]
+                task.deadline = row[deadline]
+                task.name = row[name]
+                task.priority = row[priority]
+                task.description = row[description]
+                task.place = row[place]
+                task.recurrent = row[recurrent]
+                task.recurrentStart = row[recurrentStart]
+                task.recurrentEnd = row[recurrentEnd]
+                result.append(task)
+                for dy in (try db?.prepare(recurrentDays.filter(task_id == task.id)))!{
+                    task.recurrentDays.append(dy[day])
+                }
+            }
+        } catch _ {
             
         }
         return result
