@@ -161,6 +161,7 @@ class Store{
                 goal.priority  = row[priority]
                 goal.description  = row[description]
                 goal.color  = colorFromRGB(row[color])
+                goal.tasks = getTasks(goal)
                 result.append(goal)
             }
         } catch {
