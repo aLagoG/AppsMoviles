@@ -195,6 +195,31 @@ class Store{
         return result
     }
     
+    static func getTasks() -> [Task]{
+        var result : [Task] = []
+        do {
+            for row in (try db?.prepare(tasks))!{
+                let task: Task = Task()
+                task.id = row[id]
+                task.deadline = row[deadline]
+                task.name = row[name]
+                task.priority = row[priority]
+                task.description = row[description]
+                task.place = row[place]
+                task.recurrent = row[recurrent]
+                task.recurrentStart = row[recurrentStart]
+                task.recurrentEnd = row[recurrentEnd]
+                result.append(task)
+                for dy in (try db?.prepare(recurrentDays.filter(task_id == task.id)))!{
+                    task.recurrentDays.append(dy[day])
+                }
+            }
+        } catch _ {
+            
+        }
+        return result
+    }
+    
     static func colorFromRGB(_ rgb: Int64) -> UIColor{
         return UIColor(red: CGFloat(((rgb & 0xFF000000)>>24)/255), green: CGFloat(((rgb & 0x00FF0000)>>16)/255), blue: CGFloat(((rgb & 0x0000FF00)>>8)/255), alpha: CGFloat((rgb & 0x000000FF)/255))
     }
