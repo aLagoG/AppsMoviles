@@ -112,6 +112,13 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     
     }
     
+    @IBAction func addGoalButtonClick(_ sender: Any) {
+        let popUpVC = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "newGoalPopUp") as! NewGoalVC
+        self.addChildViewController(popUpVC)
+        popUpVC.view.frame = self.view.frame
+        self.view.addSubview(popUpVC.view)
+        popUpVC.didMove(toParentViewController: self)
+    }
     /*
     // MARK: - Navigation
 

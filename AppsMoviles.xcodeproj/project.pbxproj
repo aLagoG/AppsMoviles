@@ -12,6 +12,7 @@
 		53D409271FA0EB5B00318D58 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D409261FA0EB5B00318D58 /* NewTaskVC.swift */; };
 		A9399C4D1FA2491300F5EE60 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9399C4C1FA2491300F5EE60 /* CellController.swift */; };
 		A9399C4F1FA2491B00F5EE60 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9399C4E1FA2491B00F5EE60 /* CalendarViewController.swift */; };
+		AF1563AF1FAA41FE00BFE9C9 /* NewGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1563AE1FAA41FE00BFE9C9 /* NewGoalVC.swift */; };
 		AF7645081F6AF75500A9E201 /* MyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7645071F6AF75500A9E201 /* MyDayViewController.swift */; };
 		AF76450C1F6AF9BE00A9E201 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76450B1F6AF9BE00A9E201 /* GoalsViewController.swift */; };
 		AF76450E1F6AF9DC00A9E201 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76450D1F6AF9DC00A9E201 /* SettingsViewController.swift */; };
@@ -62,6 +63,7 @@
 		8C431FB870AA19BC52C9E91B /* Pods-AppsMoviles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppsMoviles.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppsMoviles/Pods-AppsMoviles.release.xcconfig"; sourceTree = "<group>"; };
 		A9399C4C1FA2491300F5EE60 /* CellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		A9399C4E1FA2491B00F5EE60 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		AF1563AE1FAA41FE00BFE9C9 /* NewGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalVC.swift; sourceTree = "<group>"; };
 		AF3A971A1F9E895E00E346EE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		AF7645071F6AF75500A9E201 /* MyDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDayViewController.swift; sourceTree = "<group>"; };
 		AF76450B1F6AF9BE00A9E201 /* GoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				539D5B401F9F98FA006A6C5B /* TreeTableViewCell.swift */,
 				539D5B3F1F9F98FA006A6C5B /* TreeTableViewCell.xib */,
 				AF7645641F6B013800A9E201 /* Bridge-Header.h */,
+				AF1563AE1FAA41FE00BFE9C9 /* NewGoalVC.swift */,
 			);
 			path = AppsMoviles;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				AFB138FC1FA130550000185F /* Store.swift in Sources */,
 				AF7645311F6AFB9200A9E201 /* FSCalendar+Deprecated.m in Sources */,
 				AFF4C1D91F6AF0BA00BA76DB /* FontAwesomeBarButtonItem.swift in Sources */,
+				AF1563AF1FAA41FE00BFE9C9 /* NewGoalVC.swift in Sources */,
 				AFD73B451F82DE1C005DE94D /* Task.swift in Sources */,
 				AFF4C1E01F6AF0BA00BA76DB /* FontAwesomeView.swift in Sources */,
 				AFF4C1DD1F6AF0BA00BA76DB /* FontAwesomeStateRequirement.swift in Sources */,
