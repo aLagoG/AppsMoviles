@@ -15,6 +15,11 @@ class NewGoalVC: UIViewController {
     @IBOutlet weak var startDP: UIDatePicker!
     @IBOutlet weak var endDP: UIDatePicker!
     
+    @IBOutlet weak var lowPriority: UIButton!
+    @IBOutlet weak var mediumPriority: UIButton!
+    @IBOutlet weak var highPriority: UIButton!
+    
+    var priority: Int64 = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +38,7 @@ class NewGoalVC: UIViewController {
         let start = startDP.date
         let end = endDP.date
         
-        let goal = Goal(deadline: end, startDate: start, name: name, priority: 0, description: desc, color: UIColor.white, tasks: [])
+        let goal = Goal(deadline: end, startDate: start, name: name, priority: self.priority, description: desc, color: UIColor.white, tasks: [])
         Store.saveGoal(goal)
         
         self.view.removeFromSuperview()
@@ -43,7 +48,41 @@ class NewGoalVC: UIViewController {
         self.view.removeFromSuperview()
     }
     
-
+    @IBAction func clickPriority(_ sender: Any) {
+        if let button = sender as? UIButton{
+            button.isSelected = true
+            button.isHighlighted = true
+            switch button.restorationIdentifier!{
+            case "1":
+                mediumPriority.isSelected = false
+                mediumPriority.isHighlighted = false
+                highPriority.isSelected = false
+                highPriority.isHighlighted = false
+                self.priority = 1
+            case "2":
+                lowPriority.isSelected = false
+                lowPriority.isHighlighted = false
+                highPriority.isSelected = false
+                highPriority.isHighlighted = false
+                self.priority = 2
+            case "3":
+                lowPriority.isSelected = false
+                lowPriority.isHighlighted = false
+                mediumPriority.isSelected = false
+                mediumPriority.isHighlighted = false
+                self.priority = 3
+            default:
+                lowPriority.isSelected = false
+                lowPriority.isHighlighted = false
+                mediumPriority.isSelected = false
+                mediumPriority.isHighlighted = false
+                highPriority.isSelected = false
+                highPriority.isHighlighted = false
+                self.priority = 1
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

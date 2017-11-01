@@ -434,6 +434,7 @@
                                                                 <state key="normal" title="!"/>
                                                                 <connections>
                                                                     <action selector="clickPriority:" destination="arX-fB-jBH" eventType="touchUpInside" id="NIg-Vb-JI4"/>
+                                                                    <action selector="setLowPriority:" destination="3P2-LT-w2T" eventType="touchUpInside" id="lr9-nX-fah"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="2" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjB-Mt-IxY">
@@ -441,6 +442,7 @@
                                                                 <state key="normal" title="!!"/>
                                                                 <connections>
                                                                     <action selector="clickPriority:" destination="arX-fB-jBH" eventType="touchUpInside" id="ceU-dl-7NA"/>
+                                                                    <action selector="setMedPriority:" destination="3P2-LT-w2T" eventType="touchUpInside" id="z2v-vR-piZ"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="3" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWh-SX-lWb">
@@ -448,6 +450,7 @@
                                                                 <state key="normal" title="!!!"/>
                                                                 <connections>
                                                                     <action selector="clickPriority:" destination="arX-fB-jBH" eventType="touchUpInside" id="OTF-xc-fjm"/>
+                                                                    <action selector="setHighPriority:" destination="3P2-LT-w2T" eventType="touchUpInside" id="DW5-D4-fNo"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -514,6 +517,12 @@
                     <connections>
                         <outlet property="descTF" destination="00P-lK-btV" id="8jR-E3-uzT"/>
                         <outlet property="endDP" destination="7CI-RL-zWK" id="S4u-aS-mwM"/>
+                        <outlet property="highPrBtn" destination="gWh-SX-lWb" id="zRg-SY-wHi"/>
+                        <outlet property="highPriority" destination="gWh-SX-lWb" id="eXg-1O-pZu"/>
+                        <outlet property="lowPrBtn" destination="nwi-cb-tSk" id="v3I-I5-kDd"/>
+                        <outlet property="lowPriority" destination="nwi-cb-tSk" id="Fkn-SO-r7T"/>
+                        <outlet property="medPrBtn" destination="pjB-Mt-IxY" id="qpL-J5-Nqp"/>
+                        <outlet property="mediumPriority" destination="pjB-Mt-IxY" id="8tQ-Hy-dgw"/>
                         <outlet property="nameTF" destination="Rd8-rO-dwh" id="zXl-af-zmG"/>
                         <outlet property="startDP" destination="KRh-Nt-Ti4" id="3xH-yp-kuG"/>
                     </connections>
