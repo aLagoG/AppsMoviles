@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class NewTaskVC: UIViewController {
 
@@ -127,8 +128,33 @@ class NewTaskVC: UIViewController {
         self.view.removeFromSuperview()
         
         //Crear Tarea
-        }
+        
+        //NOTIFICACIONES
+        let content = UNMutableNotificationContent()
+        content.title = "Haz agregado una nueva tarea"
+        content.body = "¿Puedes trabajar en ella?"
+        content.badge = 1
+        
+        let content2 = UNMutableNotificationContent()
+        content2.title = "El limite para tu tarea \(name) es hoy"
+        content2.body = "¿Ya la terminaste?"
+        content2.badge = 1
+        
+        let calendar = Calendar.current
+        var date = DateComponents()
+        date.day = calendar.component(.day, from: deadline)
+        date.hour = 12
+        date.minute = 00
     
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let request = UNNotificationRequest(identifier: "timerDone", content: content , trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
+        let triHora = UNCalendarNotificationTrigger(dateMatching: date , repeats: false)
+        let request2 = UNNotificationRequest(identifier: "deadline", content: content2 , trigger: triHora)
+        UNUserNotificationCenter.current().add(request2, withCompletionHandler: nil)
+        
+        }
     
     
     @IBAction func cancelTask(_ sender: Any) {

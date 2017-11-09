@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import UserNotifications
 
 class MyDayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge],  completionHandler: {didAllow, error in})
+        
         // Do any additional setup after loading the view.
     }
 
