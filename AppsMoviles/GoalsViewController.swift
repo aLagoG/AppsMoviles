@@ -93,7 +93,6 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         
         return cell
     }
-
     
     func treeView(_ treeView: RATreeView, child index: Int, ofItem item: Any?) -> Any {
         if let item = item as? Goal {
@@ -118,6 +117,11 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         popUpVC.view.frame = self.view.frame
         self.view.addSubview(popUpVC.view)
         popUpVC.didMove(toParentViewController: self)
+    }
+    
+    func reloadTree(){
+        goalLst = Store.getGoals()
+        goals.reloadData()
     }
     /*
     // MARK: - Navigation
