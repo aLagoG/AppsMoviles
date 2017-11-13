@@ -93,22 +93,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         
         return cell
     }
-    
-    func reloadRowss(_ treeView: RATreeView, cellForItem item: Any?) {
-        let cell = treeView.dequeueReusableCell(withIdentifier: String(describing: TreeTableViewCell.self)) as! TreeTableViewCell
-        cell.additionButtonActionBlock = { [weak treeView] cell in
-            guard let treeView = treeView else {
-                return;
-            }
-            let item = treeView.item(for: cell) as! Goal
-            let countTask = item.countTasks()
-            
-            item.addTask(Store.getTasks(item)[countTask])
-            treeView.insertItems(at: IndexSet(integer: item.tasks.count-1), inParent: item, with: RATreeViewRowAnimation.init(0))
-            treeView.reloadRows(forItems: [item], with: RATreeViewRowAnimation.init(0))
-        }
-    }
-    
+
     func treeView(_ treeView: RATreeView, child index: Int, ofItem item: Any?) -> Any {
         if let item = item as? Goal {
             return item.tasks[index]
