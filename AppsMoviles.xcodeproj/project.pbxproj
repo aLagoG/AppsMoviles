@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		533FE7841FB9EDCE006247F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533FE7831FB9EDCE006247F0 /* LoginViewController.swift */; };
+		533FE7861FB9EFF8006247F0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533FE7851FB9EFF8006247F0 /* RegisterViewController.swift */; };
 		539D5B411F9F990A006A6C5B /* TreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539D5B401F9F98FA006A6C5B /* TreeTableViewCell.swift */; };
 		539D5B431F9FAC68006A6C5B /* TreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539D5B3F1F9F98FA006A6C5B /* TreeTableViewCell.xib */; };
 		53D409271FA0EB5B00318D58 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D409261FA0EB5B00318D58 /* NewTaskVC.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		533FE7831FB9EDCE006247F0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		533FE7851FB9EFF8006247F0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		539D5B3F1F9F98FA006A6C5B /* TreeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TreeTableViewCell.xib; sourceTree = "<group>"; };
 		539D5B401F9F98FA006A6C5B /* TreeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTableViewCell.swift; sourceTree = "<group>"; };
 		53D409261FA0EB5B00318D58 /* NewTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskVC.swift; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 				539D5B3F1F9F98FA006A6C5B /* TreeTableViewCell.xib */,
 				AF7645641F6B013800A9E201 /* Bridge-Header.h */,
 				AF1563AE1FAA41FE00BFE9C9 /* NewGoalVC.swift */,
+				533FE7831FB9EDCE006247F0 /* LoginViewController.swift */,
+				533FE7851FB9EFF8006247F0 /* RegisterViewController.swift */,
 			);
 			path = AppsMoviles;
 			sourceTree = "<group>";
@@ -410,6 +416,7 @@
 				AFF4C1E01F6AF0BA00BA76DB /* FontAwesomeView.swift in Sources */,
 				AFF4C1DD1F6AF0BA00BA76DB /* FontAwesomeStateRequirement.swift in Sources */,
 				AF7645081F6AF75500A9E201 /* MyDayViewController.swift in Sources */,
+				533FE7861FB9EFF8006247F0 /* RegisterViewController.swift in Sources */,
 				AF7645391F6AFB9200A9E201 /* FSCalendarDelegationFactory.m in Sources */,
 				AFD73B431F82DC26005DE94D /* Goal.swift in Sources */,
 				AF76453E1F6AFB9200A9E201 /* FSCalendarStickyHeader.m in Sources */,
@@ -423,6 +430,7 @@
 				A9399C4F1FA2491B00F5EE60 /* CalendarViewController.swift in Sources */,
 				AF76453F1F6AFB9200A9E201 /* FSCalendarTransitionCoordinator.m in Sources */,
 				AF7645331F6AFB9200A9E201 /* FSCalendarAppearance.m in Sources */,
+				533FE7841FB9EDCE006247F0 /* LoginViewController.swift in Sources */,
 				AF7645371F6AFB9200A9E201 /* FSCalendarCollectionViewLayout.m in Sources */,
 				AF76453A1F6AFB9200A9E201 /* FSCalendarDelegationProxy.m in Sources */,
 				AF7645341F6AFB9200A9E201 /* FSCalendarCalculator.m in Sources */,

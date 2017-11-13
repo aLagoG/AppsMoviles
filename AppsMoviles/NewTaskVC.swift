@@ -128,7 +128,6 @@ class NewTaskVC: UIViewController {
         self.view.removeFromSuperview()
         
         //Crear Tarea
-        
         //NOTIFICACIONES
         let content = UNMutableNotificationContent()
         content.title = "Haz agregado una nueva tarea"
@@ -174,6 +173,13 @@ class NewTaskVC: UIViewController {
             fridayButton.isEnabled = false
             saturdayButton.isEnabled = false
             sundayButton.isEnabled = false
+            mondayButton.isHighlighted = false
+            tuesdayButton.isHighlighted = false
+            wednesdayButton.isHighlighted = false
+            thursdayButton.isHighlighted = false
+            fridayButton.isHighlighted = false
+            saturdayButton.isHighlighted = false
+            sundayButton.isHighlighted = false
             initDPV.isEnabled = false
             endDPV.isEnabled = false
             mondayButton.setTitleColor(UIColor.lightGray, for: .normal)
