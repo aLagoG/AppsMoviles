@@ -118,6 +118,11 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         self.view.addSubview(popUpVC.view)
         popUpVC.didMove(toParentViewController: self)
     }
+    
+    func reloadTree(){
+        goalLst = Store.getGoals()
+        goals.reloadData()
+    }
     /*
     // MARK: - Navigation
 

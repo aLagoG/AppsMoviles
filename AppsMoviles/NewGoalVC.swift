@@ -41,6 +41,7 @@ class NewGoalVC: UIViewController {
         let goal = Goal(deadline: end, startDate: start, name: name, priority: self.priority, description: desc, color: UIColor.white, tasks: [])
         Store.saveGoal(goal)
         
+        (self.parent as! GoalsViewController).reloadTree()
         self.view.removeFromSuperview()
     }
     

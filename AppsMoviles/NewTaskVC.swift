@@ -125,6 +125,7 @@ class NewTaskVC: UIViewController {
         
         let newItem = Task(deadline: deadline, name: name, priority: priority, description: descr, place: place, recurrent: recurrent, recurrentStart: recurrentStart, recurrentEnd: recurrentEnd, recurrentDays: recurrentDays)
         Store.saveTask(newItem, goal)
+        (self.parent as! GoalsViewController).reloadTree()
         self.view.removeFromSuperview()
         
         //Crear Tarea
