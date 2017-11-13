@@ -15,6 +15,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
 
     var goalLst=[Goal]()
     var goals : RATreeView!
+    var expansions: [Int64: Bool] = [Int64: Bool]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,11 +105,20 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     
     func treeView(_ treeView: RATreeView, shouldExpandRowForItem item: Any) -> Bool {
         if treeView.levelForCell(forItem: item) == 0{
-        return true
+            return true
         }else{
             return false
         }
+    }
     
+    func treeView(_ treeView: RATreeView, didExpandRowForItem item: Any) {
+        let goal = item as! Goal
+        expansions[goal.id] = true
+    }
+    
+    func treeView(_ treeView: RATreeView, didCollapseRowForItem item: Any) {
+        let goal = item as! Goal
+        expansions[goal.id] = nil
     }
     
     @IBAction func addGoalButtonClick(_ sender: Any) {
@@ -122,6 +132,11 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     func reloadTree(){
         goalLst = Store.getGoals()
         goals.reloadData()
+        for goal in goalLst{
+            if expansions[goal.id] != nil{
+                goals.expandRow(forItem: goal)
+            }
+        }
     }
     /*
     // MARK: - Navigation
