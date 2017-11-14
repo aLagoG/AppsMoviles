@@ -13,6 +13,8 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     
     
 
+    @IBOutlet weak var editButton: UIButton!
+    
     var goalLst=[Goal]()
     var goals : RATreeView!
     var expansions: [Int64: Bool] = [Int64: Bool]()
@@ -30,6 +32,8 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         goals.treeFooterView = UIView()
         goals.backgroundColor = .clear
         view.addSubview(goals)
+        
+        editButton.titleLabel?.text = "Editar"
     }
 
     override func didReceiveMemoryWarning() {
@@ -137,6 +141,45 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
                 goals.expandRow(forItem: goal)
             }
         }
+    }
+    
+    func updateNavigationBarButtons() -> Void {
+        if (goals.isEditing == true){
+            editButton.titleLabel?.text = "Listo"
+        }else{
+            editButton.titleLabel?.text = "Editar"
+        }
+    }
+
+    @IBAction func startEditing(_ sender: Any) {
+        editButton.titleLabel?.text = "Listo"
+        goals.setEditing(!goals.isEditing, animated: true)
+    }
+    
+    func treeView(_ treeView: RATreeView, commit editingStyle: UITableViewCellEditingStyle, forRowForItem item: Any?) {
+        guard editingStyle == .delete else { return; }
+        var index: Int = 0
+
+        if item.debugDescription == "Optional(AppsMoviles.Goal)"{
+            let item = item as! Goal
+            index = self.goalLst.index(where: { Goal in
+                return Goal === item;
+            })!
+            print(index)
+            self.goalLst.remove(at: index)
+            self.goals.deleteItems(at: IndexSet(integer: index), inParent: nil, with: RATreeViewRowAnimation.init(1))
+        }else if item.debugDescription == "Optional(AppsMoviles.Task)"{
+            print("Task")
+            let item = item as! Task
+            let parent = goals.parent(forItem: item) as? Goal
+
+            index = (parent?.tasks.index(where: { Task in
+                return Task === item
+            })!)!
+            parent?.removeTask(item)
+            self.goals.deleteItems(at: IndexSet(integer: index), inParent: parent, with: RATreeViewRowAnimation.init(1))
+        }
+            self.goals.reloadRows()
     }
     /*
     // MARK: - Navigation
