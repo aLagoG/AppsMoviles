@@ -80,7 +80,7 @@ class RegisterViewController: UIViewController {
         self.parent?.view.addSubview(popUpVC.view)
         popUpVC.didMove(toParentViewController: self)
     }
-    
+
     
     func displayAlert(message:  String){
         let alert = UIAlertController(title: "No se puede llevar a cabo el registro", message: message, preferredStyle: .alert)
