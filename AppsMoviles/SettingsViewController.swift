@@ -92,7 +92,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     
     //Funciones extras
     func noCamera(){
-        let alert = UIAlertController(title: "No camera", message: "There was no camera founf", preferredStyle: .alert)
+        let alert = UIAlertController(title: "No camera", message: "There was no camera found", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
