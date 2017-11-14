@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate{
 
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var name: UILabel!
@@ -106,7 +107,37 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         popUpVC.didMove(toParentViewController: self)
     }
     
+    //Funciones para envio de e-mail
     
+    @IBAction func enviarCorreo(_ sender: Any) {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail(){
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        }
+        else{
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        //mailComposerVC.setToRecipients([])
+        mailComposerVC.setSubject("Resumen semanal - It's Time!")
+        mailComposerVC.setMessageBody("¡Hola! Aquí tienes el resumen de tu semana. ¡A trabajar!", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "No se puede enviar e-mail", message: "Tu dispositvo no esta configurado para enviar mensajes.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation
