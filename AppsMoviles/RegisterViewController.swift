@@ -67,7 +67,6 @@ class RegisterViewController: UIViewController {
         }
         
 
-        user.setValue(String(describing: Store.id), forKey: "DBID")
         user.setValue(name, forKey: "name")
         user.setValue(email, forKey: "email")
         user.setValue(password, forKey: "password")

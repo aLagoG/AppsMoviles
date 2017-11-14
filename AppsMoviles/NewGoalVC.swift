@@ -25,6 +25,9 @@ class NewGoalVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,11 +41,14 @@ class NewGoalVC: UIViewController {
         let start = startDP.date
         let end = endDP.date
         
-        let goal = Goal(deadline: end, startDate: start, name: name, priority: self.priority, description: desc, color: UIColor.white, tasks: [])
-        Store.saveGoal(goal)
-        
-        (self.parent as! GoalsViewController).reloadTree()
-        self.view.removeFromSuperview()
+        if (name.isEmpty){
+            displayAlertMessage(message: "¡La meta necesita un nombre!")
+        }else{
+            let goal = Goal(deadline: end, startDate: start, name: name, priority: self.priority, description: desc, color: UIColor.white, tasks: [])
+            Store.saveGoal(goal)
+            (self.parent as! GoalsViewController).reloadTree()
+            self.view.removeFromSuperview()
+        }
     }
     
     @IBAction func cancelButtonClick(_ sender: Any) {
@@ -84,6 +90,16 @@ class NewGoalVC: UIViewController {
         }
     }
     
+    func dismissKeyboard(){
+        view.endEditing(true)
+    }
+    
+    func displayAlertMessage (message: String){
+        let alert = UIAlertController(title: "No se puede crear la meta", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

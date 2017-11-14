@@ -53,11 +53,12 @@ class NewTaskVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        doneButton.setImage(UIImage.fontAwesomeIcon(name: .check, textColor: UIColor.black, size: CGSize(width: 40, height:40)), for: .normal)
-        cancelButton.setImage(UIImage.fontAwesomeIcon(name: .times, textColor: UIColor.black, size: CGSize(width:40, height:40)), for: .normal)
         changeRecurrent()
         dayButtons = [mondayButton, tuesdayButton,wednesdayButton,thursdayButton,fridayButton,saturdayButton,sundayButton]
         priorityButtons = [lowPriority,mediumPriority,highPriority]
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
         
     }
 
@@ -123,10 +124,16 @@ class NewTaskVC: UIViewController {
         priority = getPriority()
         getRecurrentDays()
         
-        let newItem = Task(deadline: deadline, name: name, priority: priority, description: descr, place: place, recurrent: recurrent, recurrentStart: recurrentStart, recurrentEnd: recurrentEnd, recurrentDays: recurrentDays)
-        Store.saveTask(newItem, goal)
-        (self.parent as! GoalsViewController).reloadTree()
-        self.view.removeFromSuperview()
+        if (name.isEmpty){
+            displayAlertMessage(message: "¡La tarea necesita un nombre!")
+        }else if (recurrent == true && recurrentDays.count == 0){
+            displayAlertMessage(message: "Por favor selecciona los días en los que se va a repetir tu tarea")
+        }else{
+            let newItem = Task(deadline: deadline, name: name, priority: priority, description: descr, place: place, recurrent: recurrent, recurrentStart: recurrentStart, recurrentEnd: recurrentEnd, recurrentDays: recurrentDays)
+            Store.saveTask(newItem, goal)
+            (self.parent as! GoalsViewController).reloadTree()
+            self.view.removeFromSuperview()
+        }
         
         //Crear Tarea
         //NOTIFICACIONES
@@ -231,8 +238,17 @@ class NewTaskVC: UIViewController {
         }
         return Int64(priorityButtonSelected.restorationIdentifier!)!
     }
-    
-    
+
+    func displayAlertMessage(message: String){
+        let alert = UIAlertController(title: "No se puede crear la tarea", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func dismissKeyboard(){
+        view.endEditing(true)
+    }
 
     /*
     // MARK: - Navigation
