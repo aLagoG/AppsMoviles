@@ -226,6 +226,22 @@ class Store{
         return result
     }
     
+    static func deleteTask(_ task: Task){
+        do{
+            let deletedItem = tasks.filter(id == task.id)
+            try db?.run(deletedItem.delete())
+        }catch _{
+        }
+    }
+    
+    static func deleteGoal(_ goal: Goal){
+        do{
+            let deletedItem = goals.filter(id == goal.id)
+            try db?.run(deletedItem.delete())
+        }catch _{
+        }
+    }
+    
     static func colorFromRGB(_ rgb: Int64) -> UIColor{
         return UIColor(red: CGFloat(((rgb & 0xFF000000)>>24)/255), green: CGFloat(((rgb & 0x00FF0000)>>16)/255), blue: CGFloat(((rgb & 0x0000FF00)>>8)/255), alpha: CGFloat((rgb & 0x000000FF)/255))
     }

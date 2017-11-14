@@ -166,6 +166,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
                 return Goal === item;
             })!
             print(index)
+            Store.deleteGoal(item)
             self.goalLst.remove(at: index)
             self.goals.deleteItems(at: IndexSet(integer: index), inParent: nil, with: RATreeViewRowAnimation.init(1))
         }else if item.debugDescription == "Optional(AppsMoviles.Task)"{
@@ -177,6 +178,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
                 return Task === item
             })!)!
             parent?.removeTask(item)
+            Store.deleteTask(item)
             self.goals.deleteItems(at: IndexSet(integer: index), inParent: parent, with: RATreeViewRowAnimation.init(1))
         }
             self.goals.reloadRows()
