@@ -78,8 +78,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-
-
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1098,7 +1096,6 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
-        <image name="fondof" width="736" height="1309"/>
         <image name="fondof1" width="736" height="1309"/>
         <image name="fondof3" width="736" height="1309"/>
         <image name="fondomint" width="736" height="1309"/>
