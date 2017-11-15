@@ -354,14 +354,14 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMO-v2-6c2">
-                                <rect key="frame" x="341" y="11" width="56" height="30"/>
+                                <rect key="frame" x="338" y="20" width="56" height="30"/>
                                 <state key="normal" title="Guardar"/>
                                 <connections>
                                     <action selector="createTask:" destination="arX-fB-jBH" eventType="touchUpInside" id="NQj-Na-gKG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWZ-If-r7U">
-                                <rect key="frame" x="272" y="11" width="61" height="30"/>
+                                <rect key="frame" x="269" y="20" width="61" height="30"/>
                                 <state key="normal" title="Cancelar"/>
                                 <connections>
                                     <action selector="cancelTask:" destination="arX-fB-jBH" eventType="touchUpInside" id="L0v-9M-v0n"/>
@@ -372,10 +372,10 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="YtG-dY-xGe" secondAttribute="trailing" id="8wf-CI-CDu"/>
                             <constraint firstItem="YtG-dY-xGe" firstAttribute="leading" secondItem="3U8-5d-Fmo" secondAttribute="leading" id="H9j-bs-GNY"/>
-                            <constraint firstItem="GMO-v2-6c2" firstAttribute="top" secondItem="sN3-sf-PHK" secondAttribute="bottom" constant="-9" id="MAw-bq-RA4"/>
-                            <constraint firstAttribute="trailing" secondItem="GMO-v2-6c2" secondAttribute="trailing" constant="17" id="QJI-uc-M5g"/>
-                            <constraint firstItem="oWZ-If-r7U" firstAttribute="top" secondItem="sN3-sf-PHK" secondAttribute="bottom" constant="-9" id="YeR-9z-Kwj"/>
-                            <constraint firstItem="YtG-dY-xGe" firstAttribute="top" secondItem="oWZ-If-r7U" secondAttribute="bottom" constant="8" id="ZCs-QL-iLP"/>
+                            <constraint firstItem="GMO-v2-6c2" firstAttribute="top" secondItem="sN3-sf-PHK" secondAttribute="bottom" id="MAw-bq-RA4"/>
+                            <constraint firstAttribute="trailing" secondItem="GMO-v2-6c2" secondAttribute="trailing" constant="20" id="QJI-uc-M5g"/>
+                            <constraint firstItem="oWZ-If-r7U" firstAttribute="top" secondItem="sN3-sf-PHK" secondAttribute="bottom" id="YeR-9z-Kwj"/>
+                            <constraint firstItem="YtG-dY-xGe" firstAttribute="top" secondItem="oWZ-If-r7U" secondAttribute="bottom" constant="-1" id="ZCs-QL-iLP"/>
                             <constraint firstItem="GMO-v2-6c2" firstAttribute="leading" secondItem="oWZ-If-r7U" secondAttribute="trailing" constant="8" id="aNh-ko-kCZ"/>
                             <constraint firstItem="VaC-cr-OYo" firstAttribute="top" secondItem="YtG-dY-xGe" secondAttribute="bottom" id="brr-AV-ceR"/>
                         </constraints>
