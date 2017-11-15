@@ -18,6 +18,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     var goals : RATreeView!
     var expansions: [Int64: Bool] = [Int64: Bool]()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +33,8 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         goals.backgroundColor = .clear
         view.addSubview(goals)
         
+        goals.allowsSelection = true
+        goals.allowsMultipleSelection = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -142,41 +145,65 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     }
     
     
-    func treeView(_ treeView: RATreeView, commit editingStyle: UITableViewCellEditingStyle, forRowForItem item: Any?) {
+    func treeView(_ treeView: RATreeView, commit editingStyle: UITableViewCellEditingStyle, forRowForItem item: Any) {
         guard editingStyle == .delete else { return; }
-        var index: Int = 0
 
-        if item.debugDescription == "Optional(AppsMoviles.Goal)"{
-            let alert = UIAlertController(title: "¿Borrar meta?", message: "Si se borra la meta se borrán también las tareas que pertenecen a la meta", preferredStyle: .alert)
-            let actioncontinue = UIAlertAction(title: "OK", style: .default, handler: {
-                actioncontinue in
-                let item = item as! Goal
-                index = self.goalLst.index(where: { Goal in
-                    return Goal === item;
-                })!
-                Store.deleteGoal(item)
-                self.goalLst.remove(at: index)
-                self.goals.deleteItems(at: IndexSet(integer: index), inParent: nil, with: RATreeViewRowAnimation.init(1))
-            })
-            let actiondenny = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
-            alert.addAction(actioncontinue)
-            alert.addAction(actiondenny)
-            self.present(alert, animated: true, completion: nil)
-        }else if item.debugDescription == "Optional(AppsMoviles.Task)"{
-            print("Task")
-            let item = item as! Task
-            let parent = goals.parent(forItem: item) as? Goal
-
-            index = (parent?.tasks.index(where: { Task in
-                return Task === item
-            })!)!
-            parent?.removeTask(item)
-            Store.deleteTask(item)
-            self.goals.deleteItems(at: IndexSet(integer: index), inParent: parent, with: RATreeViewRowAnimation.init(1))
-        }
-            self.goals.reloadRows()
+        
     }
     
+    func treeView(_ treeView: RATreeView, editActionsForItem item: Any) -> [Any] {
+        let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Editar", handler:{action, indexpath in
+            if let goal = item as? Goal{
+                let popUpVC = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "newGoalPopUp") as! NewGoalVC
+                popUpVC.editGoal = goal
+                self.addChildViewController(popUpVC)
+                popUpVC.view.frame = self.view.frame
+                self.view.addSubview(popUpVC.view)
+                popUpVC.didMove(toParentViewController: self)
+            }else if let task = item as? Task{
+                let popUpVC = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "newTaskPopUp") as! NewTaskVC
+                popUpVC.editTask = task
+                self.addChildViewController(popUpVC)
+                popUpVC.view.frame = self.view.frame
+                self.view.addSubview(popUpVC.view)
+                popUpVC.didMove(toParentViewController: self)
+            }
+            self.goals.reloadRows()
+        });
+        moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
+        
+        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler:{action, indexpath in
+            var index: Int = 0
+            if let goal = item as? Goal{
+                let alert = UIAlertController(title: "¿Borrar meta?", message: "Si se borra la meta se borrán también las tareas que pertenecen a la meta", preferredStyle: .alert)
+                let actioncontinue = UIAlertAction(title: "Eliminar", style: .cancel, handler: {
+                    actioncontinue in
+                    index = self.goalLst.index(where: { Goal in
+                        return Goal === goal;
+                    })!
+                    Store.deleteGoal(goal)
+                    self.goalLst.remove(at: index)
+                    self.goals.deleteItems(at: IndexSet(integer: index), inParent: nil, with: RATreeViewRowAnimation.init(1))
+                })
+                let actiondenny = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
+                alert.addAction(actiondenny)
+                alert.addAction(actioncontinue)
+                self.present(alert, animated: true, completion: nil)
+            }else if let task = item as? Task{
+                print("Task")
+                let parent = self.goals.parent(forItem: task) as? Goal
+                index = (parent?.tasks.index(where: { Task in
+                    return Task === task
+                })!)!
+                parent?.removeTask(task)
+                Store.deleteTask(task)
+                self.goals.deleteItems(at: IndexSet(integer: index), inParent: parent, with: RATreeViewRowAnimation.init(1))
+            }
+            self.goals.reloadRows()
+        });
+        
+        return [deleteRowAction, moreRowAction];
+    }
     /*
     // MARK: - Navigation
 

@@ -38,7 +38,7 @@ class Store{
                 .documentDirectory, .userDomainMask, true
                 ).first!
             db = try Connection("\(path)/db.sqlite3")
-        } catch _ {
+        } catch  {
             print("Error with db connection")
         }
     }
@@ -56,7 +56,7 @@ class Store{
                 t.column(description)
                 t.column(color)
             })
-        } catch _ {
+        } catch  {
             print("Error creating goals table")
         }
         
@@ -74,7 +74,7 @@ class Store{
                 t.column(goal_id)
                 t.foreignKey(goal_id, references: goals, id)
             })
-        } catch _ {
+        } catch  {
             print("Error creating tasks table")
         }
         
@@ -85,7 +85,7 @@ class Store{
                 t.foreignKey(task_id, references: tasks, id)
                 t.primaryKey(task_id, day)
             })
-        } catch _ {
+        } catch  {
             print("Error creating recurrentDays table")
         }
     }
@@ -94,14 +94,15 @@ class Store{
             do {
                 let gid = try db?.run(goals.insert(deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, color <- colorToRGB(goal.color)))
                 goal.id = gid!
-            }catch _ {
+            }catch  {
                 print("Error creating goal")
             }
         }else{
             do {
-                try db?.run(goals.update(id <- goal.id, deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, color <- colorToRGB(goal.color)))
-            } catch _{
-                print("Error updating goal")
+                let toEdit = goals.filter(id == goal.id)
+                try db?.run(toEdit.update(deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, color <- colorToRGB(goal.color)))
+            } catch {
+                print("Error updating goal: \(error)")
             }
         }
     }
@@ -116,32 +117,35 @@ class Store{
                     for d in task.recurrentDays{
                         do{
                             try db?.run(recurrentDays.insert( task_id <- task.id, day <- d))
-                        } catch _ {
-                            
+                        } catch  {
+                            print("Error inserting day: \(error)")
                         }
                     }
                 }
-            } catch _{
+            } catch {
+                print("Error creating task: \(error)")
             }
         } else {
             do {
-                try db?.run(tasks.update(id <- task.id, deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd, goal_id <- goal.id))
+                let toEdit = tasks.filter(id == task.id)
+                try db?.run(toEdit.update(deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd))
                 let currentDays = recurrentDays.filter(task_id == task.id)
                 do {
                     try db?.run(currentDays.delete())
-                } catch _{
-                    
+                } catch {
+                    print("Error deleting days: \(error)")
                 }
                 if(task.recurrentDays.count > 0){
                     for d in task.recurrentDays{
                         do{
                             try db?.run(recurrentDays.insert( task_id <- task.id, day <- d))
-                        } catch _ {
-                            
+                        } catch  {
+                            print("Error inserting day: \(error)")
                         }
                     }
                 }
-            } catch _{
+            } catch {
+                print("Error updating task: \(error)")
             }
         }
     }
@@ -192,7 +196,7 @@ class Store{
                     }
                 }
             }
-        } catch _ {
+        } catch  {
             print("Error getting tasks from goal: \(goal.name)")
         }
         return result
@@ -220,7 +224,7 @@ class Store{
                     }
                 }
             }
-        } catch _ {
+        } catch  {
             
         }
         return result
@@ -230,7 +234,7 @@ class Store{
         do{
             let deletedItem = tasks.filter(id == task.id)
             try db?.run(deletedItem.delete())
-        }catch _{
+        }catch {
         }
     }
     
@@ -238,7 +242,7 @@ class Store{
         do{
             let deletedItem = goals.filter(id == goal.id)
             try db?.run(deletedItem.delete())
-        }catch _{
+        }catch {
         }
     }
     

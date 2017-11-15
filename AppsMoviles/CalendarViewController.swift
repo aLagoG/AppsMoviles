@@ -16,9 +16,13 @@ class CalendarViewController: UIViewController{
     @IBOutlet weak var day: UILabel!
     @IBOutlet weak var myDayTableView: UITableView!
     
+
+    
+    
     var tasks: [Task] = []
     var tasksNames:[String] = []
-
+    var tasksDesc:[String] = []
+    
     let formatter = DateFormatter()
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,25 +41,16 @@ class CalendarViewController: UIViewController{
         let doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapCollectionView(gesture:)))
         doubleTapGesture.numberOfTapsRequired = 2  // add double tap
         calendarView.addGestureRecognizer(doubleTapGesture)
+        self.myDayTableView.separatorColor = UIColor(hue: 0.2333, saturation: 1, brightness: 0.56, alpha: 1.0)
+        self.myDayTableView.separatorStyle = UITableViewCellSeparatorStyle.singleLineEtched
         tasks = Store.getTasks()
-        print(tasks)
-        if (!tasks.isEmpty){
-            for item in tasks {
-                tasksNames.append(item.name)
-            }
-        }
-    
         
     }
     
     func didDoubleTapCollectionView(gesture: UITapGestureRecognizer) {
-        let point = gesture.location(in: gesture.view!)
-        let cellState = calendarView.cellStatus(at: point)
-        print(cellState!.date)
-        self.formatter.dateFormat = "MMMM dd"
-        day.text = self.formatter.string(from: cellState!.date)
-        
     }
+    
+    
     
     
     func setupCalendarView(){
@@ -67,6 +62,9 @@ class CalendarViewController: UIViewController{
         calendarView.visibleDates { (visibleDates) in
             self.setupViewsOfCalendar(from: visibleDates)
         }
+        
+        
+        
     }
     
     func setupViewsOfCalendar(from visibleDates: DateSegmentInfo){
@@ -77,7 +75,7 @@ class CalendarViewController: UIViewController{
         self.formatter.dateFormat = "MMMM"
         self.month.text = self.formatter.string(from: date)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,28 +84,50 @@ class CalendarViewController: UIViewController{
     func handleCellColor(view: JTAppleCell?, cellstate: CellState){
         guard let validCell = view as? CellController else { return }
         if cellstate.isSelected {
-            validCell.dateLabel.textColor = UIColor.white
+            validCell.dateL.textColor = UIColor.white
         } else {
             if cellstate.dateBelongsTo == .thisMonth{
-                validCell.dateLabel.textColor = UIColor.black
+                validCell.dateL.textColor = UIColor.black
             } else {
-                validCell.dateLabel.textColor = UIColor.gray
+                validCell.dateL.textColor = UIColor.gray
             }
             
         }
         
     }
     
+    
+    
+    
     func handleCellSelected(view: JTAppleCell?, cellstate: CellState){
         guard let validCell = view as? CellController else {return}
         if validCell.isSelected{
-            validCell.selectedView.isHidden = false
+            tasksNames.removeAll()
+            tasksDesc.removeAll()
+            validCell.selectedV.isHidden = false
+            self.formatter.dateFormat = "MMMM dd"
+            day.text = self.formatter.string(from: cellstate.date)
+            tasks = Store.getTasks()
+            print(tasks)
+            self.formatter.dateFormat = "yyyy MM dd"
+            if (!tasks.isEmpty){
+                for item in tasks {
+                    if(self.formatter.string(from: cellstate.date)==self.formatter.string(from: item.deadline)){
+                        tasksNames.append(item.name)
+                        tasksDesc.append(item.description)
+                    }
+                }
+            }else {
+                tasksNames.append("Sin eventos")
+            }
+            myDayTableView.reloadData()
+            
         }else{
-            validCell.selectedView.isHidden = true
+            validCell.selectedV.isHidden = true
         }
     }
-
-
+    
+    
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource{
@@ -135,17 +155,44 @@ extension CalendarViewController: JTAppleCalendarViewDelegate{
     
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CellController", for: indexPath) as! CellController
-        cell.dateLabel.text = cellState.text
+        cell.dateL.text = cellState.text
+        
+        
+        
+        
         handleCellSelected(view: cell, cellstate: cellState)
         handleCellColor(view: cell, cellstate: cellState)
+        
         
     }
     
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CellController", for: indexPath) as! CellController
-        cell.dateLabel.text = cellState.text
+        cell.dateL.text = cellState.text
+        
+        
         handleCellSelected(view: cell, cellstate: cellState)
         handleCellColor(view: cell, cellstate: cellState)
+        self.formatter.dateFormat = "yyyy MM dd"
+        if (!tasks.isEmpty){
+            for item in tasks {
+                if(self.formatter.string(from: cellState.date)==self.formatter.string(from: item.deadline)){
+                    switch item.priority {
+                    case 1 : cell.pri1.isHidden = false
+                    case 2 : cell.pri2.isHidden = false
+                    case 3 : cell.pri3.isHidden = false
+                        
+                    default:
+                        break
+                        
+                    }
+                }else {
+                    cell.pri1.isHidden = true
+                    cell.pri2.isHidden = true
+                    cell.pri3.isHidden = true
+                }
+            }
+        }
         return cell
     }
     
@@ -166,11 +213,16 @@ extension CalendarViewController: JTAppleCalendarViewDelegate{
 
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        return tasksNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+        if(!tasksNames.isEmpty){
+            cell.textLabel?.text = tasksNames[indexPath.row]
+            cell.detailTextLabel?.text = tasksDesc[indexPath.row]
+            
+        }
         return cell
     }
     

@@ -50,15 +50,32 @@ class NewTaskVC: UIViewController {
     var recurrentDays : [String] = []
     var goal : Goal = Goal()
     
+    var editTask:Task? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         changeRecurrent()
         dayButtons = [mondayButton, tuesdayButton,wednesdayButton,thursdayButton,fridayButton,saturdayButton,sundayButton]
         priorityButtons = [lowPriority,mediumPriority,highPriority]
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        //Para que cuando el usuario haga tap fuera del teclado, desaparezca
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewTaskVC.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        
+        //La prioridad por defecto
+        lowPriority.isHighlighted = true
+        lowPriority.isSelected = true
+        if let task = editTask{
+            nameTF.text = task.name
+            descriptionTF.text = task.description
+            deadlineDPV.date = task.deadline
+            placeTF.text = task.place
+            recurrentSw.isOn = task.recurrent
+            initDPV.date = task.recurrentStart
+            endDPV.date = task.recurrentEnd
+            //falta manejar los recurrent days y la prioridad
+        }
         
     }
 
@@ -130,6 +147,9 @@ class NewTaskVC: UIViewController {
             displayAlertMessage(message: "Por favor selecciona los días en los que se va a repetir tu tarea")
         }else{
             let newItem = Task(deadline: deadline, name: name, priority: priority, description: descr, place: place, recurrent: recurrent, recurrentStart: recurrentStart, recurrentEnd: recurrentEnd, recurrentDays: recurrentDays)
+            if let tsk = editTask{
+                newItem.id = tsk.id
+            }
             Store.saveTask(newItem, goal)
             (self.parent as! GoalsViewController).reloadTree()
             self.view.removeFromSuperview()

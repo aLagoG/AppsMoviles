@@ -21,13 +21,22 @@ class NewGoalVC: UIViewController {
     
     var priority: Int64 = 1
     
+    var editGoal:Goal? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewGoalVC.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        if let goal = editGoal{
+            nameTF.text = goal.name
+            descTF.text = goal.description
+            startDP.date = goal.startDate
+            endDP.date = goal.deadline
+            //falta manejar la prioridad y el color
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +54,9 @@ class NewGoalVC: UIViewController {
             displayAlertMessage(message: "¡La meta necesita un nombre!")
         }else{
             let goal = Goal(deadline: end, startDate: start, name: name, priority: self.priority, description: desc, color: UIColor.white, tasks: [])
+            if let gl = editGoal{
+                goal.id = gl.id
+            }
             Store.saveGoal(goal)
             (self.parent as! GoalsViewController).reloadTree()
             self.view.removeFromSuperview()
