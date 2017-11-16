@@ -13,8 +13,8 @@
 		539D5B431F9FAC68006A6C5B /* TreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539D5B3F1F9F98FA006A6C5B /* TreeTableViewCell.xib */; };
 		53D409271FA0EB5B00318D58 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D409261FA0EB5B00318D58 /* NewTaskVC.swift */; };
 		A9399C4F1FA2491B00F5EE60 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9399C4E1FA2491B00F5EE60 /* CalendarViewController.swift */; };
+		A9B37ABA1FBBC2AE00E35C0A /* MyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B37AB81FBBC2AE00E35C0A /* MyDayViewController.swift */; };
 		AF1563AF1FAA41FE00BFE9C9 /* NewGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1563AE1FAA41FE00BFE9C9 /* NewGoalVC.swift */; };
-		AF7645081F6AF75500A9E201 /* MyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7645071F6AF75500A9E201 /* MyDayViewController.swift */; };
 		AF76450C1F6AF9BE00A9E201 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76450B1F6AF9BE00A9E201 /* GoalsViewController.swift */; };
 		AF76450E1F6AF9DC00A9E201 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF76450D1F6AF9DC00A9E201 /* SettingsViewController.swift */; };
 		AF7645311F6AFB9200A9E201 /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7645101F6AFB9200A9E201 /* FSCalendar+Deprecated.m */; };
@@ -65,9 +65,9 @@
 		57B2C8D56E95E9B5D20B298B /* Pods-AppsMoviles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppsMoviles.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppsMoviles/Pods-AppsMoviles.debug.xcconfig"; sourceTree = "<group>"; };
 		8C431FB870AA19BC52C9E91B /* Pods-AppsMoviles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppsMoviles.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppsMoviles/Pods-AppsMoviles.release.xcconfig"; sourceTree = "<group>"; };
 		A9399C4E1FA2491B00F5EE60 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		A9B37AB81FBBC2AE00E35C0A /* MyDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDayViewController.swift; sourceTree = "<group>"; };
 		AF1563AE1FAA41FE00BFE9C9 /* NewGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalVC.swift; sourceTree = "<group>"; };
 		AF3A971A1F9E895E00E346EE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		AF7645071F6AF75500A9E201 /* MyDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDayViewController.swift; sourceTree = "<group>"; };
 		AF76450B1F6AF9BE00A9E201 /* GoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
 		AF76450D1F6AF9DC00A9E201 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AF7645101F6AFB9200A9E201 /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
@@ -219,13 +219,13 @@
 				AF76450F1F6AFB9200A9E201 /* FSCalendar */,
 				AFF4C1E11F6AF58700BA76DB /* FontAwesome */,
 				AFB62A6D1F61E4180031CFC8 /* AppDelegate.swift */,
+				A9B37AB81FBBC2AE00E35C0A /* MyDayViewController.swift */,
 				A9399C4E1FA2491B00F5EE60 /* CalendarViewController.swift */,
 				AFB62A731F61E4180031CFC8 /* Main.storyboard */,
 				53D409261FA0EB5B00318D58 /* NewTaskVC.swift */,
 				AFB62A761F61E4180031CFC8 /* Assets.xcassets */,
 				AFB62A781F61E4180031CFC8 /* LaunchScreen.storyboard */,
 				AFB62A7B1F61E4180031CFC8 /* Info.plist */,
-				AF7645071F6AF75500A9E201 /* MyDayViewController.swift */,
 				AF76450B1F6AF9BE00A9E201 /* GoalsViewController.swift */,
 				AF76450D1F6AF9DC00A9E201 /* SettingsViewController.swift */,
 				539D5B401F9F98FA006A6C5B /* TreeTableViewCell.swift */,
@@ -410,12 +410,12 @@
 				AFD73B451F82DE1C005DE94D /* Task.swift in Sources */,
 				AFF4C1E01F6AF0BA00BA76DB /* FontAwesomeView.swift in Sources */,
 				AFF4C1DD1F6AF0BA00BA76DB /* FontAwesomeStateRequirement.swift in Sources */,
-				AF7645081F6AF75500A9E201 /* MyDayViewController.swift in Sources */,
 				533FE7861FB9EFF8006247F0 /* RegisterViewController.swift in Sources */,
 				AF7645391F6AFB9200A9E201 /* FSCalendarDelegationFactory.m in Sources */,
 				AFD73B431F82DC26005DE94D /* Goal.swift in Sources */,
 				AF76453E1F6AFB9200A9E201 /* FSCalendarStickyHeader.m in Sources */,
 				AFF4C1DB1F6AF0BA00BA76DB /* FontAwesomeImageView.swift in Sources */,
+				A9B37ABA1FBBC2AE00E35C0A /* MyDayViewController.swift in Sources */,
 				AFF4C1DE1F6AF0BA00BA76DB /* FontAwesomeTabBarItem.swift in Sources */,
 				539D5B411F9F990A006A6C5B /* TreeTableViewCell.swift in Sources */,
 				AF76450C1F6AF9BE00A9E201 /* GoalsViewController.swift in Sources */,
