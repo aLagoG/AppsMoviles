@@ -12,7 +12,6 @@
 		539D5B411F9F990A006A6C5B /* TreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539D5B401F9F98FA006A6C5B /* TreeTableViewCell.swift */; };
 		539D5B431F9FAC68006A6C5B /* TreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539D5B3F1F9F98FA006A6C5B /* TreeTableViewCell.xib */; };
 		53D409271FA0EB5B00318D58 /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D409261FA0EB5B00318D58 /* NewTaskVC.swift */; };
-		A9399C4D1FA2491300F5EE60 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9399C4C1FA2491300F5EE60 /* CellController.swift */; };
 		A9399C4F1FA2491B00F5EE60 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9399C4E1FA2491B00F5EE60 /* CalendarViewController.swift */; };
 		A9B37ABA1FBBC2AE00E35C0A /* MyDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B37AB81FBBC2AE00E35C0A /* MyDayViewController.swift */; };
 		AF1563AF1FAA41FE00BFE9C9 /* NewGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1563AE1FAA41FE00BFE9C9 /* NewGoalVC.swift */; };
@@ -65,7 +64,6 @@
 		57656259FDC15ABFB0755360 /* Pods_AppsMoviles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppsMoviles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57B2C8D56E95E9B5D20B298B /* Pods-AppsMoviles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppsMoviles.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppsMoviles/Pods-AppsMoviles.debug.xcconfig"; sourceTree = "<group>"; };
 		8C431FB870AA19BC52C9E91B /* Pods-AppsMoviles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppsMoviles.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppsMoviles/Pods-AppsMoviles.release.xcconfig"; sourceTree = "<group>"; };
-		A9399C4C1FA2491300F5EE60 /* CellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		A9399C4E1FA2491B00F5EE60 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A9B37AB81FBBC2AE00E35C0A /* MyDayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDayViewController.swift; sourceTree = "<group>"; };
 		AF1563AE1FAA41FE00BFE9C9 /* NewGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalVC.swift; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 				A9B37AB81FBBC2AE00E35C0A /* MyDayViewController.swift */,
 				A9399C4E1FA2491B00F5EE60 /* CalendarViewController.swift */,
 				AFB62A731F61E4180031CFC8 /* Main.storyboard */,
-				A9399C4C1FA2491300F5EE60 /* CellController.swift */,
 				53D409261FA0EB5B00318D58 /* NewTaskVC.swift */,
 				AFB62A761F61E4180031CFC8 /* Assets.xcassets */,
 				AFB62A781F61E4180031CFC8 /* LaunchScreen.storyboard */,
@@ -368,13 +365,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AppsMoviles/Pods-AppsMoviles-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/RATreeView/RATreeView.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RATreeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 			);
@@ -441,7 +436,6 @@
 				AF76453D1F6AFB9200A9E201 /* FSCalendarScopeHandle.m in Sources */,
 				AFF4C1D71F6AF0BA00BA76DB /* Enum.swift in Sources */,
 				AFF4C1DF1F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift in Sources */,
-				A9399C4D1FA2491300F5EE60 /* CellController.swift in Sources */,
 				AF76453C1F6AFB9200A9E201 /* FSCalendarHeaderView.m in Sources */,
 				AF7645401F6AFB9200A9E201 /* FSCalendarWeekdayView.m in Sources */,
 				AFF4C1DC1F6AF0BA00BA76DB /* FontAwesomeSegmentedControl.swift in Sources */,
