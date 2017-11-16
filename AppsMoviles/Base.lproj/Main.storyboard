@@ -64,14 +64,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6km-Vo-jQq">
-                                <rect key="frame" x="356" y="20" width="30" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="+"/>
-                                <connections>
-                                    <action selector="addGoalButtonClick:" destination="x4n-DM-fGX" eventType="touchUpInside" id="Cwb-jM-lCq"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Kr3-Ot-pOF">
                                 <rect key="frame" x="0.0" y="58" width="414" height="621"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -94,11 +86,19 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6km-Vo-jQq">
+                                <rect key="frame" x="364" y="20" width="30" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="addGoalButtonClick:" destination="x4n-DM-fGX" eventType="touchUpInside" id="Cwb-jM-lCq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="6km-Vo-jQq" secondAttribute="trailing" constant="28" id="BPv-sx-ixQ"/>
                             <constraint firstItem="6km-Vo-jQq" firstAttribute="top" secondItem="6yV-CS-2RQ" secondAttribute="bottom" id="C0l-5g-RUo"/>
+                            <constraint firstAttribute="trailing" secondItem="6km-Vo-jQq" secondAttribute="trailing" constant="20" id="MJ4-9b-QAV"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Metas" image="first" id="J71-Gp-Ok8"/>
