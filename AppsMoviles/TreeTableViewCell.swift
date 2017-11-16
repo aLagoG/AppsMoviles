@@ -46,10 +46,12 @@ class TreeTableViewCell : UITableViewCell {
  
         self.backgroundColor = backgroundColor
         self.contentView.backgroundColor = backgroundColor
-
+        customTitleLabel.textColor = UIColor.black
+        detailsLabel.textColor = UIColor.black
         let left = 11.0 + 20.0 * CGFloat(level)
         self.customTitleLabel.frame.origin.x = left
         self.detailsLabel.frame.origin.x = left
+        
     }
 
     func additionButtonTapped(_ sender : AnyObject) -> Void {

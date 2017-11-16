@@ -12,26 +12,32 @@ import UserNotifications
 class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataSource {
 
     var todayTasks = [Task]()
-    var tasks : RATreeView!
+    var taskTree : RATreeView!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.reloadTree()
     }
-    
+    @IBAction func AddButtonClick(_ sender: Any) {
+        let popUpVC = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "newTaskPopUp") as! NewTaskVC
+        self.addChildViewController(popUpVC)
+        popUpVC.view.frame = self.view.frame
+        self.view.addSubview(popUpVC.view)
+        popUpVC.didMove(toParentViewController: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge],  completionHandler: {didAllow, error in})
         
-        tasks = RATreeView(frame: CGRect(x: 0, y: 80, width: self.view.frame.width, height: self.view.frame.height * 0.8))
-        tasks.register(UINib(nibName: String(describing: TreeTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TreeTableViewCell.self))
-        tasks.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-        tasks.dataSource = self
-        tasks.delegate = self
-        tasks.treeFooterView = UIView()
-        tasks.backgroundColor = .clear
-        view.addSubview(tasks)
+        taskTree = RATreeView(frame: CGRect(x: 0, y: 80, width: self.view.frame.width, height: self.view.frame.height - 100))
+        taskTree.register(UINib(nibName: String(describing: TreeTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TreeTableViewCell.self))
+        taskTree.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        taskTree.dataSource = self
+        taskTree.delegate = self
+        taskTree.treeFooterView = UIView()
+        taskTree.backgroundColor = .clear
+        view.addSubview(taskTree)
 
     }
 
@@ -56,7 +62,6 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         let level = 0
         cell.setup(withTitle: item.name, detailsText: item.description, level: level, additionalButtonHidden: true)
         if (item.finished == true){
-            print(item.name)
             cell.done()
         }
         return cell
@@ -66,7 +71,7 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         return todayTasks[index]
     }
 
-    func returnTodayTasks(tasks: [Task])->[Task]{
+    func returnTodayTasks(taskTree: [Task])->[Task]{
         var todayTasks = [Task]()
         let formatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "es_MX") as Locale!
@@ -74,7 +79,7 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         formatter.dateFormat = "DD.MM.YYYY"
         
         let date = formatter.string(from: Date())
-        for task in tasks{
+        for task in taskTree{
             if (formatter.string(from: task.deadline) == date){
                 todayTasks.append(task)
             }
@@ -105,8 +110,8 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     }
     
     func reloadTree(){
-        todayTasks = returnTodayTasks(tasks: Store.getTasks())
-        tasks.reloadData()
+        todayTasks = returnTodayTasks(taskTree: Store.getTasks())
+        taskTree.reloadData()
     }
     
     func treeView(_ treeView: RATreeView, editActionsForItem item: Any) -> [Any] {
@@ -118,7 +123,7 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             popUpVC.view.frame = self.view.frame
             self.view.addSubview(popUpVC.view)
             popUpVC.didMove(toParentViewController: self)
-            self.tasks.reloadRows()
+            self.taskTree.reloadRows()
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
@@ -131,7 +136,7 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             print(index)
             Store.deleteTask(task!)
             self.todayTasks.remove(at: index)
-            self.tasks.deleteItems(at: IndexSet(integer: index), inParent: nil, with: RATreeViewRowAnimation.init(1))
+            self.taskTree.deleteItems(at: IndexSet(integer: index), inParent: nil, with: RATreeViewRowAnimation.init(1))
         });
         
         let doneRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Hecho", handler:{action, indexpath in
@@ -140,10 +145,9 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             cell.done()
             item.finished = true
             Store.saveTask(item, Goal())
-            self.tasks.reloadData()
+            self.taskTree.reloadData()
         });
         doneRowAction.backgroundColor = UIColor.lightGray
-        
         return [deleteRowAction, moreRowAction, doneRowAction];
     }
 

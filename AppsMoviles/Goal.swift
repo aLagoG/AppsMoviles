@@ -53,6 +53,18 @@ class Goal{
     func removeTask(_ task : Task) {
         self.tasks = self.tasks.filter( {$0 !== task})
     }
+    
+    func isFinished(){
+        self.finished = true
+        if (self.tasks.count == 0){
+            self.finished = false
+        }
+        for task in tasks{
+            if (task.finished == false){
+                self.finished = false
+            }
+        }
+    }
 }
 
 

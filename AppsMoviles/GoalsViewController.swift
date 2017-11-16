@@ -23,7 +23,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        goals = RATreeView(frame: CGRect(x: 0 , y: 80, width: self.view.frame.width, height: self.view.frame.height * 0.7))
+        goals = RATreeView(frame: CGRect(x: 0 , y: 80, width: self.view.frame.width, height: self.view.frame.height - 100))
         goals.register(UINib(nibName: String(describing: TreeTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TreeTableViewCell.self))
         goals.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         goals.dataSource = self
@@ -65,11 +65,18 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             cell.selectionStyle = .none
             cell.setup(withTitle: goal.name, detailsText: detailText, level: level, additionalButtonHidden: false)
 
+            goal.isFinished()
+            if (goal.finished == true){
+                cell.done()
+            }
         }else if let task = item as? Task{
             let detailText = task.description
             let level = 1
             cell.selectionStyle = .none
             cell.setup(withTitle: task.name, detailsText: detailText, level: level, additionalButtonHidden: true)
+            if (task.finished == true){
+                cell.done()
+            }
         }
 
         cell.additionButtonActionBlock = { [weak treeView] cell in
@@ -84,13 +91,13 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             self.view.addSubview(popUpVC.view)
             popUpVC.didMove(toParentViewController: self)
             popUpVC.goal = item
-
+            
+            
             /*item.addTask(newItem)
             treeView.insertItems(at: IndexSet(integer: item.tasks.count-1), inParent: item, with: RATreeViewRowAnimation.init(0))*/
             treeView.reloadRows(forItems: [item], with: RATreeViewRowAnimation.init(0))
-        
-            
         }
+        
         
         return cell
     }
@@ -134,7 +141,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         goals.reloadData()
         for goal in goalLst{
             if expansions[goal.id] != nil{
-                goals.expandRow(forItem: goal)
+                goals.expandRow(forItem: goal, with: .init(1))
             }
         }
     }
@@ -195,8 +202,19 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             }
             self.goals.reloadRows()
         });
-        
-        return [deleteRowAction, moreRowAction];
+        let doneRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Hecho", handler:{action, indexpath in
+            let item = item as! Task
+            let cell = treeView.cell(forItem: item) as! TreeTableViewCell
+            cell.done()
+            item.finished = true
+            Store.saveTask(item, Goal())
+            self.reloadTree()
+        });
+        doneRowAction.backgroundColor = UIColor.lightGray
+        if item is Task{
+            return [deleteRowAction, moreRowAction, doneRowAction];
+        }
+        return[deleteRowAction, moreRowAction]
     }
     /*
     // MARK: - Navigation
