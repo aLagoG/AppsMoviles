@@ -30,12 +30,14 @@ class NewGoalVC: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewGoalVC.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        lowPriority.isHighlighted = true
+        lowPriority.isSelected = true
         if let goal = editGoal{
             nameTF.text = goal.name
             descTF.text = goal.description
             startDP.date = goal.startDate
             endDP.date = goal.deadline
-            //falta manejar la prioridad y el color
+            setPriority(goal: goal)
         }
     }
 
@@ -78,18 +80,21 @@ class NewGoalVC: UIViewController {
                 highPriority.isSelected = false
                 highPriority.isHighlighted = false
                 self.priority = 1
+                return
             case "2":
                 lowPriority.isSelected = false
                 lowPriority.isHighlighted = false
                 highPriority.isSelected = false
                 highPriority.isHighlighted = false
                 self.priority = 2
+                return
             case "3":
                 lowPriority.isSelected = false
                 lowPriority.isHighlighted = false
                 mediumPriority.isSelected = false
                 mediumPriority.isHighlighted = false
                 self.priority = 3
+                return
             default:
                 lowPriority.isSelected = false
                 lowPriority.isHighlighted = false
@@ -98,6 +103,7 @@ class NewGoalVC: UIViewController {
                 highPriority.isSelected = false
                 highPriority.isHighlighted = false
                 self.priority = 1
+                return
             }
         }
     }
@@ -111,6 +117,37 @@ class NewGoalVC: UIViewController {
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setPriority(goal: Goal){
+        switch(goal.priority){
+        case 1:
+            lowPriority.isHighlighted = true
+            lowPriority.isSelected = true
+            mediumPriority.isSelected = false
+            mediumPriority.isHighlighted = false
+            highPriority.isSelected = false
+            highPriority.isHighlighted = false
+            return
+        case 2:
+            lowPriority.isHighlighted = false
+            lowPriority.isSelected = false
+            mediumPriority.isSelected = true
+            mediumPriority.isHighlighted = true
+            highPriority.isSelected = false
+            highPriority.isHighlighted = false
+            return
+        case 3:
+            lowPriority.isHighlighted = false
+            lowPriority.isSelected = false
+            mediumPriority.isSelected = false
+            mediumPriority.isHighlighted = false
+            highPriority.isSelected = true
+            highPriority.isHighlighted = true
+            return
+        default:
+            return
+        }
     }
     /*
     // MARK: - Navigation

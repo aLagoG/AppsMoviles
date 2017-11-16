@@ -74,6 +74,8 @@ class NewTaskVC: UIViewController {
             recurrentSw.isOn = task.recurrent
             initDPV.date = task.recurrentStart
             endDPV.date = task.recurrentEnd
+            setPriority(task: task)
+            setRecurrent(task: task)
             //falta manejar los recurrent days y la prioridad
         }
         
@@ -150,6 +152,7 @@ class NewTaskVC: UIViewController {
             if let tsk = editTask{
                 newItem.id = tsk.id
             }
+
             Store.saveTask(newItem, goal)
             if let gvc = self.parent as? GoalsViewController{
                 gvc.reloadTree()
@@ -277,6 +280,52 @@ class NewTaskVC: UIViewController {
         view.endEditing(true)
     }
 
+    func setPriority(task: Task){
+        switch(task.priority){
+        case 1:
+            lowPriority.isHighlighted = true
+            lowPriority.isSelected = true
+            mediumPriority.isSelected = false
+            mediumPriority.isHighlighted = false
+            highPriority.isSelected = false
+            highPriority.isHighlighted = false
+            return
+        case 2:
+            lowPriority.isHighlighted = false
+            lowPriority.isSelected = false
+            mediumPriority.isSelected = true
+            mediumPriority.isHighlighted = true
+            highPriority.isSelected = false
+            highPriority.isHighlighted = false
+            return
+        case 3:
+            lowPriority.isHighlighted = false
+            lowPriority.isSelected = false
+            mediumPriority.isSelected = false
+            mediumPriority.isHighlighted = false
+            highPriority.isSelected = true
+            highPriority.isHighlighted = true
+            return
+        default:
+            return
+        }
+    }
+    
+    func setRecurrent(task: Task){
+        if (task.recurrent == true){
+            recurrentSw.setOn(true, animated: false)
+        }else{
+            recurrentSw.setOn(false, animated: false)
+        }
+        changeRecurrent()
+        
+        for btn in dayButtons{
+            if (task.recurrentDays.contains(btn.titleLabel!.text!.lowercased())){
+                btn.isHighlighted = true
+                btn.isSelected = true
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

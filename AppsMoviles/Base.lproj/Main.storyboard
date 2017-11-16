@@ -622,7 +622,7 @@
                         <outlet property="endDP" destination="ZW9-XR-eaW" id="qyn-PJ-M8D"/>
                         <outlet property="highPriority" destination="ke4-SQ-ffx" id="z9F-0M-kBA"/>
                         <outlet property="lowPriority" destination="lWW-cU-CgT" id="zL8-gl-Nsk"/>
-                        <outlet property="mediumPriority" destination="ke4-SQ-ffx" id="0IV-yG-Szi"/>
+                        <outlet property="mediumPriority" destination="cbM-sZ-64J" id="KMx-2X-ckd"/>
                         <outlet property="nameTF" destination="t4L-eS-6mN" id="bz1-MI-l5F"/>
                         <outlet property="startDP" destination="V2x-I5-dQV" id="jqU-3L-P5H"/>
                     </connections>

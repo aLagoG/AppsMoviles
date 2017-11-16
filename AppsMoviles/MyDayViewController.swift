@@ -72,41 +72,25 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     }
 
     func returnTodayTasks(taskTree: [Task])->[Task]{
-        var todayTasks = [Task]()
+        var tdTasks = [Task]()
         let formatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "es_MX") as Locale!
         formatter.timeStyle = DateFormatter.Style.none
-        formatter.dateFormat = "DD.MM.YYYY"
-        
-        let date = formatter.string(from: Date())
+        formatter.dateStyle = DateFormatter.Style.full
+        let today = Date()
+        let date = formatter.string(from: today)
         for task in taskTree{
-            if (formatter.string(from: task.deadline) == date){
-                todayTasks.append(task)
-            }
-            if (task.recurrent == true){
-                formatter.dateStyle = DateFormatter.Style.full
-                if (Date() > task.recurrentStart && Date() < task.recurrentEnd){
-                    for day in task.recurrentDays{
-                        if (formatter.string(from: Date()).dropLast(25).contains(day)){
-                            todayTasks.append(task)
-                        }
+            if formatter.string(from: task.deadline) == date{
+                tdTasks.append(task)
+            } else if task.recurrent{
+                if (today >= task.recurrentStart && today <= task.recurrentEnd){
+                    if task.recurrentDays.contains(String(date.prefix(3))){
+                        tdTasks.append(task)
                     }
                 }
             }
         }
-        return todayTasks
-        //PRUEBAS DATE FORMATTER
-        /* let lmao = formatter.string(from: Date())
-         print(lmao)
-         if (Date() < Date(timeInterval: 100000000, since: Date())){
-         print ("sicierto")
-         }
-         print(lmao.dropLast(25))
-         for day in formatter.shortWeekdaySymbols{
-         if (lmao.dropLast(25).contains(day)){
-         print(day)
-         }
-         }*/
+        return tdTasks
     }
     
     func reloadTree(){

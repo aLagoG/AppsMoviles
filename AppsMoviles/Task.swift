@@ -33,6 +33,7 @@ class Task{
         self.priority = priority
         self.description = description
         self.place = place
+        self.recurrent = recurrent
     }
     
     init(deadline: Date, name: String, priority: Int64, description: String, place: String, recurrent: Bool, recurrentStart: Date, recurrentEnd: Date, recurrentDays:[String]){
@@ -41,5 +42,9 @@ class Task{
         self.priority = priority
         self.description = description
         self.place = place
+        self.recurrent = recurrent
+        self.recurrentStart = recurrentStart
+        self.recurrentEnd = recurrentEnd
+        self.recurrentDays = recurrentDays
     }
 }
