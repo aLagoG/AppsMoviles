@@ -273,31 +273,50 @@ class Store{
     }
     
     static func createTestRecords(){
-        print("Creating test records")
-        let T1 = Task(deadline: Date.init(), name: "T1", priority: 1, description: "T1 des",place: "T1 P", recurrent: false)
-        let T2 = Task(deadline: Date.init(), name: "T2", priority: 1, description: "T2 des", place: "T2 P", recurrent: false)
-        let T3 = Task(deadline: Date.init(), name: "T3", priority: 1, description: "T3 des", place: "T3 P", recurrent: false)
-        let T4 = Task(deadline: Date.init(), name: "T4", priority: 1, description: "T4 des", place: "T4 P", recurrent: false)
-        let T5 = Task(deadline: Date.init(), name: "T5", priority: 1, description: "T5 des", place: "T5 P", recurrent: false)
-        let T6 = Task(deadline: Date.init(), name: "T6", priority: 1, description: "T6 des", place: "T6 P", recurrent: false)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
         
-        let g1 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G1", priority: 1, description: "G1 as", color: UIColor.blue, tasks:[T1, T2])
-        let g2 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G2", priority: 2, description: "G2 as", color: UIColor.black,tasks:[T3])
-        let g3 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G3", priority: 3, description: "G3 as", color: UIColor.brown,tasks:[T4, T5])
-        let g4 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G4", priority: 4, description: "G4 as", color: UIColor.blue,tasks:[])
-        let g5 = Goal(deadline: Date.init(), startDate: Date.init(),name: "G5", priority: 5, description: "G5 as", color: UIColor.blue,tasks:[T6])
+        print("Creating test records")
+        print(formatter.string(from: Date()))
+        let T1 = Task(deadline: formatter.date(from: "31-12-2017")! , name: "Salir a correr", priority: 1, description: "", place: "Parque", recurrent: true, recurrentStart: formatter.date(from: "01-01-2017")!, recurrentEnd: formatter.date(from: "31-12-2017")!, recurrentDays:["lun","jue","sáb"])
+        let T2 = Task(deadline: formatter.date(from: "31-12-2017")! , name: "Ir a pilates", priority: 1, description: "", place: "Gimnasio", recurrent: true, recurrentStart: formatter.date(from: "01-01-2017")!, recurrentEnd: formatter.date(from: "31-12-2017")!, recurrentDays:["mar","vie"])
+        
+        let T3 = Task(deadline: formatter.date(from:"23-11-2017")!, name: "Clase de aplicaciones moviles", priority: 2, description: "Clase", place: "CEDETEC Lab 4101", recurrent: true, recurrentStart: formatter.date(from: "08-08-2017")!, recurrentEnd: formatter.date(from: "23-11-2017")!, recurrentDays: ["lun","jue"])
+        let T4 = Task(deadline: formatter.date(from: "21-08-2017")!, name: "Tarea 1", priority: 1, description: "Piedra papel o tijeras", place: "ITESM CEM", recurrent: false)
+        let T5 = Task(deadline: formatter.date(from: "07-09-2017")!, name: "Tarea 2", priority: 1, description: "Multipantallas", place: "ITESM CEM", recurrent: false)
+
+        let T6 = Task(deadline: formatter.date(from: "31-12-2017")!, name: "Ensayo", priority: 1, description: "Ensayo grupal", place: "Teatro", recurrent: true, recurrentStart: formatter.date(from: "01-01-2017")!, recurrentEnd: formatter.date(from: "31-12-2017")!, recurrentDays: ["lun","mar","jue","vie"])
+        let T7 = Task(deadline: formatter.date(from: "31-12-2017")!, name: "Ballet", priority: 1, description: "", place: "Teatro", recurrent: true, recurrentStart: formatter.date(from: "01-01-2017")!, recurrentEnd: formatter.date(from: "31-12-2017")!, recurrentDays: ["sáb","dom"])
+        
+        let T8 = Task(deadline: formatter.date(from:"23-11-2017")!, name: "Clase de programación avanzada", priority: 3, description: "Clase", place: "4109", recurrent: true, recurrentStart: formatter.date(from: "08-08-2017")!, recurrentEnd: formatter.date(from: "23-11-2017")!, recurrentDays: ["lun","jue"])
+        let T9 = Task(deadline: formatter.date(from: "12-10-2017")!, name: "Tarea 1", priority: 1, description: "Ciclos", place: "ITESM CEM", recurrent: false)
+        let T10 = Task(deadline: formatter.date(from: "26-10-2017")!, name: "Tarea 2", priority: 1, description: "Arreglos", place: "ITESM CEM", recurrent: false)
+        let T11 = Task(deadline: formatter.date(from: "26-10-2017")!, name: "Tarea 3", priority: 1, description: "Investigación", place: "ITESM CEM", recurrent: false)
+        
+        let g1 = Goal(deadline: formatter.date(from: "31-12-2017")!, startDate: formatter.date(from: "01-01-2017")!,name: "Bajar de peso", priority: 1, description: "", color: UIColor.blue, tasks:[T1, T2])
+        
+        let g2 = Goal(deadline: formatter.date(from: "23-11-2017")!, startDate: formatter.date(from: "08-08-2017")!,name: "Pasar materia de aplicaciones", priority: 3, description: "Mínimo 85", color: UIColor.black, tasks:[T3,T4,T5])
+        
+        let g3 = Goal(deadline: formatter.date(from: "31-12-2017")!, startDate: formatter.date(from: "01-01-2017")!,name: "Mejorar técnica de baile", priority: 1, description: "¡Práctica!", color: UIColor.brown,tasks:[T6,T7])
+        
+        let g4 = Goal(deadline: formatter.date(from: "23-11-2017")!, startDate: formatter.date(from: "08-08-2017")!,name: "Pasar programación avanzada", priority: 2, description: ";A;", color: UIColor.blue,tasks:[T8,T9,T10,T11])
+        
         
         saveGoal(g1)
         saveGoal(g2)
         saveGoal(g3)
         saveGoal(g4)
-        saveGoal(g5)
         saveTask(T1,g1)
         saveTask(T2,g1)
         saveTask(T3,g2)
-        saveTask(T4,g3)
-        saveTask(T5,g3)
-        saveTask(T6,g5)
+        saveTask(T4,g2)
+        saveTask(T5,g2)
+        saveTask(T6,g3)
+        saveTask(T7,g3)
+        saveTask(T8,g4)
+        saveTask(T9,g4)
+        saveTask(T10,g4)
+        saveTask(T11,g4)
     }
     
 }

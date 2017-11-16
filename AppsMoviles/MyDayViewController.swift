@@ -37,6 +37,7 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         taskTree.delegate = self
         taskTree.treeFooterView = UIView()
         taskTree.backgroundColor = .clear
+        taskTree.allowsSelection = false
         view.addSubview(taskTree)
 
     }

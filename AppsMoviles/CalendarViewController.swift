@@ -65,6 +65,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         taskTree.delegate = self
         taskTree.treeFooterView = UIView()
         taskTree.backgroundColor = .clear
+        taskTree.allowsSelection = false
         view.addSubview(taskTree)
     }
     
