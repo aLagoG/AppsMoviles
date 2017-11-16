@@ -26,6 +26,7 @@ class Store{
     static let recurrent = Expression<Bool>("recurrent")
     static let recurrentStart = Expression<Date>("recurrentStart")
     static let recurrentEnd = Expression<Date>("recurrentEnd")
+    static let finished = Expression<Bool>("finished")
     
     static let recurrentDays = Table("recurrent_days")
     static let task_id = Expression<Int64>("task_id")
@@ -71,6 +72,7 @@ class Store{
                 t.column(recurrent)
                 t.column(recurrentStart)
                 t.column(recurrentEnd)
+                t.column(finished)
                 t.column(goal_id)
                 t.foreignKey(goal_id, references: goals, id)
             })
@@ -111,7 +113,7 @@ class Store{
     static func saveTask(_ task: Task, _ goal: Goal){
         if(task.id == 0){
             do {
-                let tid = try db?.run(tasks.insert(deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd, goal_id <- goal.id))
+                let tid = try db?.run(tasks.insert(deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd, finished <- task.finished, goal_id <- goal.id))
                 task.id = tid!
                 if(task.recurrentDays.count > 0){
                     for d in task.recurrentDays{
@@ -128,7 +130,7 @@ class Store{
         } else {
             do {
                 let toEdit = tasks.filter(id == task.id)
-                try db?.run(toEdit.update(deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd))
+                try db?.run(toEdit.update(deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd, finished <- task.finished))
                 let currentDays = recurrentDays.filter(task_id == task.id)
                 do {
                     try db?.run(currentDays.delete())
@@ -190,6 +192,7 @@ class Store{
                     task.recurrent = row[recurrent]
                     task.recurrentStart = row[recurrentStart]
                     task.recurrentEnd = row[recurrentEnd]
+                    task.finished = row[finished]
                     result.append(task)
                     for dy in (try db?.prepare(recurrentDays.filter(task_id == task.id)))!{
                         task.recurrentDays.append(dy[day])
@@ -218,6 +221,7 @@ class Store{
                     task.recurrent = row[recurrent]
                     task.recurrentStart = row[recurrentStart]
                     task.recurrentEnd = row[recurrentEnd]
+                    task.finished = row[finished]
                     result.append(task)
                     for dy in (try db?.prepare(recurrentDays.filter(task_id == task.id)))!{
                         task.recurrentDays.append(dy[day])
