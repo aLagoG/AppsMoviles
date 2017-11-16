@@ -22,7 +22,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         return formatter
     }()
     
-    fileprivate let gregorian: NSCalendar! = NSCalendar(calendarIdentifier:NSCalendar.Identifier.gregorian)
+    fileprivate let gregorian: Calendar = Calendar(identifier: Calendar.Identifier.gregorian)
     
     var tasks:[Task] = []
     var tasksPerDay:[String:[Task]] = [:]
@@ -72,7 +72,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     // MARK:- FSCalendarDataSource
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let day = formatter.string(from: date)
-        print(day)
         if tasksPerDay[day] != nil{
             return tasksPerDay[day]!.count
         }else{
@@ -146,11 +145,32 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         self.tasks = Store.getTasks()
         tasksPerDay = [:]
         for task in tasks{
-            let day = formatter.string(from: task.deadline)
-            if tasksPerDay[day] != nil{
-                tasksPerDay[day]?.append(task)
+            //hanlde when deadline is same date as recurrent
+            let ddl = formatter.string(from: task.deadline)
+            if task.recurrent{
+                for day in task.recurrentDayIndexes(){
+                    var ld = task.recurrentStart
+                    while true {
+                        ld = gregorian.nextDate(after: ld, matching: DateComponents(weekday: day), matchingPolicy: Calendar.MatchingPolicy.nextTime)!
+                        if ld > task.recurrentEnd{
+                            break
+                        }
+                        let frm = formatter.string(from: ld)
+                        if frm == ddl{
+                            continue
+                        }
+                        if tasksPerDay[frm] != nil{
+                            tasksPerDay[frm]?.append(task)
+                        }else{
+                            tasksPerDay[frm] = [task]
+                        }
+                    }
+                }
+            }
+            if tasksPerDay[ddl] != nil{
+                tasksPerDay[ddl]?.append(task)
             }else{
-                tasksPerDay[day] = [task]
+                tasksPerDay[ddl] = [task]
             }
         }
         self.calendar.reloadData()
@@ -175,7 +195,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             index = (self.tasksPerDay[self.formatter.string(from: self.calendar.selectedDate!)]!.index(where: {Task in
                 return Task === task
             }))!
-            print(index)
             Store.deleteTask(task!)
             self.tasksPerDay[self.formatter.string(from: self.calendar.selectedDate!)]!.remove(at: index)
             self.taskTree.deleteItems(at: IndexSet(integer: index), inParent: nil, with: RATreeViewRowAnimation.init(1))

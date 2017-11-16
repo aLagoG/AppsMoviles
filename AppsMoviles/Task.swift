@@ -47,4 +47,9 @@ class Task{
         self.recurrentEnd = recurrentEnd
         self.recurrentDays = recurrentDays
     }
+    
+    func recurrentDayIndexes()->[Int]{
+        let days = ["dom","lun","mar","mié","jue","vie","sáb"]
+        return recurrentDays.map({day in days.index(of: day)!+1})
+    }
 }
