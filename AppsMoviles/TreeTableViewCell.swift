@@ -63,7 +63,5 @@ class TreeTableViewCell : UITableViewCell {
         customTitleLabel.textColor = UIColor.lightGray
         detailsLabel.textColor = UIColor.lightGray
     }
-    
-
 
 }

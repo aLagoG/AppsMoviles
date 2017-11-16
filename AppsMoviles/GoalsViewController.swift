@@ -64,6 +64,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             let level = 0
             cell.selectionStyle = .none
             cell.setup(withTitle: goal.name, detailsText: detailText, level: level, additionalButtonHidden: false)
+
             goal.isFinished()
             if (goal.finished == true){
                 cell.done()

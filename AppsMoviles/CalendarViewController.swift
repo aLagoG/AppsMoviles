@@ -68,7 +68,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     // MARK:- FSCalendarDataSource
-    
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let day = formatter.string(from: date)
         print(day)
