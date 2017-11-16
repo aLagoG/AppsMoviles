@@ -34,6 +34,9 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         tabBarItem.selectedImage = tabBarItem.image
     }
     
+    @IBAction func addButtonCLick(_ sender: Any) {
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tasks = Store.getTasks()
