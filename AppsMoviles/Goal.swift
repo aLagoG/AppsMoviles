@@ -36,6 +36,7 @@ class Goal{
     }
     
     func countTasksDone()->Int{
+        tasksDone = 0
         for task in tasks {
             if task.finished == true {
                 tasksDone = tasksDone + 1

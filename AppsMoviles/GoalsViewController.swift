@@ -58,20 +58,18 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     //funcion para crear las celdas de la tabla con las metas y tareas
     func treeView(_ treeView: RATreeView, cellForItem item: Any?) -> UITableViewCell {
         let cell = treeView.dequeueReusableCell(withIdentifier: String(describing: TreeTableViewCell.self)) as! TreeTableViewCell
-        if item.debugDescription == "Optional(AppsMoviles.Goal)"{
-            let item = item as! Goal
-            let doneTasks = item.countTasksDone()
-            let detailText = "Tareas hechas: \(doneTasks) de \(item.tasks.count)"
+        if let goal = item as? Goal{
+            let doneTasks = goal.countTasksDone()
+            let detailText = "Tareas hechas: \(doneTasks) de \(goal.tasks.count)"
             let level = 0
             cell.selectionStyle = .none
-            cell.setup(withTitle: item.name, detailsText: detailText, level: level, additionalButtonHidden: false)
+            cell.setup(withTitle: goal.name, detailsText: detailText, level: level, additionalButtonHidden: false)
 
-        }else if item.debugDescription == "Optional(AppsMoviles.Task)"{
-            let item = item as! Task
-            let detailText = item.description
+        }else if let task = item as? Task{
+            let detailText = task.description
             let level = 1
             cell.selectionStyle = .none
-            cell.setup(withTitle: item.name, detailsText: detailText, level: level, additionalButtonHidden: true)
+            cell.setup(withTitle: task.name, detailsText: detailText, level: level, additionalButtonHidden: true)
         }
 
         cell.additionButtonActionBlock = { [weak treeView] cell in
