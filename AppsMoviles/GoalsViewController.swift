@@ -10,10 +10,7 @@ import UIKit
 import RATreeView
 
 class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataSource {
-    
-    
 
-    
     var goalLst=[Goal]()
     var goals : RATreeView!
     var expansions: [Int64: Bool] = [Int64: Bool]()
@@ -32,9 +29,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         goals.treeFooterView = UIView()
         goals.backgroundColor = .clear
         view.addSubview(goals)
-        
-        goals.allowsSelection = true
-        goals.allowsMultipleSelection = false
+   
     }
 
     override func didReceiveMemoryWarning() {
@@ -190,7 +185,6 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
                 alert.addAction(actioncontinue)
                 self.present(alert, animated: true, completion: nil)
             }else if let task = item as? Task{
-                print("Task")
                 let parent = self.goals.parent(forItem: task) as? Goal
                 index = (parent?.tasks.index(where: { Task in
                     return Task === task

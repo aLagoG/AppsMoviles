@@ -219,49 +219,49 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8c-fB-a9Z">
                                                         <rect key="frame" x="0.0" y="0.0" width="57" height="30"/>
-                                                        <state key="normal" title="L"/>
+                                                        <state key="normal" title="Lun"/>
                                                         <connections>
                                                             <action selector="selected:" destination="arX-fB-jBH" eventType="touchUpInside" id="CXb-qn-7s1"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ecx-UP-iEf">
                                                         <rect key="frame" x="57.000000000000007" y="0.0" width="56.666666666666679" height="30"/>
-                                                        <state key="normal" title="M"/>
+                                                        <state key="normal" title="Mar"/>
                                                         <connections>
                                                             <action selector="selected:" destination="arX-fB-jBH" eventType="touchUpInside" id="4Qw-QV-pfv"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3Z-yZ-ROu">
                                                         <rect key="frame" x="113.66666666666666" y="0.0" width="56.999999999999972" height="30"/>
-                                                        <state key="normal" title="Mi"/>
+                                                        <state key="normal" title="Mié"/>
                                                         <connections>
                                                             <action selector="selected:" destination="arX-fB-jBH" eventType="touchUpInside" id="cD3-3P-6zv"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pS4-Fa-dxX">
                                                         <rect key="frame" x="170.66666666666666" y="0.0" width="56.666666666666686" height="30"/>
-                                                        <state key="normal" title="J"/>
+                                                        <state key="normal" title="Jue"/>
                                                         <connections>
                                                             <action selector="selected:" destination="arX-fB-jBH" eventType="touchUpInside" id="HL9-Rj-5u5"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZrF-IA-Qpo">
                                                         <rect key="frame" x="227.33333333333331" y="0.0" width="56.999999999999943" height="30"/>
-                                                        <state key="normal" title="V"/>
+                                                        <state key="normal" title="Vie"/>
                                                         <connections>
                                                             <action selector="selected:" destination="arX-fB-jBH" eventType="touchUpInside" id="y79-BQ-CAu"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMr-iN-SkC">
                                                         <rect key="frame" x="284.33333333333326" y="0.0" width="56.666666666666686" height="30"/>
-                                                        <state key="normal" title="S"/>
+                                                        <state key="normal" title="Sáb"/>
                                                         <connections>
                                                             <action selector="selected:" destination="arX-fB-jBH" eventType="touchUpInside" id="AkS-H9-GNc"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5K-QG-EDc">
                                                         <rect key="frame" x="341" y="0.0" width="57" height="30"/>
-                                                        <state key="normal" title="D"/>
+                                                        <state key="normal" title="Dom"/>
                                                         <connections>
                                                             <action selector="selected:" destination="arX-fB-jBH" eventType="touchUpInside" id="v8F-ns-Dlf"/>
                                                         </connections>

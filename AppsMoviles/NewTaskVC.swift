@@ -244,7 +244,7 @@ class NewTaskVC: UIViewController {
     func getRecurrentDays(){
         for days in dayButtons{
             if days.isSelected == true{
-                recurrentDays.append((days.titleLabel?.text!)!)
+                recurrentDays.append((days.titleLabel?.text!)!.lowercased())
             }
         }
     }
