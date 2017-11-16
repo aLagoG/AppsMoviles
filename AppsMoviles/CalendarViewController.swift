@@ -14,6 +14,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet
     weak var calendarHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet var rootView: UIView!
+    
     fileprivate let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
@@ -32,21 +34,10 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         tabBarItem.selectedImage = tabBarItem.image
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if UIDevice.current.model.hasPrefix("iPad") {
-            self.calendarHeightConstraint.constant = 400
-        }
-        
-        self.calendar.appearance.caseOptions = [.headerUsesUpperCase,.weekdayUsesUpperCase]
-        
-        let scopeGesture = UIPanGestureRecognizer(target: self.calendar, action: #selector(self.calendar.handleScopeGesture(_:)))
-        self.calendar.addGestureRecognizer(scopeGesture)
-        
-        self.calendar.locale = NSLocale(localeIdentifier: "es_MX") as Locale
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
         self.tasks = Store.getTasks()
+        tasksPerDay = [:]
         for task in tasks{
             let day = formatter.string(from: task.deadline)
             if tasksPerDay[day] != nil{
@@ -55,12 +46,32 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                 tasksPerDay[day] = [task]
             }
         }
+        self.calendar.reloadData()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.calendar.appearance.caseOptions = [.headerUsesUpperCase,.weekdayUsesUpperCase]
+        
+        let scopeGesture = UIPanGestureRecognizer(target: self.calendar, action: #selector(self.calendar.handleScopeGesture(_:)))
+        self.calendar.addGestureRecognizer(scopeGesture)
+        
+        self.calendar.locale = NSLocale(localeIdentifier: "es_MX") as Locale
+        
+        self.calendarHeightConstraint.constant = self.view.bounds.height / 2
+        self.view.layoutIfNeeded()
+        
+        if UIDevice.current.model.hasPrefix("iPad") {
+            self.calendarHeightConstraint.constant = 400
+        }
     }
     
     // MARK:- FSCalendarDataSource
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let day = formatter.string(from: date)
+        print(day)
         if tasksPerDay[day] != nil{
             return tasksPerDay[day]!.count
         }else{

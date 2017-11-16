@@ -997,6 +997,7 @@
                     <connections>
                         <outlet property="calendar" destination="Fxy-w2-j91" id="hil-jW-2Cx"/>
                         <outlet property="calendarHeightConstraint" destination="AZp-9P-MKn" id="TlK-Jp-5qE"/>
+                        <outlet property="rootView" destination="9YH-ec-D9K" id="BAl-Il-LT5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6kd-jx-Zl7" sceneMemberID="firstResponder"/>
