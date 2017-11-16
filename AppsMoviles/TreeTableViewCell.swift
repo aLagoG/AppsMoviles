@@ -57,5 +57,9 @@ class TreeTableViewCell : UITableViewCell {
             action(self)
         }
     }
+    func done(){
+        customTitleLabel.textColor = UIColor.lightGray
+        detailsLabel.textColor = UIColor.lightGray
+    }
 
 }
