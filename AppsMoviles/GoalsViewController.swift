@@ -10,20 +10,19 @@ import UIKit
 import RATreeView
 
 class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataSource {
-    
-    
 
-    
     var goalLst=[Goal]()
     var goals : RATreeView!
     var expansions: [Int64: Bool] = [Int64: Bool]()
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.reloadTree()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        goalLst = Store.getGoals()
-        // Do any additional setup after loading the view.
         goals = RATreeView(frame: CGRect(x: 0 , y: 80, width: self.view.frame.width, height: self.view.frame.height * 0.7))
         goals.register(UINib(nibName: String(describing: TreeTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TreeTableViewCell.self))
         goals.autoresizingMask = [.flexibleWidth,.flexibleHeight]
@@ -32,9 +31,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         goals.treeFooterView = UIView()
         goals.backgroundColor = .clear
         view.addSubview(goals)
-        
-        goals.allowsSelection = true
-        goals.allowsMultipleSelection = false
+   
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,20 +58,18 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     //funcion para crear las celdas de la tabla con las metas y tareas
     func treeView(_ treeView: RATreeView, cellForItem item: Any?) -> UITableViewCell {
         let cell = treeView.dequeueReusableCell(withIdentifier: String(describing: TreeTableViewCell.self)) as! TreeTableViewCell
-        if item.debugDescription == "Optional(AppsMoviles.Goal)"{
-            let item = item as! Goal
-            let doneTasks = item.countTasksDone()
-            let detailText = "Tareas hechas: \(doneTasks) de \(item.tasks.count)"
+        if let goal = item as? Goal{
+            let doneTasks = goal.countTasksDone()
+            let detailText = "Tareas hechas: \(doneTasks) de \(goal.tasks.count)"
             let level = 0
             cell.selectionStyle = .none
-            cell.setup(withTitle: item.name, detailsText: detailText, level: level, additionalButtonHidden: false)
+            cell.setup(withTitle: goal.name, detailsText: detailText, level: level, additionalButtonHidden: false)
 
-        }else if item.debugDescription == "Optional(AppsMoviles.Task)"{
-            let item = item as! Task
-            let detailText = item.description
+        }else if let task = item as? Task{
+            let detailText = task.description
             let level = 1
             cell.selectionStyle = .none
-            cell.setup(withTitle: item.name, detailsText: detailText, level: level, additionalButtonHidden: true)
+            cell.setup(withTitle: task.name, detailsText: detailText, level: level, additionalButtonHidden: true)
         }
 
         cell.additionButtonActionBlock = { [weak treeView] cell in
@@ -190,7 +185,6 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
                 alert.addAction(actioncontinue)
                 self.present(alert, animated: true, completion: nil)
             }else if let task = item as? Task{
-                print("Task")
                 let parent = self.goals.parent(forItem: task) as? Goal
                 index = (parent?.tasks.index(where: { Task in
                     return Task === task

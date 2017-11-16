@@ -18,6 +18,7 @@ class Store{
     static let name = Expression<String>("name")
     static let priority = Expression<Int64>("priority")
     static let description = Expression<String>("description")
+    static let finished = Expression<Bool>("finished")
     static let color = Expression<Int64>("color")
     
     static let tasks = Table("tasks")
@@ -54,6 +55,7 @@ class Store{
                 t.column(name)
                 t.column(priority)
                 t.column(description)
+                t.column(finished)
                 t.column(color)
             })
         } catch  {
@@ -71,6 +73,7 @@ class Store{
                 t.column(recurrent)
                 t.column(recurrentStart)
                 t.column(recurrentEnd)
+                t.column(finished)
                 t.column(goal_id)
                 t.foreignKey(goal_id, references: goals, id)
             })
@@ -92,7 +95,7 @@ class Store{
     static func saveGoal(_ goal: Goal){
         if(goal.id == 0){
             do {
-                let gid = try db?.run(goals.insert(deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, color <- colorToRGB(goal.color)))
+                let gid = try db?.run(goals.insert(deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, finished <- goal.finished, color <- colorToRGB(goal.color)))
                 goal.id = gid!
             }catch  {
                 print("Error creating goal")
@@ -100,7 +103,7 @@ class Store{
         }else{
             do {
                 let toEdit = goals.filter(id == goal.id)
-                try db?.run(toEdit.update(deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, color <- colorToRGB(goal.color)))
+                try db?.run(toEdit.update(deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, finished <- goal.finished, color <- colorToRGB(goal.color)))
             } catch {
                 print("Error updating goal: \(error)")
             }
@@ -111,7 +114,7 @@ class Store{
     static func saveTask(_ task: Task, _ goal: Goal){
         if(task.id == 0){
             do {
-                let tid = try db?.run(tasks.insert(deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd, goal_id <- goal.id))
+                let tid = try db?.run(tasks.insert(deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd, finished <- task.finished, goal_id <- goal.id))
                 task.id = tid!
                 if(task.recurrentDays.count > 0){
                     for d in task.recurrentDays{
@@ -128,7 +131,7 @@ class Store{
         } else {
             do {
                 let toEdit = tasks.filter(id == task.id)
-                try db?.run(toEdit.update(deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd))
+                try db?.run(toEdit.update(deadline <- task.deadline, name <- task.name, priority <- task.priority, description <- task.description, place <- task.place, recurrent <- task.recurrent, recurrentStart <- task.recurrentStart, recurrentEnd <- task.recurrentEnd, finished <- task.finished))
                 let currentDays = recurrentDays.filter(task_id == task.id)
                 do {
                     try db?.run(currentDays.delete())
@@ -190,6 +193,7 @@ class Store{
                     task.recurrent = row[recurrent]
                     task.recurrentStart = row[recurrentStart]
                     task.recurrentEnd = row[recurrentEnd]
+                    task.finished = row[finished]
                     result.append(task)
                     for dy in (try db?.prepare(recurrentDays.filter(task_id == task.id)))!{
                         task.recurrentDays.append(dy[day])
@@ -218,6 +222,7 @@ class Store{
                     task.recurrent = row[recurrent]
                     task.recurrentStart = row[recurrentStart]
                     task.recurrentEnd = row[recurrentEnd]
+                    task.finished = row[finished]
                     result.append(task)
                     for dy in (try db?.prepare(recurrentDays.filter(task_id == task.id)))!{
                         task.recurrentDays.append(dy[day])

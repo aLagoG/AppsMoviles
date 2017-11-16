@@ -151,7 +151,11 @@ class NewTaskVC: UIViewController {
                 newItem.id = tsk.id
             }
             Store.saveTask(newItem, goal)
-            (self.parent as! GoalsViewController).reloadTree()
+            if let gvc = self.parent as? GoalsViewController{
+                gvc.reloadTree()
+            }else if let mdc = self.parent as? MyDayViewController{
+                mdc.reloadTree()
+            }
             self.view.removeFromSuperview()
         }
         
@@ -244,7 +248,7 @@ class NewTaskVC: UIViewController {
     func getRecurrentDays(){
         for days in dayButtons{
             if days.isSelected == true{
-                recurrentDays.append((days.titleLabel?.text!)!)
+                recurrentDays.append((days.titleLabel?.text!)!.lowercased())
             }
         }
     }

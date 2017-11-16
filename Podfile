@@ -7,5 +7,4 @@ target ‘AppsMoviles’ do
 
   pod 'SQLite.swift', '~> 0.11.4'
   pod 'RATreeView', '~> 2.1.2'
-  pod 'JTAppleCalendar'
 end

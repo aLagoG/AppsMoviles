@@ -18,6 +18,7 @@ class Goal{
     var description: String = ""
     var color: UIColor = UIColor.clear
     var tasks: [Task] = []
+    var finished: Bool = false
     var tasksDone: Int = 0
     
     init(){
@@ -36,6 +37,7 @@ class Goal{
     }
     
     func countTasksDone()->Int{
+        tasksDone = 0
         for task in tasks {
             if task.finished == true {
                 tasksDone = tasksDone + 1
