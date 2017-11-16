@@ -142,7 +142,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     
     func treeView(_ treeView: RATreeView, commit editingStyle: UITableViewCellEditingStyle, forRowForItem item: Any) {
         guard editingStyle == .delete else { return; }
-
+    
         
     }
     

@@ -123,7 +123,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        //mailComposerVC.setToRecipients([])
+        //mailComposerVC.setToRecipients([RegisterViewController.register(RegisterViewController)])
         mailComposerVC.setSubject("Resumen semanal - It's Time!")
         mailComposerVC.setMessageBody("¡Hola! Aquí tienes el resumen de tu semana. ¡A trabajar!", isHTML: false)
         
