@@ -23,7 +23,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        goals = RATreeView(frame: CGRect(x: 0 , y: 80, width: self.view.frame.width, height: self.view.frame.height * 0.7))
+        goals = RATreeView(frame: CGRect(x: 0 , y: 80, width: self.view.frame.width, height: self.view.frame.height - 100))
         goals.register(UINib(nibName: String(describing: TreeTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TreeTableViewCell.self))
         goals.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         goals.dataSource = self

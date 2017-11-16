@@ -6,7 +6,7 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate{
+class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, RATreeViewDelegate, RATreeViewDataSource{
     
     @IBOutlet
     weak var calendar: FSCalendar!
@@ -26,6 +26,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     
     var tasks:[Task] = []
     var tasksPerDay:[String:[Task]] = [:]
+    var todayTasks = [Task]()
+    var taskTree : RATreeView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -47,6 +49,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             }
         }
         self.calendar.reloadData()
+        self.reloadTree()
     }
     
     override func viewDidLoad() {
@@ -65,6 +68,15 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         if UIDevice.current.model.hasPrefix("iPad") {
             self.calendarHeightConstraint.constant = 400
         }
+        
+        taskTree = RATreeView(frame: CGRect(x: 0, y: self.calendarHeightConstraint.constant, width: self.view.frame.width, height: self.view.frame.height - self.calendarHeightConstraint.constant - 50))
+        taskTree.register(UINib(nibName: String(describing: TreeTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TreeTableViewCell.self))
+        taskTree.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        taskTree.dataSource = self
+        taskTree.delegate = self
+        taskTree.treeFooterView = UIView()
+        taskTree.backgroundColor = .clear
+        view.addSubview(taskTree)
     }
     
     // MARK:- FSCalendarDataSource
@@ -102,6 +114,115 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendarHeightConstraint.constant = bounds.height
         self.view.layoutIfNeeded()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func treeView(_ treeView: RATreeView, numberOfChildrenOfItem item: Any?) -> Int {
+        return todayTasks.count
+    }
+    
+    func treeView(_ treeView: RATreeView, cellForItem item: Any?) -> UITableViewCell {
+        let cell = treeView.dequeueReusableCell(withIdentifier: String(describing: TreeTableViewCell.self)) as! TreeTableViewCell
+        let item = item as! Task
+        let level = 0
+        cell.setup(withTitle: item.name, detailsText: item.description, level: level, additionalButtonHidden: true)
+        if (item.finished == true){
+            cell.done()
+        }
+        return cell
+    }
+    
+    func treeView(_ treeView: RATreeView, child index: Int, ofItem item: Any?) -> Any {
+        return todayTasks[index]
+    }
+    
+    func returnTodayTasks(taskTree: [Task])->[Task]{
+        var todayTasks = [Task]()
+        let formatter = DateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "es_MX") as Locale!
+        formatter.timeStyle = DateFormatter.Style.none
+        formatter.dateFormat = "DD.MM.YYYY"
+        
+        let date = formatter.string(from: Date())
+        for task in taskTree{
+            if (formatter.string(from: task.deadline) == date){
+                todayTasks.append(task)
+            }
+            if (task.recurrent == true){
+                formatter.dateStyle = DateFormatter.Style.full
+                if (Date() > task.recurrentStart && Date() < task.recurrentEnd){
+                    for day in task.recurrentDays{
+                        if (formatter.string(from: Date()).dropLast(25).contains(day)){
+                            todayTasks.append(task)
+                        }
+                    }
+                }
+            }
+        }
+        return todayTasks
+        //PRUEBAS DATE FORMATTER
+        /* let lmao = formatter.string(from: Date())
+         print(lmao)
+         if (Date() < Date(timeInterval: 100000000, since: Date())){
+         print ("sicierto")
+         }
+         print(lmao.dropLast(25))
+         for day in formatter.shortWeekdaySymbols{
+         if (lmao.dropLast(25).contains(day)){
+         print(day)
+         }
+         }*/
+    }
+    
+    func reloadTree(){
+        todayTasks = returnTodayTasks(taskTree: Store.getTasks())
+        taskTree.reloadData()
+    }
+    
+    func treeView(_ treeView: RATreeView, editActionsForItem item: Any) -> [Any] {
+        let moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Editar", handler:{action, indexpath in
+            let task = item as? Task
+            let popUpVC = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "newTaskPopUp") as! NewTaskVC
+            popUpVC.editTask = task
+            self.addChildViewController(popUpVC)
+            popUpVC.view.frame = self.view.frame
+            self.view.addSubview(popUpVC.view)
+            popUpVC.didMove(toParentViewController: self)
+            self.taskTree.reloadRows()
+        });
+        moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
+        
+        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler:{action, indexpath in
+            var index: Int = 0
+            let task = item as? Task
+            index = (self.todayTasks.index(where: {Task in
+                return Task === task
+            }))!
+            print(index)
+            Store.deleteTask(task!)
+            self.todayTasks.remove(at: index)
+            self.taskTree.deleteItems(at: IndexSet(integer: index), inParent: nil, with: RATreeViewRowAnimation.init(1))
+        });
+        
+        let doneRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Hecho", handler:{action, indexpath in
+            let item = item as! Task
+            let cell = treeView.cell(forItem: item) as! TreeTableViewCell
+            cell.done()
+            item.finished = true
+            Store.saveTask(item, Goal())
+            self.taskTree.reloadData()
+        });
+        doneRowAction.backgroundColor = UIColor.lightGray
+        return [deleteRowAction, moreRowAction, doneRowAction];
+    }
+    
+    
+    func treeView(_ treeView: RATreeView, shouldExpandRowForItem item: Any) -> Bool {
+        return false
     }
 }
 
