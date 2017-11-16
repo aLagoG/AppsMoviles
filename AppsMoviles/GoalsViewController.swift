@@ -69,6 +69,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             if (goal.finished == true){
                 cell.done()
             }
+            cell.setColor(goal.priority)
         }else if let task = item as? Task{
             let detailText = task.description
             let level = 1
@@ -77,6 +78,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             if (task.finished == true){
                 cell.done()
             }
+            cell.setColor(task.priority)
         }
 
         cell.additionButtonActionBlock = { [weak treeView] cell in

@@ -64,6 +64,7 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         if (item.finished == true){
             cell.done()
         }
+        cell.setColor(item.priority)
         return cell
     }
     

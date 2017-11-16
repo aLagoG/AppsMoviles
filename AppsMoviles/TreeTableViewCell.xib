@@ -23,6 +23,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" misplaced="YES" id="NvM-VW-Aqc">
+                        <rect key="frame" x="8" y="11" width="22" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="5Fv-ZW-F0k" userLabel="Addition button">
                         <rect key="frame" x="289" y="11" width="22" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -31,14 +35,14 @@
                         </connections>
                     </button>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="sadsasgggd" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rMm-gk-ZJo">
-                        <rect key="frame" x="8" y="27" width="261" height="16"/>
+                        <rect key="frame" x="38" y="27" width="243" height="16"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="gggg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="csr-Kq-yjj">
-                        <rect key="frame" x="8" y="0.0" width="261" height="24"/>
+                        <rect key="frame" x="38" y="0.0" width="243" height="24"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="20"/>
                         <nil key="highlightedColor"/>
@@ -49,8 +53,9 @@
                 <outlet property="additionalButton" destination="5Fv-ZW-F0k" id="B4s-i4-Vi6"/>
                 <outlet property="customTitleLabel" destination="csr-Kq-yjj" id="hHJ-3s-jYA"/>
                 <outlet property="detailsLabel" destination="rMm-gk-ZJo" id="IhS-fV-gIv"/>
+                <outlet property="priorityColor" destination="NvM-VW-Aqc" id="7uw-J6-q4V"/>
             </connections>
-            <point key="canvasLocation" x="51" y="168"/>
+            <point key="canvasLocation" x="3" y="185"/>
         </tableViewCell>
     </objects>
 </document>

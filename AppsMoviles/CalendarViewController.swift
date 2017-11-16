@@ -129,6 +129,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         if (item.finished == true){
             cell.done()
         }
+        cell.setColor(item.priority)
         return cell
     }
     
