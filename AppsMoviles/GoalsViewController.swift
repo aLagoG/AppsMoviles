@@ -141,7 +141,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         goals.reloadData()
         for goal in goalLst{
             if expansions[goal.id] != nil{
-                goals.expandRow(forItem: goal)
+                goals.expandRow(forItem: goal, with: .init(1))
             }
         }
     }
@@ -208,7 +208,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             cell.done()
             item.finished = true
             Store.saveTask(item, Goal())
-            self.goals.reloadData()
+            self.reloadTree()
         });
         doneRowAction.backgroundColor = UIColor.lightGray
         if item is Task{
