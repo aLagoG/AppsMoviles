@@ -300,7 +300,7 @@
 				TargetAttributes = {
 					AFB62A691F61E4180031CFC8 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 758NTXUB5T;
+						DevelopmentTeam = 5H3LC3329V;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -566,12 +566,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 758NTXUB5T;
+				DEVELOPMENT_TEAM = 5H3LC3329V;
 				HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/\"/**";
 				INFOPLIST_FILE = AppsMoviles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"DEBUG\"";
-				PRODUCT_BUNDLE_IDENTIFIER = mx.egsh.AppsMoviles;
+				PRODUCT_BUNDLE_IDENTIFIER = mx.dlg.AppsMoviles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AppsMoviles/Bridge-Header.h";
@@ -586,11 +586,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 758NTXUB5T;
+				DEVELOPMENT_TEAM = 5H3LC3329V;
 				HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/\"/**";
 				INFOPLIST_FILE = AppsMoviles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mx.egsh.AppsMoviles;
+				PRODUCT_BUNDLE_IDENTIFIER = mx.dlg.AppsMoviles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AppsMoviles/Bridge-Header.h";
