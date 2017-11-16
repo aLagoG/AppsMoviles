@@ -180,16 +180,29 @@ class NewTaskVC: UIViewController {
         let calendar = Calendar.current
         var date = DateComponents()
         date.day = calendar.component(.day, from: deadline)
-        date.hour = 12
-        date.minute = 00
+        date.hour = 15
+        date.minute = 52
+        
+        var date2 = DateComponents()
+        date2.day = calendar.component(.day, from: deadline)
+        date2.hour = 15
+        date2.minute = 52
     
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         let request = UNNotificationRequest(identifier: "timerDone", content: content , trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
+        if task.recurrent == false{
         let triHora = UNCalendarNotificationTrigger(dateMatching: date , repeats: false)
-        let request2 = UNNotificationRequest(identifier: "deadline", content: content2 , trigger: triHora)
+        let request1 = UNNotificationRequest(identifier: "deadline", content: content2 , trigger: triHora)
+            UNUserNotificationCenter.current().add(request1, withCompletionHandler: nil)
+        }
+        
+        if task.recurrent == true{
+        let triHora2 = UNCalendarNotificationTrigger(dateMatching: date2 , repeats: false)
+        let request2 = UNNotificationRequest(identifier: "end", content: content2 , trigger: triHora2)
         UNUserNotificationCenter.current().add(request2, withCompletionHandler: nil)
+        }
         
         }
     
