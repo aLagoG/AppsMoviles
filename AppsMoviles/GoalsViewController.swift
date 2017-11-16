@@ -213,8 +213,10 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             self.reloadTree()
         });
         doneRowAction.backgroundColor = UIColor.lightGray
-        if item is Task{
-            return [deleteRowAction, moreRowAction, doneRowAction];
+        if let task = item as? Task{
+            if task.recurrent == false{
+                return [deleteRowAction, moreRowAction, doneRowAction];
+            }
         }
         return[deleteRowAction, moreRowAction]
     }
