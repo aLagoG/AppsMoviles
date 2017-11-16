@@ -56,7 +56,6 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         let level = 0
         cell.setup(withTitle: item.name, detailsText: item.description, level: level, additionalButtonHidden: true)
         if (item.finished == true){
-            print(item.name)
             cell.done()
         }
         return cell
