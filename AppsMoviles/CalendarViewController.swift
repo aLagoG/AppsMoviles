@@ -211,6 +211,11 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             self.taskTree.reloadData()
         });
         doneRowAction.backgroundColor = UIColor.lightGray
+        
+        let task = item as! Task
+        if task.recurrent{
+            return [deleteRowAction, moreRowAction];
+        }
         return [deleteRowAction, moreRowAction, doneRowAction];
     }
     
