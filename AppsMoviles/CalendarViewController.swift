@@ -72,6 +72,9 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         print("change page to \(self.formatter.string(from: calendar.currentPage))")
+        if let date = self.calendar.selectedDate{
+            self.calendar.deselect(date)
+        }
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -80,6 +83,11 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             calendar.setCurrentPage(date, animated: true)
         }
     }
+    
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("calendar did un-select date \(self.formatter.string(from: date))")
+    }
+    
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendarHeightConstraint.constant = bounds.height
