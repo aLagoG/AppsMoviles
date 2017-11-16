@@ -696,9 +696,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXe-tO-fBo">
                                         <rect key="frame" x="0.0" y="219.66666666666669" width="375" height="219.66666666666669"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="16"/>
-                                        <state key="normal" title="Enviar correo semanal">
-                                            <color key="titleColor" red="0.18397750812252281" green="0.65736318005181349" blue="0.29928959405892963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
+                                        <state key="normal" title="Enviar resumen de la semana por correo"/>
                                         <connections>
                                             <action selector="enviarCorreo:" destination="pTs-Ot-icZ" eventType="touchUpInside" id="BF5-zt-mCu"/>
                                         </connections>
