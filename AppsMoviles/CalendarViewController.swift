@@ -26,7 +26,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     
     var tasks:[Task] = []
     var tasksPerDay:[String:[Task]] = [:]
-    var todayTasks = [Task]()
     var taskTree : RATreeView!
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,17 +37,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tasks = Store.getTasks()
-        tasksPerDay = [:]
-        for task in tasks{
-            let day = formatter.string(from: task.deadline)
-            if tasksPerDay[day] != nil{
-                tasksPerDay[day]?.append(task)
-            }else{
-                tasksPerDay[day] = [task]
-            }
-        }
-        self.calendar.reloadData()
+        self.reloadCalendar()
         self.reloadTree()
     }
     
@@ -104,10 +93,12 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         if monthPosition == .previous || monthPosition == .next {
             calendar.setCurrentPage(date, animated: true)
         }
+        self.reloadTree()
     }
     
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("calendar did un-select date \(self.formatter.string(from: date))")
+        self.reloadTree()
     }
     
     
@@ -122,7 +113,12 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     func treeView(_ treeView: RATreeView, numberOfChildrenOfItem item: Any?) -> Int {
-        return todayTasks.count
+        if let selectedDate = self.calendar.selectedDate{
+            if let tasksToday = tasksPerDay[formatter.string(from: selectedDate)]{
+                return tasksToday.count
+            }
+        }
+        return 0
     }
     
     func treeView(_ treeView: RATreeView, cellForItem item: Any?) -> UITableViewCell {
@@ -137,50 +133,25 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     func treeView(_ treeView: RATreeView, child index: Int, ofItem item: Any?) -> Any {
-        return todayTasks[index]
-    }
-    
-    func returnTodayTasks(taskTree: [Task])->[Task]{
-        var todayTasks = [Task]()
-        let formatter = DateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "es_MX") as Locale!
-        formatter.timeStyle = DateFormatter.Style.none
-        formatter.dateFormat = "DD.MM.YYYY"
-        
-        let date = formatter.string(from: Date())
-        for task in taskTree{
-            if (formatter.string(from: task.deadline) == date){
-                todayTasks.append(task)
-            }
-            if (task.recurrent == true){
-                formatter.dateStyle = DateFormatter.Style.full
-                if (Date() > task.recurrentStart && Date() < task.recurrentEnd){
-                    for day in task.recurrentDays{
-                        if (formatter.string(from: Date()).dropLast(25).contains(day)){
-                            todayTasks.append(task)
-                        }
-                    }
-                }
-            }
-        }
-        return todayTasks
-        //PRUEBAS DATE FORMATTER
-        /* let lmao = formatter.string(from: Date())
-         print(lmao)
-         if (Date() < Date(timeInterval: 100000000, since: Date())){
-         print ("sicierto")
-         }
-         print(lmao.dropLast(25))
-         for day in formatter.shortWeekdaySymbols{
-         if (lmao.dropLast(25).contains(day)){
-         print(day)
-         }
-         }*/
+        return tasksPerDay[formatter.string(from: self.calendar.selectedDate!)]![index]
     }
     
     func reloadTree(){
-        todayTasks = returnTodayTasks(taskTree: Store.getTasks())
         taskTree.reloadData()
+    }
+    
+    func reloadCalendar(){
+        self.tasks = Store.getTasks()
+        tasksPerDay = [:]
+        for task in tasks{
+            let day = formatter.string(from: task.deadline)
+            if tasksPerDay[day] != nil{
+                tasksPerDay[day]?.append(task)
+            }else{
+                tasksPerDay[day] = [task]
+            }
+        }
+        self.calendar.reloadData()
     }
     
     func treeView(_ treeView: RATreeView, editActionsForItem item: Any) -> [Any] {
@@ -199,13 +170,15 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete", handler:{action, indexpath in
             var index: Int = 0
             let task = item as? Task
-            index = (self.todayTasks.index(where: {Task in
+            index = (self.tasksPerDay[self.formatter.string(from: self.calendar.selectedDate!)]!.index(where: {Task in
                 return Task === task
             }))!
             print(index)
             Store.deleteTask(task!)
-            self.todayTasks.remove(at: index)
+            self.tasksPerDay[self.formatter.string(from: self.calendar.selectedDate!)]!.remove(at: index)
             self.taskTree.deleteItems(at: IndexSet(integer: index), inParent: nil, with: RATreeViewRowAnimation.init(1))
+            self.reloadCalendar()
+            self.reloadTree()
         });
         
         let doneRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Hecho", handler:{action, indexpath in

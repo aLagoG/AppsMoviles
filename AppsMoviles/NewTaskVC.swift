@@ -155,6 +155,9 @@ class NewTaskVC: UIViewController {
                 gvc.reloadTree()
             }else if let mdc = self.parent as? MyDayViewController{
                 mdc.reloadTree()
+            }else if let cvc = self.parent as? CalendarViewController{
+                cvc.reloadCalendar()
+                cvc.reloadTree()
             }
             self.view.removeFromSuperview()
         }
