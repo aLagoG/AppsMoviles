@@ -12,18 +12,17 @@ import UserNotifications
 class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataSource {
 
     var todayTasks = [Task]()
-    var taskLst = [Task]()
     var tasks : RATreeView!
-    var expansions: [Int64: Bool] = [Int64: Bool]()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.reloadTree()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge],  completionHandler: {didAllow, error in})
-        todayTasks = returnTodayTasks(tasks: taskLst)
-        // Do any additional setup after loading the view.
-        taskLst = Store.getTasks()
         
         tasks = RATreeView(frame: CGRect(x: 0, y: 80, width: self.view.frame.width, height: self.view.frame.height * 0.8))
         tasks.register(UINib(nibName: String(describing: TreeTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TreeTableViewCell.self))
@@ -48,7 +47,6 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     }
     
     func treeView(_ treeView: RATreeView, numberOfChildrenOfItem item: Any?) -> Int {
-        todayTasks = returnTodayTasks(tasks: taskLst)
         return todayTasks.count
     }
     
@@ -107,14 +105,8 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     }
     
     func reloadTree(){
-        taskLst = Store.getTasks()
-        todayTasks = returnTodayTasks(tasks: taskLst)
+        todayTasks = returnTodayTasks(tasks: Store.getTasks())
         tasks.reloadData()
-        for task in todayTasks{
-            if expansions[task.id] != nil{
-                tasks.expandRow(forItem: task)
-            }
-        }
     }
     
     func treeView(_ treeView: RATreeView, editActionsForItem item: Any) -> [Any] {
@@ -139,7 +131,6 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             print(index)
             Store.deleteTask(task!)
             self.todayTasks.remove(at: index)
-            self.taskLst.remove(at: index)
             self.tasks.deleteItems(at: IndexSet(integer: index), inParent: nil, with: RATreeViewRowAnimation.init(1))
         });
         

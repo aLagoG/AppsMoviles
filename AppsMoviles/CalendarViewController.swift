@@ -35,7 +35,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
+        super.viewWillAppear(animated)
         self.tasks = Store.getTasks()
         tasksPerDay = [:]
         for task in tasks{

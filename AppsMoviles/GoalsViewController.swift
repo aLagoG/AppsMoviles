@@ -14,13 +14,15 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
     var goalLst=[Goal]()
     var goals : RATreeView!
     var expansions: [Int64: Bool] = [Int64: Bool]()
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.reloadTree()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        goalLst = Store.getGoals()
-        // Do any additional setup after loading the view.
         goals = RATreeView(frame: CGRect(x: 0 , y: 80, width: self.view.frame.width, height: self.view.frame.height * 0.7))
         goals.register(UINib(nibName: String(describing: TreeTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TreeTableViewCell.self))
         goals.autoresizingMask = [.flexibleWidth,.flexibleHeight]
