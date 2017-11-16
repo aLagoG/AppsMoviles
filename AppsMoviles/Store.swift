@@ -18,6 +18,7 @@ class Store{
     static let name = Expression<String>("name")
     static let priority = Expression<Int64>("priority")
     static let description = Expression<String>("description")
+    static let finished = Expression<Bool>("finished")
     static let color = Expression<Int64>("color")
     
     static let tasks = Table("tasks")
@@ -26,7 +27,6 @@ class Store{
     static let recurrent = Expression<Bool>("recurrent")
     static let recurrentStart = Expression<Date>("recurrentStart")
     static let recurrentEnd = Expression<Date>("recurrentEnd")
-    static let finished = Expression<Bool>("finished")
     
     static let recurrentDays = Table("recurrent_days")
     static let task_id = Expression<Int64>("task_id")
@@ -55,6 +55,7 @@ class Store{
                 t.column(name)
                 t.column(priority)
                 t.column(description)
+                t.column(finished)
                 t.column(color)
             })
         } catch  {
@@ -94,7 +95,7 @@ class Store{
     static func saveGoal(_ goal: Goal){
         if(goal.id == 0){
             do {
-                let gid = try db?.run(goals.insert(deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, color <- colorToRGB(goal.color)))
+                let gid = try db?.run(goals.insert(deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, finished <- goal.finished, color <- colorToRGB(goal.color)))
                 goal.id = gid!
             }catch  {
                 print("Error creating goal")
@@ -102,7 +103,7 @@ class Store{
         }else{
             do {
                 let toEdit = goals.filter(id == goal.id)
-                try db?.run(toEdit.update(deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, color <- colorToRGB(goal.color)))
+                try db?.run(toEdit.update(deadline <- goal.deadline, startDate <- goal.startDate, name <- goal.name, priority <- goal.priority, description <- goal.description, finished <- goal.finished, color <- colorToRGB(goal.color)))
             } catch {
                 print("Error updating goal: \(error)")
             }

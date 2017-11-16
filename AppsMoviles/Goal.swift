@@ -18,6 +18,7 @@ class Goal{
     var description: String = ""
     var color: UIColor = UIColor.clear
     var tasks: [Task] = []
+    var finished: Bool = false
     var tasksDone: Int = 0
     
     init(){
