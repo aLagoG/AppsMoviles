@@ -27,7 +27,7 @@ class MyDayViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        tabBarItem.image = UIImage.fontAwesomeIcon(name: .calendarO, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
+        tabBarItem.image = UIImage.fontAwesomeIcon(name: .calendarCheckO, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
         tabBarItem.selectedImage = tabBarItem.image
     }
 

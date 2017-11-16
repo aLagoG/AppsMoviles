@@ -1,0 +1,198 @@
+
+/* Class = "UILabel"; text = "Descripción:"; ObjectID = "1si-9z-rej"; */
+"1si-9z-rej.text" = "Descripción:";
+
+/* Class = "UILabel"; text = "Fecha de término:"; ObjectID = "2BY-7Q-TDT"; */
+"2BY-7Q-TDT.text" = "Fecha de término:";
+
+/* Class = "UITextField"; placeholder = "Contraseña:"; ObjectID = "2Bj-Gg-0uY"; */
+"2Bj-Gg-0uY.placeholder" = "Contraseña:";
+
+/* Class = "UILabel"; text = "Fecha de inicio:"; ObjectID = "2N7-0r-038"; */
+"2N7-0r-038.text" = "Fecha de inicio:";
+
+/* Class = "UILabel"; text = "Registro"; ObjectID = "2ar-iW-hma"; */
+"2ar-iW-hma.text" = "Registro";
+
+/* Class = "UIButton"; normalTitle = "Registrarse"; ObjectID = "5It-XH-zxk"; */
+"5It-XH-zxk.normalTitle" = "Registrarse";
+
+/* Class = "UILabel"; text = "O"; ObjectID = "5Vw-hH-S0V"; */
+"5Vw-hH-S0V.text" = "O";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "5sU-vx-ofZ"; */
+"5sU-vx-ofZ.text" = "Login";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "6km-Vo-jQq"; */
+"6km-Vo-jQq.normalTitle" = "+";
+
+/* Class = "UILabel"; text = "Perfil"; ObjectID = "7yl-fj-TIE"; */
+"7yl-fj-TIE.text" = "Perfil";
+
+/* Class = "UILabel"; text = "Fecha de entrega:"; ObjectID = "8pj-uE-mhH"; */
+"8pj-uE-mhH.text" = "Fecha de entrega:";
+
+/* Class = "UILabel"; accessibilityLabel = "Login"; ObjectID = "9OV-fn-8mY"; */
+"9OV-fn-8mY.accessibilityLabel" = "Login";
+
+/* Class = "UILabel"; text = "Correo:"; ObjectID = "9OV-fn-8mY"; */
+"9OV-fn-8mY.text" = "Correo:";
+
+/* Class = "UIButton"; normalTitle = "D"; ObjectID = "B5K-QG-EDc"; */
+"B5K-QG-EDc.normalTitle" = "D";
+
+/* Class = "UILabel"; text = "Contraseña:"; ObjectID = "Bp4-6M-ajE"; */
+"Bp4-6M-ajE.text" = "Contraseña:";
+
+/* Class = "UIButton"; normalTitle = "M"; ObjectID = "Ecx-UP-iEf"; */
+"Ecx-UP-iEf.normalTitle" = "M";
+
+/* Class = "UITextField"; placeholder = "Correo:"; ObjectID = "GGi-1s-zsU"; */
+"GGi-1s-zsU.placeholder" = "Correo:";
+
+/* Class = "UIButton"; normalTitle = "Guardar"; ObjectID = "GMO-v2-6c2"; */
+"GMO-v2-6c2.normalTitle" = "Guardar";
+
+/* Class = "UIButton"; normalTitle = "Cerrar sesión"; ObjectID = "GzL-7D-mbh"; */
+"GzL-7D-mbh.normalTitle" = "Cerrar sesión";
+
+/* Class = "UIButton"; normalTitle = "!"; ObjectID = "I6x-dp-8xr"; */
+"I6x-dp-8xr.normalTitle" = "!";
+
+/* Class = "UITabBarItem"; title = "Metas"; ObjectID = "J71-Gp-Ok8"; */
+"J71-Gp-Ok8.title" = "Metas";
+
+/* Class = "UIButton"; normalTitle = "Iniciar sesión"; ObjectID = "K0B-ar-lzn"; */
+"K0B-ar-lzn.normalTitle" = "Iniciar sesión";
+
+/* Class = "UIButton"; normalTitle = "Guardar"; ObjectID = "Kjv-sz-faT"; */
+"Kjv-sz-faT.normalTitle" = "Guardar";
+
+/* Class = "UIButton"; normalTitle = "Registrarse"; ObjectID = "LkX-p2-DgF"; */
+"LkX-p2-DgF.normalTitle" = "Registrarse";
+
+/* Class = "UITextField"; placeholder = "Nombre:"; ObjectID = "M8I-kv-Mlt"; */
+"M8I-kv-Mlt.placeholder" = "Nombre:";
+
+/* Class = "UILabel"; text = "Nombre:"; ObjectID = "Ntg-CN-frA"; */
+"Ntg-CN-frA.text" = "Nombre:";
+
+/* Class = "UILabel"; text = "Opciones usuario"; ObjectID = "P1K-Dp-NiE"; */
+"P1K-Dp-NiE.text" = "Opciones usuario";
+
+/* Class = "UITabBarItem"; title = "Ajustes"; ObjectID = "PI3-0I-hWa"; */
+"PI3-0I-hWa.title" = "Ajustes";
+
+/* Class = "UITabBarItem"; title = "Calendario"; ObjectID = "T5c-uH-3PI"; */
+"T5c-uH-3PI.title" = "Calendario";
+
+/* Class = "UILabel"; text = "Nombre:"; ObjectID = "W9e-zx-xjI"; */
+"W9e-zx-xjI.text" = "Nombre:";
+
+/* Class = "UIButton"; accessibilityLabel = "¡Registrate!"; ObjectID = "X1C-Hd-Ec0"; */
+"X1C-Hd-Ec0.accessibilityLabel" = "¡Registrate!";
+
+/* Class = "UIButton"; normalTitle = "¡Recibe un resumen de tus avances por correo!"; ObjectID = "X1C-Hd-Ec0"; */
+"X1C-Hd-Ec0.normalTitle" = "¡Recibe un resumen de tus avances por correo!";
+
+/* Class = "UIButton"; normalTitle = "V"; ObjectID = "ZrF-IA-Qpo"; */
+"ZrF-IA-Qpo.normalTitle" = "V";
+
+/* Class = "UILabel"; text = "Recurrente:"; ObjectID = "Zrl-a1-tFY"; */
+"Zrl-a1-tFY.text" = "Recurrente:";
+
+/* Class = "UITabBarItem"; title = "Mi Dia"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Mi Dia";
+
+/* Class = "UILabel"; text = "Contraseña"; ObjectID = "b2Q-bP-HAx"; */
+"b2Q-bP-HAx.text" = "Contraseña";
+
+/* Class = "UIButton"; normalTitle = "Mi"; ObjectID = "c3Z-yZ-ROu"; */
+"c3Z-yZ-ROu.normalTitle" = "Mi";
+
+/* Class = "UIButton"; normalTitle = "!!!"; ObjectID = "c5T-mZ-eJz"; */
+"c5T-mZ-eJz.normalTitle" = "!!!";
+
+/* Class = "UIButton"; normalTitle = "!!"; ObjectID = "cbM-sZ-64J"; */
+"cbM-sZ-64J.normalTitle" = "!!";
+
+/* Class = "UITextField"; placeholder = "Correo:"; ObjectID = "d7I-n7-f5p"; */
+"d7I-n7-f5p.placeholder" = "Correo:";
+
+/* Class = "UILabel"; accessibilityLabel = "Login"; ObjectID = "fzU-Tx-ZPU"; */
+"fzU-Tx-ZPU.accessibilityLabel" = "Login";
+
+/* Class = "UILabel"; text = "Nombre:"; ObjectID = "fzU-Tx-ZPU"; */
+"fzU-Tx-ZPU.text" = "Nombre:";
+
+/* Class = "UILabel"; text = "Fecha de término:"; ObjectID = "gHz-uH-JuK"; */
+"gHz-uH-JuK.text" = "Fecha de término:";
+
+/* Class = "UIButton"; normalTitle = "L"; ObjectID = "h8c-fB-a9Z"; */
+"h8c-fB-a9Z.normalTitle" = "L";
+
+/* Class = "UILabel"; text = "Prioridad:"; ObjectID = "hT7-hU-k8b"; */
+"hT7-hU-k8b.text" = "Prioridad:";
+
+/* Class = "UIButton"; normalTitle = "Cancelar"; ObjectID = "jFe-vS-To6"; */
+"jFe-vS-To6.normalTitle" = "Cancelar";
+
+/* Class = "UILabel"; text = "Descripción:"; ObjectID = "jc8-Sa-6F2"; */
+"jc8-Sa-6F2.text" = "Descripción:";
+
+/* Class = "UIButton"; normalTitle = "!!!"; ObjectID = "ke4-SQ-ffx"; */
+"ke4-SQ-ffx.normalTitle" = "!!!";
+
+/* Class = "UIButton"; normalTitle = "!"; ObjectID = "lWW-cU-CgT"; */
+"lWW-cU-CgT.normalTitle" = "!";
+
+/* Class = "UILabel"; text = "Prioridad:"; ObjectID = "m25-EU-Jgr"; */
+"m25-EU-Jgr.text" = "Prioridad:";
+
+/* Class = "UILabel"; accessibilityLabel = "Login"; ObjectID = "mOM-sz-fcj"; */
+"mOM-sz-fcj.accessibilityLabel" = "Login";
+
+/* Class = "UILabel"; text = "Correo:"; ObjectID = "mOM-sz-fcj"; */
+"mOM-sz-fcj.text" = "Correo:";
+
+/* Class = "UIButton"; normalTitle = "S"; ObjectID = "nMr-iN-SkC"; */
+"nMr-iN-SkC.normalTitle" = "S";
+
+/* Class = "UIButton"; normalTitle = "Cancelar"; ObjectID = "nOT-Qu-vKV"; */
+"nOT-Qu-vKV.normalTitle" = "Cancelar";
+
+/* Class = "UILabel"; text = "Lugar:"; ObjectID = "nY9-EA-MNj"; */
+"nY9-EA-MNj.text" = "Lugar:";
+
+/* Class = "UITextField"; placeholder = "Contraseña:"; ObjectID = "nab-Ea-KnC"; */
+"nab-Ea-KnC.placeholder" = "Contraseña:";
+
+/* Class = "UIButton"; normalTitle = "Cancelar"; ObjectID = "oWZ-If-r7U"; */
+"oWZ-If-r7U.normalTitle" = "Cancelar";
+
+/* Class = "UIButton"; normalTitle = "Cancelar"; ObjectID = "p63-yT-gOh"; */
+"p63-yT-gOh.normalTitle" = "Cancelar";
+
+/* Class = "UIButton"; normalTitle = "J"; ObjectID = "pS4-Fa-dxX"; */
+"pS4-Fa-dxX.normalTitle" = "J";
+
+/* Class = "UIButton"; normalTitle = "!!"; ObjectID = "plA-Hb-pws"; */
+"plA-Hb-pws.normalTitle" = "!!";
+
+/* Class = "UILabel"; text = "O"; ObjectID = "rSC-jc-X54"; */
+"rSC-jc-X54.text" = "O";
+
+/* Class = "UITextField"; placeholder = "Contraseña:"; ObjectID = "sQ2-me-cWo"; */
+"sQ2-me-cWo.placeholder" = "Contraseña:";
+
+/* Class = "UIButton"; normalTitle = "Iniciar sesión"; ObjectID = "xNI-5Z-cOL"; */
+"xNI-5Z-cOL.normalTitle" = "Iniciar sesión";
+
+/* Class = "UIButton"; normalTitle = "Enviar correo semanal"; ObjectID = "xXe-tO-fBo"; */
+"xXe-tO-fBo.normalTitle" = "Enviar correo semanal";
+
+/* Class = "UILabel"; text = "Fecha de inicio:"; ObjectID = "yez-KZ-bnq"; */
+"yez-KZ-bnq.text" = "Fecha de inicio:";
+
+/* Class = "UILabel"; text = "Repetir contraseña:"; ObjectID = "zTh-ID-HvY"; */
+"zTh-ID-HvY.text" = "Repetir contraseña:";
