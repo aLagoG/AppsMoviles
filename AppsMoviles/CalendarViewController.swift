@@ -25,6 +25,13 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     var tasks:[Task] = []
     var tasksPerDay:[String:[Task]] = [:]
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        tabBarItem.image = UIImage.fontAwesomeIcon(name: .calendar, textColor: UIColor.black, size: CGSize(width: 30, height: 30))
+        tabBarItem.selectedImage = tabBarItem.image
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
