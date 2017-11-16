@@ -18,7 +18,6 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         super.viewWillAppear(animated)
         self.reloadTree()
     }
-    
     @IBAction func AddButtonClick(_ sender: Any) {
         let popUpVC = UIStoryboard(name:"Main", bundle: nil).instantiateViewController(withIdentifier: "newTaskPopUp") as! NewTaskVC
         self.addChildViewController(popUpVC)
@@ -26,7 +25,6 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         self.view.addSubview(popUpVC.view)
         popUpVC.didMove(toParentViewController: self)
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,7 +62,6 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         let level = 0
         cell.setup(withTitle: item.name, detailsText: item.description, level: level, additionalButtonHidden: true)
         if (item.finished == true){
-            print(item.name)
             cell.done()
         }
         return cell
@@ -151,7 +148,6 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             self.tasks.reloadData()
         });
         doneRowAction.backgroundColor = UIColor.lightGray
-        
         return [deleteRowAction, moreRowAction, doneRowAction];
     }
 

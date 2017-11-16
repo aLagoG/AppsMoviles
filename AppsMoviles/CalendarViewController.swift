@@ -34,9 +34,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         tabBarItem.selectedImage = tabBarItem.image
     }
     
-    @IBAction func addButtonCLick(_ sender: Any) {
-        
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tasks = Store.getTasks()
@@ -71,7 +68,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     // MARK:- FSCalendarDataSource
-    
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let day = formatter.string(from: date)
         print(day)
