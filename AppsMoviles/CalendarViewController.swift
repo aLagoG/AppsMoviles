@@ -54,10 +54,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         self.calendarHeightConstraint.constant = self.view.bounds.height / 2 - 10
         self.view.layoutIfNeeded()
         
-        if UIDevice.current.model.hasPrefix("iPad") {
-            self.calendarHeightConstraint.constant = 400
-        }
-        
         taskTree = RATreeView(frame: CGRect(x: 0, y: self.calendarHeightConstraint.constant + 21, width: self.view.frame.width, height: self.view.frame.height - self.calendarHeightConstraint.constant + 21 - 50))
         taskTree.register(UINib(nibName: String(describing: TreeTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TreeTableViewCell.self))
         taskTree.autoresizingMask = [.flexibleWidth,.flexibleHeight]
@@ -84,7 +80,9 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         print("change page to \(self.formatter.string(from: calendar.currentPage))")
         if let date = self.calendar.selectedDate{
-            self.calendar.deselect(date)
+            if gregorian.component(.month, from: date) != gregorian.component(.month, from: calendar.currentPage){
+                self.calendar.deselect(date)
+            }
         }
     }
     
