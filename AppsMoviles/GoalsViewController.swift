@@ -8,6 +8,7 @@
 
 import UIKit
 import RATreeView
+import UserNotifications
 
 class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataSource {
 
@@ -209,6 +210,8 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             let cell = treeView.cell(forItem: item) as! TreeTableViewCell
             cell.done()
             item.finished = true
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["deadline"])
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["end"])
             Store.saveTask(item, Goal())
             self.reloadTree()
         });

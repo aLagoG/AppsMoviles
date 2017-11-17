@@ -5,6 +5,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, RATreeViewDelegate, RATreeViewDataSource{
     
@@ -205,6 +206,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             let cell = treeView.cell(forItem: item) as! TreeTableViewCell
             cell.done()
             item.finished = true
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["deadline"])
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["end"])
             Store.saveTask(item, Goal())
             self.taskTree.reloadData()
         });
