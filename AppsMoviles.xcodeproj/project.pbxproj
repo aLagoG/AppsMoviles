@@ -52,6 +52,7 @@
 		AFF4C1DE1F6AF0BA00BA76DB /* FontAwesomeTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1D41F6AF0BA00BA76DB /* FontAwesomeTabBarItem.swift */; };
 		AFF4C1DF1F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1D51F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift */; };
 		AFF4C1E01F6AF0BA00BA76DB /* FontAwesomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF4C1D61F6AF0BA00BA76DB /* FontAwesomeView.swift */; };
+		BFA835001FBFB71F0069E321 /* AcercaDeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA834FF1FBFB71F0069E321 /* AcercaDeViewController.swift */; };
 		CEE1C50C2B5E1239E17C77FE /* Pods_AppsMoviles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57656259FDC15ABFB0755360 /* Pods_AppsMoviles.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		AFF4C1D41F6AF0BA00BA76DB /* FontAwesomeTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeTabBarItem.swift; sourceTree = "<group>"; };
 		AFF4C1D51F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeTextRepresentable.swift; sourceTree = "<group>"; };
 		AFF4C1D61F6AF0BA00BA76DB /* FontAwesomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeView.swift; sourceTree = "<group>"; };
+		BFA834FF1FBFB71F0069E321 /* AcercaDeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcercaDeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 				AF1563AE1FAA41FE00BFE9C9 /* NewGoalVC.swift */,
 				533FE7831FB9EDCE006247F0 /* LoginViewController.swift */,
 				533FE7851FB9EFF8006247F0 /* RegisterViewController.swift */,
+				BFA834FF1FBFB71F0069E321 /* AcercaDeViewController.swift */,
 			);
 			path = AppsMoviles;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				AFF4C1DF1F6AF0BA00BA76DB /* FontAwesomeTextRepresentable.swift in Sources */,
 				AF76453C1F6AFB9200A9E201 /* FSCalendarHeaderView.m in Sources */,
 				AF7645401F6AFB9200A9E201 /* FSCalendarWeekdayView.m in Sources */,
+				BFA835001FBFB71F0069E321 /* AcercaDeViewController.swift in Sources */,
 				AFF4C1DC1F6AF0BA00BA76DB /* FontAwesomeSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

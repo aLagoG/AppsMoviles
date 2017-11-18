@@ -168,7 +168,7 @@ class NewTaskVC: UIViewController {
         //Crear Tarea
         //NOTIFICACIONES
         let content = UNMutableNotificationContent()
-        content.title = "Haz agregado una nueva tarea"
+        content.title = "Tu tarea"
         content.body = "¿Puedes trabajar en ella?"
         content.badge = 1
         
@@ -180,28 +180,25 @@ class NewTaskVC: UIViewController {
         let calendar = Calendar.current
         var date = DateComponents()
         date.day = calendar.component(.day, from: deadline)
-        date.hour = 15
-        date.minute = 52
+        date.hour = 12
+        date.minute = 00
         
         var date2 = DateComponents()
-        date2.day = calendar.component(.day, from: deadline)
-        date2.hour = 15
-        date2.minute = 52
-    
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        let request = UNNotificationRequest(identifier: "timerDone", content: content , trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        date2.day = calendar.component(.day, from: recurrentEnd)
+        date2.hour = 12
+        date2.minute = 00
+        
         
         if task.recurrent == false{
-        let triHora = UNCalendarNotificationTrigger(dateMatching: date , repeats: false)
-        let request1 = UNNotificationRequest(identifier: "deadline", content: content2 , trigger: triHora)
+            let triHora = UNCalendarNotificationTrigger(dateMatching: date , repeats: false)
+            let request1 = UNNotificationRequest(identifier: "deadline", content: content2 , trigger: triHora)
             UNUserNotificationCenter.current().add(request1, withCompletionHandler: nil)
         }
         
         if task.recurrent == true{
-        let triHora2 = UNCalendarNotificationTrigger(dateMatching: date2 , repeats: false)
-        let request2 = UNNotificationRequest(identifier: "end", content: content2 , trigger: triHora2)
-        UNUserNotificationCenter.current().add(request2, withCompletionHandler: nil)
+            let triHora2 = UNCalendarNotificationTrigger(dateMatching: date2 , repeats: false)
+            let request2 = UNNotificationRequest(identifier: "end", content: content2 , trigger: triHora2)
+            UNUserNotificationCenter.current().add(request2, withCompletionHandler: nil)
         }
         
         }
