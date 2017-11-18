@@ -119,7 +119,6 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             index = (self.todayTasks.index(where: {Task in
                 return Task === task
             }))!
-            print(index)
             Store.deleteTask(task!)
             self.todayTasks.remove(at: index)
             self.taskTree.deleteItems(at: IndexSet(integer: index), inParent: nil, with: RATreeViewRowAnimation.init(1))

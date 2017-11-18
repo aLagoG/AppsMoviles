@@ -79,7 +79,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     // MARK:- FSCalendarDelegate
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        print("change page to \(self.formatter.string(from: calendar.currentPage))")
         if let date = self.calendar.selectedDate{
             if gregorian.component(.month, from: date) != gregorian.component(.month, from: calendar.currentPage){
                 self.calendar.deselect(date)
@@ -88,7 +87,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("calendar did select date \(self.formatter.string(from: date))")
         if monthPosition == .previous || monthPosition == .next {
             calendar.setCurrentPage(date, animated: true)
         }
@@ -96,7 +94,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("calendar did un-select date \(self.formatter.string(from: date))")
         self.reloadTree()
     }
     
