@@ -50,7 +50,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         //mailComposerVC.setToRecipients([RegisterViewController.register(RegisterViewController)])
-        mailComposerVC.setSubject("Resumen semanal - It's Time!")
+        mailComposerVC.setSubject("Resumen de tareas - It's Time!")
         let goals = Store.getGoals()
         var tohtml = ""
         for goal in goals.filter({gl in !gl.finished && gl.tasks.count > 0}){
@@ -60,7 +60,7 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             }
             tohtml += "</ul>"
         }
-        mailComposerVC.setMessageBody("<p>¡Hola! Aquí tienes el resumen de tu semana.</p> \(tohtml) <p>¡A trabajar!</p>", isHTML: true)
+        mailComposerVC.setMessageBody("<p>¡Hola! Aquí tienes el resumen de tus metas y tareas por hacer.</p> \(tohtml) <p>¡A trabajar!</p>", isHTML: true)
         
         return mailComposerVC
     }

@@ -57,6 +57,7 @@ class TreeTableViewCell : UITableViewCell {
         let left = 11.0 + 20.0 * CGFloat(level) + 25
         self.customTitleLabel.frame.origin.x = left
         self.detailsLabel.frame.origin.x = left
+        self.placeLabel.frame.origin.x = left + detailsLabel.frame.width
         self.priorityColor.frame.origin.x = left - 28
     }
 
@@ -68,6 +69,7 @@ class TreeTableViewCell : UITableViewCell {
     func done(){
         customTitleLabel.textColor = UIColor.lightGray
         detailsLabel.textColor = UIColor.lightGray
+        placeLabel.textColor = UIColor.lightGray
     }
     
     func setColor(_ priority : Int64){
