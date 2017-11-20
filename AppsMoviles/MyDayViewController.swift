@@ -61,7 +61,7 @@ class MyDayViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
         let cell = treeView.dequeueReusableCell(withIdentifier: String(describing: TreeTableViewCell.self)) as! TreeTableViewCell
         let item = item as! Task
         let level = 0
-        cell.setup(withTitle: item.name, detailsText: item.description, level: level, additionalButtonHidden: true)
+        cell.setup(withTitle: item.name, detailsText: item.description, level: level, additionalButtonHidden: true, lugar: item.place)
         if (item.finished == true){
             cell.done()
         }

@@ -14,6 +14,7 @@ class TreeTableViewCell : UITableViewCell {
     @IBOutlet private weak var detailsLabel: UILabel!
     @IBOutlet private weak var customTitleLabel: UILabel!
     
+    @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var priorityColor: UIView!
     
     private var additionalButtonHidden : Bool {
@@ -32,10 +33,12 @@ class TreeTableViewCell : UITableViewCell {
 
     var additionButtonActionBlock : ((TreeTableViewCell) -> Void)?;
 
-    func setup(withTitle title: String, detailsText: String, level : Int, additionalButtonHidden: Bool) {
+    func setup(withTitle title: String, detailsText: String, level : Int, additionalButtonHidden: Bool, lugar: String) {
         priorityColor.layer.cornerRadius = priorityColor.bounds.height
         customTitleLabel.text = title
         detailsLabel.text = detailsText
+        placeLabel.text = lugar
+        
         self.additionalButtonHidden = additionalButtonHidden
         
         let backgroundColor: UIColor

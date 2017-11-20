@@ -64,7 +64,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             let detailText = "Tareas hechas: \(doneTasks) de \(goal.tasks.count)"
             let level = 0
             cell.selectionStyle = .none
-            cell.setup(withTitle: goal.name, detailsText: detailText, level: level, additionalButtonHidden: false)
+            cell.setup(withTitle: goal.name, detailsText: detailText, level: level, additionalButtonHidden: false, lugar: "")
 
             goal.isFinished()
             if (goal.finished == true){
@@ -75,7 +75,7 @@ class GoalsViewController: UIViewController, RATreeViewDelegate, RATreeViewDataS
             let detailText = task.description
             let level = 1
             cell.selectionStyle = .none
-            cell.setup(withTitle: task.name, detailsText: detailText, level: level, additionalButtonHidden: true)
+            cell.setup(withTitle: task.name, detailsText: detailText, level: level, additionalButtonHidden: true , lugar: task.place)
             if (task.finished == true){
                 cell.done()
             }
